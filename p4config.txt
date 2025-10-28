@@ -1,0 +1,4 @@
+P4PORT=fgsrv:1666
+P4USER=Alexander.Andrejeff
+P4CLIENT=Alexander.Andrejeff_GP1_Team03
+P4IGNORE=.p4ignore.txt;.gitignore
