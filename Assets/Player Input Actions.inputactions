@@ -30,7 +30,16 @@
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Kick",
+                    "type": "Button",
+                    "id": "e6e2c011-6fda-417e-abdc-c3662ecbd017",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -211,23 +220,23 @@
                 },
                 {
                     "name": "",
-                    "id": "e676ae8b-f86a-4054-9cb7-f199c65f14d6",
-                    "path": "<Keyboard>/w",
-                    "interactions": "MultiTap",
+                    "id": "964f52a6-4d92-4103-affa-84381859d7e2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Sprint",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ea4da9ad-97f7-4db5-b8d2-53f20e70cf18",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "MultiTap",
+                    "id": "e18917e6-01a4-4738-bc63-b72098b753a7",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Sprint",
+                    "groups": "Gamepad",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

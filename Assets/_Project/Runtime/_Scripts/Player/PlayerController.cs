@@ -1,5 +1,6 @@
 #region
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using VInspector;
 #endregion
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	[Tab("Settings")]
 	[SerializeField] bool debugMode;
 	[Button, ShowIf(nameof(debugMode))]
+	[UsedImplicitly]
 	void Kill() => Death();
 	[EndIf]
 
@@ -49,7 +51,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 		Quaternion playerRotation = Quaternion.Euler(Vector3.up * (rotateCamera * cameraRotateSpeed * Time.fixedDeltaTime));
 
 		controller.SimpleMove(playerMove);
-		transform.Rotate(playerRotation.eulerAngles); // TODO: Make this rotate quickly at the start, so its easier to quickly turn ~45 degrees.
+		transform.Rotate(playerRotation.eulerAngles); // TODO: Make this rotate quickly at the start, so its easier to quickly turn ~45 degrees
+														// P.S. we also need aim assist towards enemies
 	}
 
 	public void TakeDamage(float damage) => throw new NotImplementedException();

@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   moveInput: {x: 0, y: 0}
+  <IsSprinting>k__BackingField: 0
 --- !u!114 &1106607629511772460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +267,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2353966840789962426}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnKick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e6e2c011-6fda-417e-abdc-c3662ecbd017
+    m_ActionName: 'Player/Kick[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -391,7 +408,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 60
-  m_StepOffset: 0.3
+  m_StepOffset: 0.2
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -585,9 +602,45 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
       propertyPath: fpsCamera
       value: 
       objectReference: {fileID: 6035694056239858390}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: kickForce
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: kickRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: kickSize.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: kickSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: attackDepth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: attackRange
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: attackSize.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: attackSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
