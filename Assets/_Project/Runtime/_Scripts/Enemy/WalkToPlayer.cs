@@ -6,34 +6,38 @@ public class WalkToPlayer : MonoBehaviour
 {
     [SerializeField] private Transform player;
     private NavMeshAgent navMeshAgent;
-    private float personalBubble = 3.1f;
+    private float attackDistance = 3.1f;
     private float distanceFromPlayer;
+    private IDamageable damageable;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int AttackDamage = 10;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player.TryGetComponent(out damageable);
     }
 
-    // Update is called once per frame
     void Update()
     {
         distanceFromPlayer = Vector3.Distance(transform.position, player.position);
 
-        if(distanceFromPlayer > personalBubble)
+        if(distanceFromPlayer > attackDistance)
         {
             navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(player.position);
+            navMeshAgent.destination = (player.position);
+            //stop attack anim if any
         }
         else
         {
             navMeshAgent.isStopped = true;
+            //attack player
+            damageable?.TakeDamage(AttackDamage);
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, personalBubble);
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
     }
 }

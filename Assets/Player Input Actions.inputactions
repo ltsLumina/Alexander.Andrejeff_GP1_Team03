@@ -34,18 +34,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Kick",
+                    "name": "Sprint",
                     "type": "Button",
-                    "id": "e6e2c011-6fda-417e-abdc-c3662ecbd017",
+                    "id": "641cd816-40e6-41b4-8c3d-04687c349290",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Kick",
                     "type": "Button",
-                    "id": "641cd816-40e6-41b4-8c3d-04687c349290",
+                    "id": "e572d8f7-835e-4ee3-8666-d10a7ca4076a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -220,18 +220,40 @@
                 },
                 {
                     "name": "",
-                    "id": "964f52a6-4d92-4103-affa-84381859d7e2",
+                    "id": "e676ae8b-f86a-4054-9cb7-f199c65f14d6",
+                    "path": "<Keyboard>/w",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea4da9ad-97f7-4db5-b8d2-53f20e70cf18",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a054f4a7-f914-4bdb-a5bc-5aac6dcdf882",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
                     "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "e18917e6-01a4-4738-bc63-b72098b753a7",
+                    "id": "326217b9-1e0a-43d2-93b3-a5d8d1ec85c1",
                     "path": "<XInputController>/buttonEast",
                     "interactions": "",
                     "processors": "",

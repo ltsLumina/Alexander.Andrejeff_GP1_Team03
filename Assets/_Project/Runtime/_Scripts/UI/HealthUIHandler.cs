@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,16 +7,23 @@ public class HealthUIHandler : MonoBehaviour
     // GameObjects
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] UIDocument UIDoc;
+    [SerializeField] int heartCount;
+    List<VisualElement> hearts = new List<VisualElement>();
 
     // UI 
     VisualElement root;
 
     // UI Containers
     VisualElement healthBarContainer;
+    VisualElement heartContainer;
 
-    Label healthLabel;
-    VisualElement healthBarFill;
 
+    int heartIndex;
+    bool lastHeartWasHalf = false;
+
+    [SerializeField] Texture2D heartFull;
+    [SerializeField] Texture2D heartHalf;
+    [SerializeField] Texture2D heartEmpty;
 
     private void OnEnable()
     {
@@ -38,24 +45,91 @@ public class HealthUIHandler : MonoBehaviour
 
         // Containers
         healthBarContainer = root.Q<VisualElement>("HealthBarContainer");
+        heartContainer = root.Q<VisualElement>("HeartContainer");
 
-        healthLabel = root.Q<Label>("HealthLabel");
-        healthBarFill = root.Q<VisualElement>("HealthBarFill");
 
         // Initialize HUD
-        healthBarContainer.style.display = DisplayStyle.Flex;
-        healthLabel.text = $"{playerHealth.CurrentHealth}/{playerHealth.MaxHealth}";
+        CreateHearts();
 
-        
     }
 
-    void HealthChanged()
-    {
-        float healthRatio = (float)playerHealth.CurrentHealth / playerHealth.MaxHealth;
-        float healthPercent = Mathf.Lerp(0, 100, healthRatio);
-        healthBarFill.style.width = Length.Percent(healthPercent);
 
-        healthLabel.text = $"{playerHealth.CurrentHealth}/{playerHealth.MaxHealth}";
+    void CreateHearts()
+    {
+        heartIndex = heartCount;
+        for (int i = 0; i < heartCount; i++)
+        {
+            VisualElement heart = new VisualElement();
+            heart.AddToClassList("heart"); // See GameUIStylesheet 
+            heart.style.backgroundImage = new StyleBackground(heartFull);
+            heartContainer.Add(heart);
+            hearts.Add(heart);
+        }
+    }
+
+
+    void AddHeart(float currentHealth, float previousHealth)
+    {
+        float healAmount = currentHealth - previousHealth;
+
+        for (int i = 0; i < healAmount; i++)
+        {
+
+            VisualElement heart = heartContainer.hierarchy.ElementAt(heartIndex -1 );
+
+            if (lastHeartWasHalf)
+            {
+                heart.style.backgroundImage = new StyleBackground(heartFull);
+                lastHeartWasHalf = false;
+            }
+            else
+            {
+                heart = heartContainer.hierarchy.ElementAt(heartIndex);
+                heart.style.backgroundImage = new StyleBackground(heartHalf);
+                lastHeartWasHalf = true;
+                heartIndex++;
+
+            }
+        }
+    }
+
+    void RemoveHeart(float currentHealth, float previousHealth)
+    {
+        if (heartIndex <= 0) return;
+
+        float damageTaken = previousHealth - currentHealth;
+
+        for (int i = 0; i < damageTaken; i++)
+        {
+            VisualElement heart = heartContainer.hierarchy.ElementAt(heartIndex - 1);
+
+            if (!lastHeartWasHalf)
+            {
+                heart.style.backgroundImage = new StyleBackground(heartHalf);
+                lastHeartWasHalf = true;
+            }
+            else
+            {
+                heart.style.backgroundImage = new StyleBackground(heartEmpty);
+                lastHeartWasHalf = false;
+                heartIndex--;
+            }
+        }
+
+    }
+
+
+    void HealthChanged(float currentHealth, float previousHealth)
+    {
+
+        if (currentHealth < previousHealth)
+        {
+            RemoveHeart(currentHealth, previousHealth);
+        }
+        else
+        {
+            AddHeart(currentHealth, previousHealth);
+        }
     }
 
     void PlayerDied()
@@ -63,7 +137,7 @@ public class HealthUIHandler : MonoBehaviour
         Debug.Log("Cleaning up UI");
 
         // Turn off player health bar UI
-        healthBarContainer.style.display = DisplayStyle.None;        
+        healthBarContainer.style.display = DisplayStyle.None;
 
         // Show Game Over UI
     }

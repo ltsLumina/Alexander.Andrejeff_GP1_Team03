@@ -5,23 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Game Canvas.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Game Canvas.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Weapon.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Weapon.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/IDamageable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/IDamageable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Crate old.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Crate old.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps 1.meta" beforeDir="false" />
+    </list>
+    <list id="54055d90-398c-4189-b9b2-4f6d16e53176" name="crates and spikes" comment="crates and spikes">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Materials/Crate Dust VFX.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Materials/Crate Dust VFX.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player Input Actions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/External/Editor Enhancements/vHierarchy/vHierarchy Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/External/Editor Enhancements/vHierarchy/vHierarchy Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Crate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Crate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Particles/Dust VFX.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Particles/Dust VFX.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SpikeTrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SpikeTrap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs.meta" afterDir="false" />
     </list>
     <list id="a22c89bc-0ac8-474b-ade0-d35ae01fb3dd" name="NEVER SUBMIT" comment="NEVER SUBMIT" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +37,24 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/07baf6498e9846a48ab680e23790030729c00/86/a12ff76e/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/Debugging/DebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/_Scripts/ExtendedScriptableObjectDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/External/Abiogenesis3d.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Spike Trap.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Spike Trap.prefab.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SpikeTrap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SpikeTrap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/HealthUIHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/Logger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@bc6f352be672/Shaders/2D/Sprite-Lit-Default.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -82,19 +96,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "settings.editor.selected.configurable": "vcs.Perforce"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Perforce&quot;
   },
-  "keyToStringList": {
-    "stardust.markdown.MarkdownSplitEditorSuppressor:keyList": []
+  &quot;keyToStringList&quot;: {
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
@@ -134,16 +148,13 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24244">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="24244" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <DesktopClrRuntime />
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -166,7 +177,66 @@
       <workItem from="1761660660014" duration="7000" />
       <workItem from="1761660912493" duration="21000" />
       <workItem from="1761661417788" duration="12560000" />
+      <workItem from="1761730835850" duration="12912000" />
+      <workItem from="1761820635417" duration="12074000" />
     </task>
+    <task id="LOCAL-00001" summary="health review">
+      <option name="closed" value="true" />
+      <created>1761733239739</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761733239739</updated>
+    </task>
+    <task id="LOCAL-00002" summary="review">
+      <option name="closed" value="true" />
+      <created>1761740306300</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761740306300</updated>
+    </task>
+    <task id="LOCAL-00003" summary="review: math library">
+      <option name="closed" value="true" />
+      <created>1761740407108</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761740407108</updated>
+    </task>
+    <task id="LOCAL-00004" summary="OnDrawGizmos =&gt; OnDrawGizmosSelected">
+      <option name="closed" value="true" />
+      <created>1761740986846</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761740986846</updated>
+    </task>
+    <task id="LOCAL-00005" summary="corrected usage of TryGetComponent">
+      <option name="closed" value="true" />
+      <created>1761741425875</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1761741425875</updated>
+    </task>
+    <task id="LOCAL-00006" summary="wow">
+      <option name="closed" value="true" />
+      <created>1761828696974</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761828696974</updated>
+    </task>
+    <task id="LOCAL-00007" summary="inputs">
+      <option name="closed" value="true" />
+      <created>1761829596855</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1761829596855</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
@@ -180,6 +250,14 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="health review" />
+    <MESSAGE value="review" />
+    <MESSAGE value="review: math library" />
+    <MESSAGE value="OnDrawGizmos =&gt; OnDrawGizmosSelected" />
+    <MESSAGE value="corrected usage of TryGetComponent" />
+    <MESSAGE value="wow" />
+    <MESSAGE value="inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="inputs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

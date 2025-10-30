@@ -45,11 +45,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bd3fd5ee7a92c48b507427f1689409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 10
-  range: 100
   fpsCamera: {fileID: 0}
+  damage: 2
+  attackSize: {x: 0.5, y: 0.5}
+  attackRange: 2
+  attackCooldown: 0.5
+  attackTime: 0
+  kickForce: 300
+  kickSize: {x: 0.5, y: 0.5}
+  kickRange: 2
+  kickCooldown: 0.5
+  kickTime: 0
   debugDrawRay: 1
   blockingHit: 0
+  hits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5933215658942057258
 GameObject:
   m_ObjectHideFlags: 0

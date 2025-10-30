@@ -45,3 +45,7 @@ ExportedObj/
 # Ignore VHierarchy Data
 /Assets/_Project/External/Editor Enhancements/vHierarchy/vHierarchy Data.asset
 vHierarchy Data.asset
+
+# DOTween
+Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset
+DOTweenSettings.asset

@@ -1,61 +1,122 @@
 #region
 using System;
+using Abiogenesis3d;
 using JetBrains.Annotations;
+using Lumina.Essentials.Modules;
+using UnityEditor;
 using UnityEngine;
 using VInspector;
 #endregion
 
-[SelectionBase, DisallowMultipleComponent, RequireComponent(typeof(CharacterController))]
+[SelectionBase, DisallowMultipleComponent, RequireComponent(typeof(CharacterController))] 
 public class PlayerController : MonoBehaviour, IDamageable
 {
 	[Tab("Movement")]
-	[SerializeField] float movementSpeed = 3f;
-	[SerializeField] float cameraRotateSpeed = 180f;
-	
+	[SerializeField] float baseMoveSpeed = 5f;
+	[SerializeField] int moveWindingTime = 50;
+	[SerializeField] float movementAddmult = -0.5f;
+
+	[Tab("Camera")]
+	[SerializeField] float baseCameraRotateSpeed = 240f;
+	[Tooltip("Higher values mean slower winding up/down.")]
+	[SerializeField] int cameraWindingTime = 16;
+	[Tooltip("Controls the added multiplier for winding (negative values reduce speed).")]
+	[SerializeField] float cameraWindAddMultiplier = -0.8f;
+
 	[Tab("Weapon")]
 	[SerializeField] Weapon weapon;
 
 	[Tab("Settings")]
 	[SerializeField] bool debugMode;
+	[SerializeField] bool disablePixelization;
 	[Button, ShowIf(nameof(debugMode))]
 	[UsedImplicitly]
-	void Kill() => Death();
+	void Kill() => TakeDamage(999);
 	[EndIf]
-
+	
 	float rotateCamera;
+	int cameraWindingCounter;
+	float cameraWindingCurrentMult;
+	float prevCameraDirection;
+
 	float movePlayer;
-	
+	int moveWindingCounter;
+	float moveWindingCurrentMult;
+	float prevMoveDirection;
+
 	// references
-	
+
 	CharacterController controller;
 	Rigidbody rb;
 	InputManager inputs;
+	PlayerHealth healthComponent;
 
 	public Weapon Weapon => weapon;
+
+#if UNITY_EDITOR
+	void OnValidate()
+	{
+		var pixelator = GetComponentInChildren<UPixelator>();
+		if (pixelator != null) pixelator.enabled = !disablePixelization;
+	}
+#endif
 
 	void Awake()
 	{
 		controller = GetComponent<CharacterController>();
 		inputs = GetComponentInChildren<InputManager>();
+		healthComponent = GetComponent<PlayerHealth>();
+	}
+
+	void Start()
+	{
+#if UNITY_EDITOR
+		var gameViewType = Type.GetType("UnityEditor.GameView,UnityEditor");
+		var gameViewWindow = EditorWindow.GetWindow(gameViewType);
+
+		Debug.Assert(gameViewWindow != null, "Game View window not found! Cannot set pixelation!");
+#endif
 	}
 
 	void Update()
 	{
-		rotateCamera = inputs.MoveInput.x;
-		movePlayer = inputs.MoveInput.y;
+		rotateCamera = Mathf.RoundToInt(inputs.MoveInput.x); // review: don't use 'math' library, use 'Mathf' instead.
+		movePlayer = Mathf.RoundToInt(inputs.MoveInput.y);   // review: don't use 'math' library, use 'Mathf' instead.
 	}
 
 	void FixedUpdate()
 	{
-		Vector3 playerMove = transform.forward * (movePlayer * movementSpeed);
-		Quaternion playerRotation = Quaternion.Euler(Vector3.up * (rotateCamera * cameraRotateSpeed * Time.fixedDeltaTime));
+		// Multiplies movement speed
+		if ((movePlayer == 0) | (Math.Abs(prevMoveDirection - movePlayer) > 0.01f)) // review: floating-point precision loss prevention
+		{
+			moveWindingCounter = moveWindingTime;
+			prevMoveDirection = movePlayer;
+		}
+		else if (moveWindingCounter != 0) { moveWindingCounter -= 1; }
+
+		// Multiplies camera rotation speed
+		if ((rotateCamera == 0) | (Math.Abs(prevCameraDirection - rotateCamera) > 0.01f)) // review: floating-point precision loss prevention
+		{
+			cameraWindingCounter = cameraWindingTime;
+			prevCameraDirection = rotateCamera;
+		}
+		else if (cameraWindingCounter != 0) { cameraWindingCounter -= 1; }
+
+		moveWindingCurrentMult = 1f + movementAddmult * moveWindingCounter / moveWindingTime;
+		cameraWindingCurrentMult = 1f + cameraWindAddMultiplier * cameraWindingCounter / cameraWindingTime;
+
+		Vector3 playerMove = transform.forward * (movePlayer * moveWindingCurrentMult * baseMoveSpeed);
+		Quaternion playerRotation = Quaternion.Euler(Vector3.up * (rotateCamera * baseCameraRotateSpeed * cameraWindingCurrentMult * Time.fixedDeltaTime));
 
 		controller.SimpleMove(playerMove);
-		transform.Rotate(playerRotation.eulerAngles); // TODO: Make this rotate quickly at the start, so its easier to quickly turn ~45 degrees
-														// P.S. we also need aim assist towards enemies
+		transform.Rotate(playerRotation.eulerAngles);
 	}
 
-	public void TakeDamage(float damage) => throw new NotImplementedException();
+	public void TakeDamage(float damage) // Helper function to pass damage to PlayerHealth component
+	{
+		healthComponent.TakeDamage(damage);
 
-	void Death() => throw new NotImplementedException();
+		Weapon.Attack();
+		Weapon.Kick();
+	}
 }
