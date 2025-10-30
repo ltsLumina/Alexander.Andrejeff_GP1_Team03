@@ -8,6 +8,8 @@ public class Main_Menu : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject firstObject;
+    [SerializeField] private GameObject accessibilityMenu;
+
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(firstObject);
@@ -15,24 +17,12 @@ public class Main_Menu : MonoBehaviour
     public void PlayButton()
     {
 
-        //Only for Editor
-#if UNITY_EDITOR
-        //Debug.Log("Changing To Game Scene!");
-        SceneManager.LoadScene(1);
-#endif
-        // GameScene missing for now ****!
-
     }
 
-    public void ExitButton()
+    public void AccessibilityButton()
     {
-        //Only for Editor
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#endif
-
-        //Exits Game
-        Application.Quit();
+        mainMenu.SetActive(false);
+        accessibilityMenu.SetActive(true);
     }
 
     public void OptionsButton()

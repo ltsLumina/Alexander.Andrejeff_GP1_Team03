@@ -1,17 +1,37 @@
+#region
 using System;
 using UnityEngine;
+using VInspector;
+#endregion
 
 public class Chest : MonoBehaviour, IInteractable
 {
-	[SerializeField] GameObject prefab;
+	enum Reward
+	{
+		Collectable,
+		Weapon,
+		Heal,
+		MaxHealth,
+	}
 	
+	[Tab("Reward")]
+	[SerializeField] Reward reward;
+	[SerializeField] GameObject rewardPrefab;
+	[EndIf]
+
+	void Start()
+	{
+		name = $"Chest ({reward})";
+	}
+
 	public void Interact() => Open();
 	
 	public void Open()
 	{
-		if (prefab != null)
+		if (rewardPrefab != null)
 		{
-			Instantiate(prefab, transform.position + Vector3.up, prefab.transform.rotation);
+			Instantiate(rewardPrefab, transform.position + Vector3.up, rewardPrefab.transform.rotation);
+			gameObject.layer = 0; // non-interactable layer
 		}
 	}
 }

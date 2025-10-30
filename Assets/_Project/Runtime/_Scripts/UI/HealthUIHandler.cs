@@ -4,11 +4,11 @@ using UnityEngine.UIElements;
 
 public class HealthUIHandler : MonoBehaviour
 {
-    // GameObjects
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] UIDocument UIDoc;
     [SerializeField] int heartCount;
     List<VisualElement> hearts = new List<VisualElement>();
+    [SerializeField] int healthPerHeart;
 
     // UI 
     VisualElement root;
@@ -27,12 +27,14 @@ public class HealthUIHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        PlayerHealth.OnMaxHealthIncreased += MaxHealthIncreased;
         PlayerHealth.OnHealthChanged += HealthChanged;
         PlayerHealth.OnPlayerDied += PlayerDied;
     }
 
     private void OnDisable()
     {
+        PlayerHealth.OnMaxHealthIncreased -= MaxHealthIncreased;
         PlayerHealth.OnHealthChanged -= HealthChanged;
         PlayerHealth.OnPlayerDied -= PlayerDied;
     }
@@ -53,6 +55,37 @@ public class HealthUIHandler : MonoBehaviour
 
     }
 
+    void MaxHealthIncreased(float maxHealth, float maxHealthMod, bool refreshCurrentHealth)
+    {
+        int heartCount = (int)maxHealth / healthPerHeart;
+
+        if (refreshCurrentHealth)
+        {
+            heartContainer.Clear();
+            hearts.Clear();
+
+            for (int i = 0; i < heartCount; i++)
+            {
+                VisualElement heart = new VisualElement();
+                heart.AddToClassList("heart"); // See GameUIStylesheet 
+                heart.style.backgroundImage = new StyleBackground(heartFull);
+                heartContainer.Add(heart);
+                hearts.Add(heart);
+            }
+            heartIndex = heartCount;
+        }
+        else
+        {
+            for (int i = 0; i < maxHealthMod / 2; i++)
+            {
+                VisualElement heart = new VisualElement();
+                heart.AddToClassList("heart"); // See GameUIStylesheet 
+                heart.style.backgroundImage = new StyleBackground(heartEmpty);
+                heartContainer.Add(heart);
+                hearts.Add(heart);
+            }
+        }
+    }
 
     void CreateHearts()
     {
@@ -75,7 +108,7 @@ public class HealthUIHandler : MonoBehaviour
         for (int i = 0; i < healAmount; i++)
         {
 
-            VisualElement heart = heartContainer.hierarchy.ElementAt(heartIndex -1 );
+            VisualElement heart = heartContainer.hierarchy.ElementAt(heartIndex - 1);
 
             if (lastHeartWasHalf)
             {

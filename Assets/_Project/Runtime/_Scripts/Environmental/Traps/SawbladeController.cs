@@ -8,22 +8,32 @@ public class SawbladeController : MonoBehaviour
     [SerializeField] Transform PointB;
     [SerializeField] float moveTime = 250f;
     [SerializeField] float stayTime = 100f;
-	[SerializeField] float damage = 2;
+    [SerializeField] float damage = 2;
     [Range(0.5f, 3f)]
     [SerializeField] float cooldown = 0.5f;
+
     private float positionCounter = 0f;
     private float stayCounter = 0f;
     private bool positionFlip = false;
     float timer;
-	bool canActivate;
+    bool canActivate;
     private List<Collider> currentTargets = new();
     IDamageable target;
 
+    Vector3 pointAPos;
+    Vector3 pointBPos;
+
+    void Start()
+    {
+        pointAPos = PointA.position;
+        pointBPos = PointB.position;
+    }
+
     void FixedUpdate()
     {
-        transform.position = PointA.position * positionCounter / moveTime + PointB.position * (moveTime - positionCounter) / moveTime;
+        transform.position = pointAPos * positionCounter / moveTime + pointBPos * (moveTime - positionCounter) / moveTime;
 
-        if (positionFlip == false)
+        if (!positionFlip)
         {
             if (moveTime <= positionCounter)
             {
@@ -41,7 +51,7 @@ public class SawbladeController : MonoBehaviour
         }
         else
         {
-            if (0 >= positionCounter)
+            if (positionCounter <= 0)
             {
                 stayCounter -= 1;
                 if (stayCounter <= 0)
@@ -79,15 +89,15 @@ public class SawbladeController : MonoBehaviour
         }
     }
 
-	void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (!currentTargets.Contains(other))
         {
-            currentTargets.Add(other);	
+            currentTargets.Add(other);
         }
     }
 
-	void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         currentTargets.Remove(other);
     }

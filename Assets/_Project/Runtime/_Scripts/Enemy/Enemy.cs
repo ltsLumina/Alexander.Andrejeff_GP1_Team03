@@ -31,9 +31,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[SerializeField] public float attackRange = 3.1f;
 	[Tooltip("The range at which the enemy can detect the player.")]
 	[SerializeField] public float detectionRange = 31f;
-    [SerializeField] RoomRegistry room;
+	[SerializeField] RoomRegistry room;
 
-    [Tab("NavMesh")]
+	[Tab("NavMesh")]
 	[SerializeField] Transform target;
 
 	public float Health => health;
@@ -42,10 +42,10 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	float distanceToPlayer;
 	float attackTimer = 5f;
 
-    Vector3 startPos;
-    Quaternion startRot;
+	Vector3 startPos;
+	Quaternion startRot;
 
-    NavMeshAgent agent;
+	NavMeshAgent agent;
 	Rigidbody rb;
 	Collider col;
 	Animator animator;
@@ -57,16 +57,12 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		col = GetComponent<Collider>();
 
 		room = room ? room : GetComponentInParent<RoomRegistry>();
-		if (room)
-		{
-            room.Register(this);
-		}
+		if (room) { room.Register(this); }
 
+		startPos = transform.position;
+		startRot = transform.rotation;
 
-        startPos = transform.position;
-        startRot = transform.rotation;
-
-        Debug.Assert(agent, "NavMeshAgent component is missing!", this);
+		Debug.Assert(agent, "NavMeshAgent component is missing!", this);
 		Debug.Assert(target, "Target field is not assigned! \nThis should almost always be the player.", this);
 	}
 
@@ -103,6 +99,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	void Update()
 	{
 		if (attackTimer >= 0) attackTimer -= Time.deltaTime;
+		if (!target) return;
+		if (agent.isStopped) return;
 
 		distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
@@ -143,13 +141,14 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	void Death()
 	{
 		Logger.LogWarning("Enemy died.", this, $"{name}");
-        room.Unregister(this);
-        Destroy(gameObject);
+		room.Unregister(this);
+		Destroy(gameObject);
 	}
 
 	public void Knockback(float knockbackForce)
 	{
 		rb.isKinematic = false;
+
 		// knock backwards, opposite to where the enemy is moving
 		rb.AddForce(-agent.velocity.normalized * knockbackForce, ForceMode.Impulse);
 
@@ -176,13 +175,19 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		Gizmos.DrawWireSphere(transform.position, detectionRange);
 	}
 
-    //--------------------------------- respawn mechanics n stuff----------------------------------------
+	//--------------------------------- respawn mechanics n stuff----------------------------------------
 
-    void OnEnable() => room.Register(this);
-    void OnDisable() => room.Unregister(this);
+	void OnEnable() => room.Register(this);
 
-    public void ResetToStart()
-    {
-        if (agent) { agent.Warp(startPos); transform.rotation = startRot; agent.ResetPath(); }
-    }
+	void OnDisable() => room.Unregister(this);
+
+	public void ResetToStart()
+	{
+		if (agent)
+		{
+			agent.Warp(startPos);
+			transform.rotation = startRot;
+			agent.ResetPath();
+		}
+	}
 }

@@ -1,16 +1,34 @@
+using System.Linq;
 using UnityEngine;
+using VInspector;
 
 public class CameraScript : MonoBehaviour
 {
+    [Tab("General")]
     [SerializeField] Transform parent;
     [SerializeField] InputManager inputs;
     [SerializeField] Vector3 defaultRelativeCameraPosition = new Vector3(0, 0.585f, -0.125f);
+    
+    [Tab("Camera Bobbing")]
+    [SerializeField] bool bobbingEnabled = true;
+    [ShowIf(nameof(bobbingEnabled), true)]
     [SerializeField] float cameraBobIntensity = 0.05f;
     [SerializeField] float cameraBobSpeed = 1000f;
     [SerializeField] float cameraIdleBob = 0.2f;
-    [SerializeField] public bool bobbingEnabled = true;
+    [EndIf]
+    
+    [Tab("Camera Shake")]
+    [SerializeField] bool viewShakeEnabled = true;
+    [ShowIf(nameof(viewShakeEnabled), true)]
     [SerializeField] float shakeIntensity = 1f;
-    [SerializeField] public bool viewShakeEnabled = true;
+    [EndIf]
+    
+    [Tab("Aim Assist")]
+    [SerializeField] bool aimAssistEnabled = true;
+    [ShowIf(nameof(aimAssistEnabled), true)]
+    [SerializeField] float aimAssistAngleThreshold = 30f;
+    [SerializeField] float aimAssistMinDistance = 10f;
+    [EndIf]
 
     Vector3 bobbingPosition = new Vector3(0, 0, 0);
     Vector3 shakePosition = new Vector3(0, 0, 0);
@@ -32,7 +50,7 @@ public class CameraScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (bobbingEnabled == true)
+        if (bobbingEnabled)
         {
             if (viewBobbingMult == 0f)
             {
@@ -88,6 +106,27 @@ public class CameraScript : MonoBehaviour
 
         // Position setter
         transform.localPosition = defaultRelativeCameraPosition + bobbingPosition + shakePosition;
+
+        // aim assist
+        if (aimAssistEnabled)
+        {
+            // lol this sucks but whatever - designer code :)
+            var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None)
+                .OrderBy(e => Vector3.Distance(parent.position, e.transform.position))
+                .ToArray();
+            if (enemies.Length == 0) return;
+            
+            var closestEnemy = enemies[0];
+            Vector3 directionToEnemy = (closestEnemy.transform.position - parent.position).normalized;
+            float angleToEnemy = Vector3.Angle(parent.forward, directionToEnemy);
+            Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
+            
+            if (angleToEnemy < aimAssistAngleThreshold && 
+                Vector3.Distance(parent.position, closestEnemy.transform.position) < aimAssistMinDistance)
+            {
+                parent.rotation = Quaternion.Slerp(parent.rotation, targetRotation, Time.deltaTime * 2f);
+            }
+        }
     }
 
     private void DoCameraShake(float currentHealth, float previousHealth)

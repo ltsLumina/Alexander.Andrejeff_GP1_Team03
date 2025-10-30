@@ -1,22 +1,27 @@
 using System;
+using DG.Tweening;
+using JetBrains.Annotations;
 using Lumina.Essentials.Attributes;
 using UnityEngine;
 using VInspector;
 
 public class Weapon : MonoBehaviour
 {
-	[Tab("Weapon")]
-	[Header("Weapon")]
-	[SerializeField] Camera fpsCamera;
-	[SerializeField] float damage = 2f;
-	[SerializeField] Vector2 attackSize = new (0.5f, 0.5f);
-	[Range(1, 5f)]
-	[SerializeField] float attackRange = 2f;
+	public enum Weapons
+	{
+		Dagger,
+		Staff
+	}
 
-	[Header("Cooldown"), Range(0.01f, 2f)]
-	[SerializeField] float attackCooldown = 0.5f;
+	[UsedImplicitly]
+	[SerializeField] Weapons equippedWeapon;
+	[SerializeField] WeaponData weaponData;
+
+	[Header("Cooldown")]
 	[SerializeField, ReadOnly] float attackTime;
 
+	// -- separator
+	
 	[Tab("Kick")]
 	[Header("Kick")]
 	[SerializeField] float kickForce = 100f;
@@ -29,9 +34,18 @@ public class Weapon : MonoBehaviour
 	[SerializeField, ReadOnly] float kickTime;
 
 	[Tab("Settings")]
+	[SerializeField] MeshFilter meshFilter;
+	[SerializeField] Camera fpsCamera;
+	
+	[Header("Debug")]
 	[SerializeField] bool debugDrawRay;
-	[SerializeField, ReadOnly] bool blockingHit;
 	[SerializeField, ReadOnly] Collider[] hits = new Collider[10];
+
+	public Weapons EquippedWeapon
+	{
+		get => equippedWeapon;
+		private set => equippedWeapon = value;
+	}
 
 	void OnDrawGizmosSelected()
 	{
@@ -48,10 +62,32 @@ public class Weapon : MonoBehaviour
 		Gizmos.DrawWireCube(Vector3.zero, kickHalfExtents * 2f);
 	}
 
+	void Start()
+	{
+		Equip(weaponData);
+	}
+
 	void Update()
 	{
 		attackTime = Mathf.Max(attackTime - Time.deltaTime, 0);
 		kickTime = Mathf.Max(kickTime - Time.deltaTime, 0);
+	}
+
+	public void Equip(WeaponData data)
+	{
+		equippedWeapon = data.WeaponType;
+		weaponData = data;
+		meshFilter.mesh = data.Mesh;
+	}
+
+	public void RangedAttack()
+	{
+		if (attackTime > 0f) return;
+		
+		Vector3 spawnPos = transform.position;
+		var projectile = Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation);
+
+		attackTime = weaponData.AttackCooldown;
 	}
 
 	public void Attack()
@@ -75,13 +111,20 @@ public class Weapon : MonoBehaviour
 		{
 			if (col.transform.TryGetComponent(out IDamageable damageable))
 			{
-				damageable.TakeDamage(damage);
+				damageable.TakeDamage(weaponData.Damage);
 
-				attackTime = attackCooldown;
+				attackTime = weaponData.AttackCooldown;
 
 				//Logger.LogWarning("Dealt " + damage + " damage to " + col.transform.name, this, "Weapon");
 			}
 		}
+
+		var weaponObj = meshFilter.transform.parent.gameObject;
+		Vector3 forward = fpsCamera.transform.forward;
+		forward.y = 0f;
+		forward.Normalize();
+		Vector3 target = weaponObj.transform.position + forward * 1.5f;
+		weaponObj.transform.DOMove(target, 0.3f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad).SetLink(weaponObj);
 
 		if (Array.TrueForAll(hitColliders, c => !c.transform.TryGetComponent<IDamageable>(out _))) Logger.LogWarning("No damageable component found on any hit colliders. \nThis likely indicates an issue.", this, "Weapon");
 	}
@@ -96,7 +139,7 @@ public class Weapon : MonoBehaviour
 		{
 			if (col.TryGetComponent(out Rigidbody rb))
 			{
-				Vector3 forceDirection = (col.transform.position - fpsCamera.transform.position).normalized; // away from player
+				Vector3 forceDirection = (col.transform.position - fpsCamera.transform.position).normalized + (Vector3.up * 0.2f); // away from player
 				rb.isKinematic = false;
 				rb.AddForce(forceDirection * kickForce);
 
@@ -118,7 +161,7 @@ public class Weapon : MonoBehaviour
 		{
 			hitColliders = null;
 			nearestHit = null;
-			return blockingHit = false;
+			return false;
 		}
 
 		hitColliders = new Collider[length];
@@ -136,7 +179,7 @@ public class Weapon : MonoBehaviour
 			nearestHit = hits[i];
 		}
 
-		return blockingHit = hits is { Length: > 0 };
+		return hits is { Length: > 0 };
 	}
 
 	bool GetKickColliders(out Collider[] kickColliders)
@@ -178,6 +221,8 @@ public class Weapon : MonoBehaviour
 		}
 		else
 		{
+			Vector2 attackSize = weaponData.AttackSize;
+			float attackRange = weaponData.AttackRange;
 			Vector3 halfExtents = new Vector3(attackSize.x / 2f, attackSize.y / 2f, attackRange / 2f);
 
 			// horizontal center in front of the camera

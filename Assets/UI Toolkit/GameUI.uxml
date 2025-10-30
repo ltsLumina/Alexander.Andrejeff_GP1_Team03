@@ -1,4 +1,4 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/GameUIStylesheet.uss?fileID=7433441132597879392&amp;guid=484d9cc58b68b6e44a404a776b851a9a&amp;type=3#GameUIStylesheet" />
-    <ui:VisualElement name="HeartContainer" style="position: absolute; width: 30%; height: 20%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; flex-direction: row;" />
+    <ui:VisualElement name="HeartContainer" style="position: absolute; width: 30%; height: 20%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; flex-direction: row; top: 302px; left: 248px; justify-content: space-between; align-self: auto; bottom: auto; align-items: center;" />
 </ui:UXML>

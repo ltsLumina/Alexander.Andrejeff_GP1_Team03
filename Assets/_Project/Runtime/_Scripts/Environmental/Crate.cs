@@ -5,10 +5,15 @@ using VInspector;
 
 public class Crate : MonoBehaviour, IDamageable
 {
-	[Header("Crate")]
+	[Header("Crate"), Tooltip("Can be broken on impact or by attacking it.")]
 	[SerializeField] bool breakable;
 	[ShowIf(nameof(breakable), true)]
 	[SerializeField] float health = 1f;
+	[EndIf]
+	
+	[Tooltip("If true, the crate can be broken on impact after kicking it. (Mostly for doors)")]
+	[SerializeField] bool kickable;
+	[ShowIf(nameof(kickable), true)]
 	[Tooltip("The velocity threshold at which the crate will break upon collision.")]
 	[SerializeField] float breakVelocity = 5f;
 	[EndIf]
@@ -18,7 +23,7 @@ public class Crate : MonoBehaviour, IDamageable
 	[SerializeField] ParticleSystem breakVFX;
 
 	Rigidbody rb;
-	
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -27,11 +32,13 @@ public class Crate : MonoBehaviour, IDamageable
 	public void TakeDamage(float damage)
 	{
 		health -= damage;
-		if (breakable && health <= 0f)
-		{
-			Instantiate(breakVFX, transform.position, Quaternion.identity);
-			Destroy(gameObject);
-		}
+		if (health <= 0f) Break();
+	}
+
+	void Break()
+	{
+		Instantiate(breakVFX, transform.position, Quaternion.identity);
+		Destroy(gameObject);
 	}
 
 #if UNITY_EDITOR
@@ -56,7 +63,8 @@ public class Crate : MonoBehaviour, IDamageable
 
 		if (rb.linearVelocity.magnitude >= breakVelocity)
 		{
-			TakeDamage(1f);
+			if (breakable) TakeDamage(1f);
+			if (kickable) Break();
 		}
 	}
 }
