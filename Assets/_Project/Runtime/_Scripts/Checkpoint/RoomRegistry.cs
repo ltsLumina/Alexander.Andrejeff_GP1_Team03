@@ -20,10 +20,41 @@ public interface IEnemyReset
 
 public class RoomRegistry : MonoBehaviour
 {
-    public List<IEnemyReset> enemies = new();
 
-    public void Register(IEnemyReset e) { if (!enemies.Contains(e)) enemies.Add(e); }
-    public void Unregister(IEnemyReset e) { enemies.Remove(e); }
+    public List<IEnemyReset> enemies = new();
+    Light clearLight;
+
+    private bool noEnemies = true;
+
+    private void Awake()
+    {
+        clearLight = GetComponentInChildren<Light>();
+        clearLight.enabled = false;
+        UpdateLightState();
+    }
+
+    private void UpdateLightState()
+    {
+        if(noEnemies) return;
+
+        if(enemies.Count == 0)
+        {
+            clearLight.enabled = true;
+        }
+    }
+
+    public void Register(IEnemyReset e)
+    {
+        if (!enemies.Contains(e)) enemies.Add(e);
+        noEnemies = false;
+        UpdateLightState();
+    }
+
+    public void Unregister(IEnemyReset e)
+    {
+        enemies.Remove(e);
+        UpdateLightState();
+    }
 
     public void RespawnRoom(PlayerRespawnable player, Transform checkpoint)
     {
@@ -39,5 +70,6 @@ public class RoomRegistry : MonoBehaviour
             enemies[i].ResetToStart();
         }
 
+        UpdateLightState();
     }
 }

@@ -7,3 +7,9 @@ interface IInteractable
 {
 	void Interact();
 }
+
+public interface IInteractableObject
+{
+	InteractableType Type { get; }
+}
+

@@ -4,7 +4,7 @@ using UnityEngine;
 using VInspector;
 #endregion
 
-public class Chest : MonoBehaviour, IInteractable
+public class Chest : MonoBehaviour, IInteractable, IInteractableObject
 {
 	enum Reward
 	{
@@ -18,6 +18,8 @@ public class Chest : MonoBehaviour, IInteractable
 	[SerializeField] Reward reward;
 	[SerializeField] GameObject rewardPrefab;
 	[EndIf]
+
+	public InteractableType Type => InteractableType.Chest;
 
 	void Start()
 	{

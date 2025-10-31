@@ -16,6 +16,6 @@ MonoBehaviour:
   mesh: {fileID: 1998105296686543947, guid: dbf213621aa684e458812b1232360659, type: 3}
   damage: 1
   projectilePrefab: {fileID: 0}
-  attackRange: 3
+  attackRange: 2
   attackSize: {x: 2, y: 2.5}
   attackCooldown: 0.93

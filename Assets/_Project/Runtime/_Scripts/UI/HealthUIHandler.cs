@@ -6,7 +6,6 @@ public class HealthUIHandler : MonoBehaviour
 {
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] UIDocument UIDoc;
-    [SerializeField] int heartCount;
     List<VisualElement> hearts = new List<VisualElement>();
     [SerializeField] int healthPerHeart;
 
@@ -89,6 +88,7 @@ public class HealthUIHandler : MonoBehaviour
 
     void CreateHearts()
     {
+        int heartCount = (int)playerHealth.MaxHealth / healthPerHeart;
         heartIndex = heartCount;
         for (int i = 0; i < heartCount; i++)
         {

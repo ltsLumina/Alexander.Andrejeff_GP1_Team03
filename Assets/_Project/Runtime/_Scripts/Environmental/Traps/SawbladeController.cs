@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SawbladeController : MonoBehaviour
 {
+    [SerializeField] GameObject MainSaw;
     [SerializeField] Transform PointA;
     [SerializeField] Transform PointB;
     [SerializeField] float moveTime = 250f;
@@ -18,8 +19,6 @@ public class SawbladeController : MonoBehaviour
     float timer;
     bool canActivate;
     private List<Collider> currentTargets = new();
-    IDamageable target;
-
     Vector3 pointAPos;
     Vector3 pointBPos;
 
@@ -31,7 +30,7 @@ public class SawbladeController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = pointAPos * positionCounter / moveTime + pointBPos * (moveTime - positionCounter) / moveTime;
+        MainSaw.transform.position = pointAPos * positionCounter / moveTime + pointBPos * (moveTime - positionCounter) / moveTime;
 
         if (!positionFlip)
         {
