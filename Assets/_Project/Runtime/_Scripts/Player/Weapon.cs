@@ -119,13 +119,6 @@ public class Weapon : MonoBehaviour
 			}
 		}
 
-		var weaponObj = meshFilter.transform.parent.gameObject;
-		Vector3 forward = fpsCamera.transform.forward;
-		forward.y = 0f;
-		forward.Normalize();
-		Vector3 target = weaponObj.transform.position + forward * 1.5f;
-		weaponObj.transform.DOMove(target, 0.3f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad).SetLink(weaponObj);
-
 		if (Array.TrueForAll(hitColliders, c => !c.transform.TryGetComponent<IDamageable>(out _))) Logger.LogWarning("No damageable component found on any hit colliders. \nThis likely indicates an issue.", this, "Weapon");
 	}
 
@@ -144,6 +137,8 @@ public class Weapon : MonoBehaviour
 				rb.AddForce(forceDirection * kickForce);
 
 				if (col.TryGetComponent(out Enemy enemy)) enemy.Stagger(1.5f);
+				
+				if (col.TryGetComponent(out Crate crate)) crate.kickSound.Play(); // ugly but works
 
 				kickTime = kickCooldown;
 				Logger.Log("Kicking " + col.transform.name, this, "Weapon");

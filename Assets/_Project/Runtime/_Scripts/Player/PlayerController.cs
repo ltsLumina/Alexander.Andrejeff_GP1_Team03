@@ -3,6 +3,7 @@ using System;
 using Abiogenesis3d;
 using JetBrains.Annotations;
 using Lumina.Essentials.Modules;
+using MelenitasDev.SoundsGood;
 using UnityEditor;
 using UnityEngine;
 using VInspector;
@@ -47,13 +48,24 @@ public class PlayerController : MonoBehaviour, IDamageable
 	// references
 
 	CharacterController controller;
-	Rigidbody rb;
 	InputManager inputs;
 	PlayerHealth healthComponent;
 
 	public Weapon Weapon => weapon;
 
+	Sound footstepsCement;
+
 #if UNITY_EDITOR
+	void OnDrawGizmos()
+	{
+		if (controller != null)
+		{
+			Gizmos.color = Color.green;
+			Handles.Label(transform.position + Vector3.up * 2f, $"Velocity: {controller.velocity.magnitude:F2}");
+			Gizmos.DrawLine(transform.position, transform.position + controller.velocity);
+		}
+	}
+
 	void OnValidate()
 	{
 		var pixelator = GetComponentInChildren<UPixelator>();
@@ -70,6 +82,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	void Start()
 	{
+		footstepsCement = new Sound(SFX.FootstepsCement);
+		footstepsCement.SetLoop(true);
+		footstepsCement.SetVolume(0.25f);
+		footstepsCement.SetSpatialSound();
+		footstepsCement.SetFollowTarget(transform);
+		footstepsCement.Play();
+		
 #if UNITY_EDITOR
 		var gameViewType = Type.GetType("UnityEditor.GameView,UnityEditor");
 		var gameViewWindow = EditorWindow.GetWindow(gameViewType);
@@ -80,8 +99,18 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	void Update()
 	{
-		rotateCamera = Mathf.RoundToInt(inputs.MoveInput.x); // review: don't use 'math' library, use 'Mathf' instead.
-		movePlayer = Mathf.RoundToInt(inputs.MoveInput.y);   // review: don't use 'math' library, use 'Mathf' instead.
+		rotateCamera = Mathf.RoundToInt(inputs.MoveInput.x);
+		movePlayer = Mathf.RoundToInt(inputs.MoveInput.y);
+		
+		if (Math.Abs(movePlayer) > 0.01f)
+		{
+			if (!footstepsCement.Playing) footstepsCement.Resume();
+		}
+		else
+		{
+			if (footstepsCement.Playing) footstepsCement.Pause();
+		}
+		
 	}
 
 	void FixedUpdate()

@@ -6,6 +6,7 @@ using System.Collections;
 using DG.Tweening;
 using Lumina.Essentials.Attributes;
 using Lumina.Essentials.Modules;
+using MelenitasDev.SoundsGood;
 using UnityEngine;
 using VInspector;
 #endregion
@@ -57,17 +58,15 @@ public class SpikeTrap : MonoBehaviour
 	[SerializeField] float knockbackForce = 5f;
 
 	[Tab("Settings")]
-
 	// placeholder
 	[SerializeField] GameObject spikeMesh;
-	bool canActivate;
 	
+	bool canActivate;
 	bool isPlayer;
-
 	IDamageable target;
-	GameObject targetAsGameObject;
-
 	float timer;
+	
+	Sound trapSFX;
 
 	bool @static => type == TrapType.Static;
 	bool periodic => type == TrapType.Periodic;
@@ -87,6 +86,13 @@ public class SpikeTrap : MonoBehaviour
 
 		name = $"Spike Trap ({type} - {additionalInfo})";
 
+		#region Sound
+		trapSFX = new (SFX.SpikeTrap);
+		trapSFX.SetVolume(0.4f);
+		trapSFX.SetSpatialSound();
+		trapSFX.SetHearDistance(5f, 20f);
+		#endregion
+
 		if (@static) Static();
 		if (periodic) StartCoroutine(Periodic());
 	}
@@ -105,7 +111,6 @@ public class SpikeTrap : MonoBehaviour
             return;
         }
 		
-		targetAsGameObject = other.gameObject;
 		isPlayer = other.CompareTag("Player");
 		if (trigger) StartCoroutine(Trigger());
 	}
@@ -118,13 +123,11 @@ public class SpikeTrap : MonoBehaviour
 			return;
 		}
 		
-		targetAsGameObject = other.gameObject;
 		isPlayer = other.CompareTag("Player");
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		targetAsGameObject = null;
 		isPlayer = false;
 		target = null;
 	}
@@ -140,6 +143,7 @@ public class SpikeTrap : MonoBehaviour
 		if (@static)
 		{
 			spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo);
+			trapSFX.Play();
 
 			if (target != null)
 			{
@@ -158,6 +162,7 @@ public class SpikeTrap : MonoBehaviour
 
 			Sequence sequence = DOTween.Sequence();
 			sequence.Append(spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo));
+			sequence.AppendCallback(() => trapSFX.Play());
 			sequence.AppendInterval(0.2f);
 			sequence.Append(spikeMesh.transform.DOMoveY(0, 0.2f).SetEase(Ease.OutExpo));
 
@@ -179,6 +184,7 @@ public class SpikeTrap : MonoBehaviour
 			case false: {
 				Sequence sequence = DOTween.Sequence();
 				sequence.Append(spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo));
+				sequence.AppendCallback(() => trapSFX.Play());
 				sequence.AppendInterval(0.2f);
 				sequence.Append(spikeMesh.transform.DOMoveY(0, 0.2f).SetEase(Ease.OutExpo));
 

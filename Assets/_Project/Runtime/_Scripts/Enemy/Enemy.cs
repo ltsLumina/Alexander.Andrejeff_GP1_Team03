@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using Lumina.Essentials.Attributes;
+using MelenitasDev.SoundsGood;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using VInspector;
@@ -14,8 +16,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 {
 	enum EnemyType
 	{
-		Basic,
-		Aerial,
+		Octopus,
+		Banshee,
 		Debug,
 	}
 
@@ -50,6 +52,10 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	Collider col;
 	Animator animator;
 
+	Sound snarlSFX; // generic creature sound that loops quietly
+	Sound bansheeSFX; // watcher wail
+	Sound hurtSFX;
+
 	void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
@@ -71,29 +77,74 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		health = maxHealth;
 		hearts = health / 2f;
 
-		#region could do this with types:
+		name = $"Enemy | {type.ToString()} | ({Random.Range(1000, 9999)})";
+
+		#region Sounds
 		switch (type)
 		{
-			case EnemyType.Basic:
-				// nothing special
+			case EnemyType.Octopus:
+				// TODO
 				break;
 
-			case EnemyType.Aerial:
-				//transform.localScale *= 0.8f;
-				//health *= 0.8f;
+			case EnemyType.Banshee:
+				bansheeSFX = new Sound(SFX.CreatureBanshee);
+				bansheeSFX.SetSpatialSound();
+				bansheeSFX.SetHearDistance(attackRange, detectionRange);
+				bansheeSFX.SetFollowTarget(transform);
+				bansheeSFX.SetVolume(0.3f);
+				bansheeSFX.Play();
 				break;
 
 			case EnemyType.Debug:
-				//transform.localScale *= 2f;
-				//health *= 2f;
 				break;
 
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-		#endregion
 
-		name = $"Enemy | {type.ToString()} | ({Random.Range(1000, 9999)})";
+		snarlSFX = new Sound(SFX.CreatureSnarl);
+		snarlSFX.SetSpatialSound();
+		snarlSFX.SetHearDistance(attackRange, detectionRange);
+		snarlSFX.SetFollowTarget(transform);
+		snarlSFX.SetVolume(0.035f);
+		snarlSFX.SetLoop(true);
+		snarlSFX.Play();
+
+		hurtSFX = new Sound(SFX.SliceGush);
+		hurtSFX.SetSpatialSound();
+		hurtSFX.SetVolume(0.4f);
+		hurtSFX.SetFollowTarget(transform);
+
+		StartCoroutine(Shriek());
+		#endregion
+	}
+
+	bool shriekOnCooldown;
+
+	IEnumerator Shriek()
+	{
+		while (health > 0)
+		{
+			float waitTime = Random.Range(5f, 15f);
+			yield return new WaitForSeconds(waitTime);
+
+			switch (type)
+			{
+				case EnemyType.Octopus:
+					//TODO: tbd
+					break;
+
+				case EnemyType.Banshee:
+					bansheeSFX.Play();
+					break;
+
+				case EnemyType.Debug:
+					break;
+
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+		}
 	}
 
 	void Update()
@@ -132,6 +183,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	{
 		health -= damage;
 		transform.DOShakePosition(0.2f, 0.1f).SetLink(gameObject);
+		hurtSFX.Play();
 
 		Logger.Log("Enemy took: " + damage + " damage.", this, $"{name}");
 

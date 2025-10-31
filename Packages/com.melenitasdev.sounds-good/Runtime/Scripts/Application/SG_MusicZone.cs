@@ -342,7 +342,7 @@ namespace MelenitasDev.SoundsGood
                 float currentDistance = Vector3.Distance(closestPoint, closestFadePoint);
                 if (currentDistance < maxDistanceBoxFade - 0.1f)
                 {
-                    print("Fade");
+                    //print("Fade");
                     fadeOutTime = 0.5f;
                 }
             }

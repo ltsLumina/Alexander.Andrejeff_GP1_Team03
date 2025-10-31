@@ -13,24 +13,63 @@ MonoBehaviour:
   m_Name: SoundCollection
   m_EditorClassIdentifier: 
   sounds:
-  - tag: laser
+  - tag: CutCrisp
     clips:
-    - {fileID: 8300000, guid: 0c61ea07c7277984a862f978295c8855, type: 3}
-    - {fileID: 8300000, guid: 28f1cc1e86a056f4daaa6e6a4b3117fb, type: 3}
-    - {fileID: 8300000, guid: 33ac907efd4a3694fbf2800922ccedf6, type: 3}
-    compressionPreset: 1
-    forceToMono: 1
-  - tag: coin
-    clips:
-    - {fileID: 8300000, guid: 60d54bb2e4d007245911cc0cf9e309fa, type: 3}
-    - {fileID: 8300000, guid: dd5e7e04ad788d44aa989f164cd54b05, type: 3}
-    - {fileID: 8300000, guid: 28b39ff6d5c00304bbb7db34d7be8e85, type: 3}
+    - {fileID: 8300000, guid: 04d9f4c000825f74582475c419830ac9, type: 3}
     compressionPreset: 1
     forceToMono: 0
-  - tag: hit
+  - tag: SliceGush
     clips:
-    - {fileID: 8300000, guid: 5e54bd175c4b1ef4d8661e7ac8be05f7, type: 3}
-    - {fileID: 8300000, guid: b2958f82a5f5c7e4e8d7da833219bced, type: 3}
-    - {fileID: 8300000, guid: 0961788c7173d654e8a664e31dd85b0b, type: 3}
+    - {fileID: 8300000, guid: bd0256147fad8c443ba56f855841ecda, type: 3}
+    - {fileID: 8300000, guid: fc7bf7bd3544ab64fbcd89be8d3047bd, type: 3}
     compressionPreset: 1
-    forceToMono: 1
+    forceToMono: 0
+  - tag: TonalHint
+    clips:
+    - {fileID: 8300000, guid: 86711e4c8c0eb9c49831bef334ee88fe, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: CreatureSnarl
+    clips:
+    - {fileID: 8300000, guid: dd1d8fc32dfa0d847ad3ddac4f4261b9, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: UIConfirm
+    clips:
+    - {fileID: 8300000, guid: 8ec1018783aab664b80810e4271412e7, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: FootstepsCement
+    clips:
+    - {fileID: 8300000, guid: c9599c9a6b154684bab7781a97b5172c, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: CrateBreak
+    clips:
+    - {fileID: 8300000, guid: 3caf9dedfb3dc9b41b5df0d6f4da428a, type: 3}
+    - {fileID: 8300000, guid: fcc4dce2616072e429c462cff990327e, type: 3}
+    - {fileID: 8300000, guid: 8683e35a5346ec5498dea3fe4aafc533, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: CrateHit
+    clips:
+    - {fileID: 8300000, guid: d88a73532bea6fe48b29f153cb5d567b, type: 3}
+    - {fileID: 8300000, guid: f381d022f1e96cd4ea21d12e2085e65e, type: 3}
+    - {fileID: 8300000, guid: 38e7df9458571e149b93428904946441, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: CrateKick
+    clips:
+    - {fileID: 8300000, guid: 6a1d154cdd020574396573fe3e47b998, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: CreatureBanshee
+    clips:
+    - {fileID: 8300000, guid: 09e40f70d2c2a604f8b564a09d0271d3, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: SpikeTrap
+    clips:
+    - {fileID: 8300000, guid: 75ec0d36c76fd9042a1b315f6031b5b5, type: 3}
+    compressionPreset: 1
+    forceToMono: 0

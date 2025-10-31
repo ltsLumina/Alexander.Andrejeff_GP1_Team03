@@ -361,7 +361,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.9632547, y: 2.4146981, z: 0}
+  m_LocalScale: {x: 3.7976654, y: 2.241245, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8108405295205718891}
@@ -449,7 +449,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 999}
-  m_LocalScale: {x: 1.7638888, y: 1.7638888, z: 1.7638888}
+  m_LocalScale: {x: 2.3796296, y: 2.3796296, z: 2.3796296}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4622230876510356405}
@@ -485,7 +485,7 @@ MonoBehaviour:
   - {fileID: 4614800427338805146}
   storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
   storedPixelMultiplier: 0
-  origOrthoSize: 1.7638888
+  origOrthoSize: 2.3796296
 --- !u!1 &3030077900347595490
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   snappables:
   - {fileID: 3925502318520356951}
   storedCamRotation: {x: -0, y: -0, z: -0, w: 1}
-  storedPixelMultiplier: 5
+  storedPixelMultiplier: 4
   origOrthoSize: 0
 --- !u!1 &8820515846457917893
 GameObject:
@@ -719,11 +719,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   graphicsFormat: 8
-  pixelMultiplier: 5
+  pixelMultiplier: 4
   ditherRepeatSize: 8
-  lastScreenSize: {x: 300, y: 575}
-  screenSize: {x: 677, y: 381}
-  renderTextureSize: {x: 151, y: 92}
+  lastScreenSize: {x: 300, y: 291}
+  screenSize: {x: 914, y: 514}
+  renderTextureSize: {x: 244, y: 144}
   screenHeight: 1080
   uPixelatorCam: {fileID: 4777886411811707208}
   autoDetectCameras: 0
@@ -832,7 +832,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.7638888
+  orthographic size: 2.3796296
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -975,12 +975,15 @@ MonoBehaviour:
   parent: {fileID: 425008924640544225}
   inputs: {fileID: 2353966840789962426}
   defaultRelativeCameraPosition: {x: 0, y: 0.585, z: -0.125}
-  cameraBobIntensity: 0.05
-  cameraBobSpeed: 1000
-  cameraIdleBob: 0.2
   bobbingEnabled: 1
-  shakeIntensity: 1
+  cameraBobIntensity: 0.05
+  cameraBobSpeed: 550
+  cameraIdleBob: 0.2
   viewShakeEnabled: 1
+  shakeIntensity: 2
+  aimAssistEnabled: 1
+  aimAssistAngleThreshold: 30
+  aimAssistMinDistance: 10
 --- !u!20 &6035694056239858390
 Camera:
   m_ObjectHideFlags: 0
@@ -1008,7 +1011,7 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.0066225166
+    x: 0
     y: 0
     width: 1
     height: 1
@@ -1016,7 +1019,7 @@ Camera:
   far clip plane: 1000
   field of view: 65
   orthographic: 0
-  orthographic size: 1.7638888
+  orthographic size: 2.3796296
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1063,7 +1066,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

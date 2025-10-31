@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using MelenitasDev.SoundsGood;
 using UnityEditor;
 using UnityEngine;
 using VInspector;
@@ -23,40 +25,76 @@ public class Crate : MonoBehaviour, IDamageable
 	[SerializeField] ParticleSystem breakVFX;
 
 	Rigidbody rb;
+	
+	Sound breakSound;
+	public Sound kickSound;
+	Sound hitSound;
 
+#if UNITY_EDITOR
+	void OnDrawGizmos()
+	{
+		if (!Application.isPlaying) return;
+
+		string healthInfo = breakable ? $"Health: {health}" : "Unbreakable";
+		string velocityInfo = $"Velocity: {rb.linearVelocity.magnitude:F2}";
+
+		Handles.Label(transform.position + Vector3.up, $"[{name}]\n{healthInfo}\n{velocityInfo}");
+	}
+#endif
+	
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+
+		#region Init Sounds
+		breakSound = new (SFX.CrateBreak);
+		kickSound = new (SFX.CrateKick);
+		hitSound = new (SFX.CrateHit);
+
+		#region Break
+		breakSound.SetVolume(0.3f);
+		breakSound.SetRandomPitch(new (0.85f, 1.05f));
+		breakSound.SetSpatialSound();
+		breakSound.SetFollowTarget(transform);
+		#endregion
+
+		#region Kick
+		kickSound.SetVolume(0.9f);
+		kickSound.SetRandomPitch(new (0.95f, 1.05f));
+		kickSound.SetSpatialSound();
+		kickSound.SetDopplerLevel(1);
+		kickSound.SetFollowTarget(transform);
+		#endregion
+
+		#region Hit
+		hitSound.SetVolume(0.75f);
+		hitSound.SetRandomPitch();
+		hitSound.SetSpatialSound();
+		hitSound.SetDopplerLevel(1);
+		hitSound.SetFollowTarget(transform);
+		#endregion
+		#endregion
 	}
 
 	public void TakeDamage(float damage)
 	{
+		if (!breakable) return;
 		health -= damage;
 		if (health <= 0f) Break();
 	}
 
 	void Break()
 	{
+		breakSound.Play();
 		Instantiate(breakVFX, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
-
-#if UNITY_EDITOR
-	void OnDrawGizmos()
-	{
-		if (!Application.isPlaying) return;
-		
-		string healthInfo = breakable ? $"Health: {health}" : "Unbreakable";
-		string velocityInfo = $"Velocity: {rb.linearVelocity.magnitude:F2}";
-		
-		Handles.Label(transform.position + Vector3.up, $"[{name}]\n{healthInfo}\n{velocityInfo}");
-	}
-#endif
-
+	
 	void OnCollisionEnter(Collision other)
 	{
 		if (rb.linearVelocity.magnitude > 2f)
 		{
+			hitSound.Play();
 			Vector3 offset = Vector3.up * 0.85f;
 			Instantiate(dustVFX, transform.position - offset, Quaternion.identity);
 		}

@@ -4,40 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Projectile.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Projectile.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Dagger.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Dagger.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Staff.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Staff.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Post Process Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Post Process Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Post Process Profile.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Post Process Profile.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/GameUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI Toolkit/GameUI.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/External/Editor Enhancements/vHierarchy/vHierarchy Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/External/Editor Enhancements/vHierarchy/vHierarchy Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Chest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Chest.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Game Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Game Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Spike Trap.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Spike Trap.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff_Debug.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff_Debug.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/WeaponLootable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/WeaponLootable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CameraScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CameraScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/DamageLayoverHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/DamageLayoverHandler.cs" afterDir="false" />
-    </list>
+    <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="" />
     <list id="a22c89bc-0ac8-474b-ade0-d35ae01fb3dd" name="NEVER SUBMIT" comment="NEVER SUBMIT" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +53,7 @@
     <option name="port" value="fgsrv:1666" />
     <option name="client" value="Alexander.Andrejeff_GP1_Team03" />
     <option name="user" value="alexander.andrejeff" />
+    <option name="ENABLED" value="false" />
   </component>
   <component name="PerforceNumberNameSynchronizer">
     <option name="listMappings">
@@ -133,7 +101,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -145,7 +113,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -201,6 +169,7 @@
       <workItem from="1761661417788" duration="12560000" />
       <workItem from="1761730835850" duration="12912000" />
       <workItem from="1761820635417" duration="30694000" />
+      <workItem from="1761913946558" duration="6292000" />
     </task>
     <task id="LOCAL-00001" summary="health review">
       <option name="closed" value="true" />
