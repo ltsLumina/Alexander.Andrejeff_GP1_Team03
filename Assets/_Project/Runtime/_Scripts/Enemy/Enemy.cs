@@ -56,11 +56,21 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	Sound bansheeSFX; // watcher wail
 	Sound hurtSFX;
 
+	void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, attackRange);
+
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, detectionRange);
+	}
+	
 	void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
 		rb = GetComponent<Rigidbody>();
 		col = GetComponent<Collider>();
+		animator = GetComponentInChildren<Animator>();
 
 		room = room ? room : GetComponentInParent<RoomRegistry>();
 		if (room) { room.Register(this); }
@@ -159,24 +169,36 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 		if (distanceToPlayer > detectionRange) return;
 
-		float offsetDistance = 2f;
+		float offsetDistance = 3f;
 		Vector3 desired = target.position + target.forward * offsetDistance;
 
 		// returns the nearest point on the navmesh to the desired position
 		Vector3 nearestPoint = NavMesh.SamplePosition(desired, out NavMeshHit hit, 1.0f, NavMesh.AllAreas) ? hit.position : desired;
 
-		if (agent.SetDestination(nearestPoint)) animator?.SetBool("isMoving", true);
-		else animator?.SetBool("isMoving", false);
+		// stops the enemy from moving if within attack range
+		if (distanceToPlayer > attackRange) agent.SetDestination(nearestPoint);
+
+		animator.SetBool("isMoving", agent.velocity.magnitude > 0.1f);
 
 		if (distanceToPlayer <= attackRange && attackTimer <= 0 && agent.remainingDistance <= agent.stoppingDistance + 0.5f)
 		{
 			attackTimer = attackCooldown;
-
-			animator?.SetTrigger("attack");
-
-			target.TryGetComponent(out IDamageable damageable);
-			damageable.TakeDamage(damage);
+			
+			StartCoroutine(Attack());
 		}
+	}
+
+	IEnumerator Attack()
+	{ 
+		float animDuration = animator.GetCurrentAnimatorStateInfo(0).length;
+		
+		animator.SetTrigger("attack");
+
+		yield return new WaitForSeconds(animDuration / 2f);
+
+		
+		target.TryGetComponent(out IDamageable damageable);
+		damageable.TakeDamage(damage);
 	}
 
 	public void TakeDamage(float damage)
@@ -220,13 +242,13 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		rb.isKinematic = true;
 	}
 
-	void OnDrawGizmosSelected()
+	void OnCollisionEnter(Collision other)
 	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position, attackRange);
-
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, detectionRange);
+		if (other.gameObject.TryGetComponent(out Crate crate))
+		{
+			if (crate.Breakable)
+				crate.TakeDamage(1);
+		}
 	}
 
 	//--------------------------------- respawn mechanics n stuff----------------------------------------

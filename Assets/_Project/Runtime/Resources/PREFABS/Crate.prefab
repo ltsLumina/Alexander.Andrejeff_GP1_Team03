@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7714699151907271034}
   - component: {fileID: 7491469907802550724}
   - component: {fileID: 1149540797180201688}
+  - component: {fileID: 517376248338382397}
   m_Layer: 6
   m_Name: Crate
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crate
   breakable: 1
   health: 1
+  kickable: 0
   breakVelocity: 10
   dustVFX: {fileID: 8852349000386254539, guid: c29b117c09739ec4fa8a64e69068ac36, type: 3}
   breakVFX: {fileID: 8967130829546523871, guid: 4bf01845cb1595049a061b8976d6dd1b, type: 3}
@@ -100,6 +102,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &517376248338382397
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232577172926530686}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7635790166105722136
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1508305f7d6b30d4fa8f8792caccceb3, type: 2}
+  - {fileID: 2100000, guid: 6d011c2548bb7c24dafc4f3f9ba36787, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

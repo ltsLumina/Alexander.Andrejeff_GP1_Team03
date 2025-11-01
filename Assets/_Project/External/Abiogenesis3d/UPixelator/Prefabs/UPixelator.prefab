@@ -24,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2510105995867409263}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 99}
   m_LocalScale: {x: 3.055, y: 3.055, z: 3.055}
@@ -31,7 +32,6 @@ Transform:
   m_Children:
   - {fileID: 4442208251161217617}
   m_Father: {fileID: 2762043964732355342}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2370096890380053456
 MonoBehaviour:
@@ -55,6 +55,10 @@ MonoBehaviour:
     renderTexture: {fileID: 0}
     renderQuad: {fileID: 4442208251161217617}
     renderHandler: {fileID: 2370096890380053456}
+    orthographicSizeCorrectionEnabled: 1
+    myScriptSetsOrthoSize: 0
+    myScriptSetsOrthoSizeInEditMode: 0
+    orthographicSizeCorrection: {fileID: 0}
   snappables:
   - {fileID: 0}
   - {fileID: 0}
@@ -66,6 +70,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
+  storedPixelMultiplier: 0
   origOrthoSize: 3.055
 --- !u!1 &4745948169140363300
 GameObject:
@@ -83,6 +89,7 @@ GameObject:
   - component: {fileID: 5368344292358262482}
   - component: {fileID: 3625458781323772236}
   - component: {fileID: 4457290132518716880}
+  - component: {fileID: -7888003652425831330}
   m_Layer: 0
   m_Name: UPixelator
   m_TagString: Untagged
@@ -97,6 +104,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4745948169140363300}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.23911764, y: 0.36964387, z: -0.09904578, w: -0.8923991}
   m_LocalPosition: {x: 7.0966086, y: 3.4387672, z: -6.078373}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -105,7 +113,6 @@ Transform:
   - {fileID: 93478898846561821}
   - {fileID: 6698462621484652137}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8023787383580323335
 MonoBehaviour:
@@ -120,24 +127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirroredCamera: {fileID: 0}
-  pixelMultiplier: 3
-  ditherRepeatSize: 8
-  lastScreenSize: {x: 816, y: 466}
-  screenSize: {x: 0, y: 0}
-  renderTextureSize: {x: 0, y: 0}
-  graphicsFormat: 8
   layerMaskUI:
     serializedVersion: 2
     m_Bits: 32
+  graphicsFormat: 8
+  pixelMultiplier: 3
+  ditherRepeatSize: 8
+  lastScreenSize: {x: 535, y: 561}
+  screenSize: {x: 0, y: 0}
+  renderTextureSize: {x: 0, y: 0}
+  screenHeight: 1080
   uPixelatorCam: {fileID: 3625458781323772236}
   autoDetectCameras: 0
   cameraInfos: []
   renderQuadTransparentMat: {fileID: 2100000, guid: ccc8e1a9e20931c4594397864da96835, type: 2}
   renderQuadOpaqueMat: {fileID: 2100000, guid: 9c680eff95370df49a64197a0bc601be, type: 2}
-  isSnappablesDirty: 1
-  isCamerasDirty: 1
-  isScreenSizeDirty: 1
-  mirrorCamera: 1
+  dontMirrorCamera: 0
 --- !u!114 &8219006413786467485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +172,7 @@ MonoBehaviour:
   cameraInfos:
   - cam: {fileID: 0}
     raycastDistance: 0
+    storedEventMask: 0
 --- !u!114 &2463325600044436486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,9 +211,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -259,11 +273,56 @@ MonoBehaviour:
   snapScaleValue: 0.05
   lastSnappedPosition: {x: 7.096608, y: 3.4387674, z: -6.078373}
   skippedSnappedPosition: {x: 0, y: 0, z: 0}
+  initialPosition: {x: 0, y: 0, z: 0}
   smoothSnapUI: 1
   nested: []
   rectTransform: {fileID: 0}
   canvas: {fileID: 0}
   overlaySnappable: {fileID: 0}
+--- !u!114 &-7888003652425831330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745948169140363300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &4778433549725823633
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,13 +347,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4778433549725823633}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2762043964732355342}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7493412344524945223
 MonoBehaviour:
@@ -318,10 +377,16 @@ MonoBehaviour:
     renderTexture: {fileID: 0}
     renderQuad: {fileID: 0}
     renderHandler: {fileID: 7493412344524945223}
+    orthographicSizeCorrectionEnabled: 1
+    myScriptSetsOrthoSize: 0
+    myScriptSetsOrthoSizeInEditMode: 0
+    orthographicSizeCorrection: {fileID: 0}
   snappables:
   - {fileID: 4457290132518716880}
   - {fileID: 0}
   - {fileID: 0}
+  storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
+  storedPixelMultiplier: 0
   origOrthoSize: 0
 --- !u!1 &7180278845654168934
 GameObject:
@@ -348,13 +413,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7180278845654168934}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0042207306, y: -0.023728073, z: 0}
   m_LocalScale: {x: 3.1227498, y: 2.0720131, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 93478898846561821}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1470312754827727494
 MeshFilter:
@@ -381,6 +446,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -402,6 +472,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

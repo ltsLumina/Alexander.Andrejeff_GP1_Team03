@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	{
 		healthComponent.TakeDamage(damage);
 
-		Weapon.Attack();
-		Weapon.Kick();
+		//Weapon.Attack();
+		//Weapon.Kick();
 	}
 }

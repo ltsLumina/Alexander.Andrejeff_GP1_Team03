@@ -9,7 +9,7 @@ public class Crate : MonoBehaviour, IDamageable
 {
 	[Header("Crate"), Tooltip("Can be broken on impact or by attacking it.")]
 	[SerializeField] bool breakable;
-	[ShowIf(nameof(breakable), true)]
+	[ShowIf(nameof(Breakable), true)]
 	[SerializeField] float health = 1f;
 	[EndIf]
 	
@@ -29,13 +29,15 @@ public class Crate : MonoBehaviour, IDamageable
 	Sound breakSound;
 	public Sound kickSound;
 	Sound hitSound;
+	
+	public bool Breakable => breakable;
 
 #if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
 		if (!Application.isPlaying) return;
 
-		string healthInfo = breakable ? $"Health: {health}" : "Unbreakable";
+		string healthInfo = Breakable ? $"Health: {health}" : "Unbreakable";
 		string velocityInfo = $"Velocity: {rb.linearVelocity.magnitude:F2}";
 
 		Handles.Label(transform.position + Vector3.up, $"[{name}]\n{healthInfo}\n{velocityInfo}");
@@ -78,7 +80,7 @@ public class Crate : MonoBehaviour, IDamageable
 
 	public void TakeDamage(float damage)
 	{
-		if (!breakable) return;
+		if (!Breakable) return;
 		health -= damage;
 		if (health <= 0f) Break();
 	}
@@ -101,7 +103,7 @@ public class Crate : MonoBehaviour, IDamageable
 
 		if (rb.linearVelocity.magnitude >= breakVelocity)
 		{
-			if (breakable) TakeDamage(1f);
+			if (Breakable) TakeDamage(1f);
 			if (kickable) Break();
 		}
 	}

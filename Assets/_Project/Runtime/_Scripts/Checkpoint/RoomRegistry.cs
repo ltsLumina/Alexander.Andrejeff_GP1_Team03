@@ -39,7 +39,8 @@ public class RoomRegistry : MonoBehaviour
 
         if(enemies.Count == 0)
         {
-            clearLight.enabled = true;
+            if (clearLight != null)
+                clearLight.enabled = true;
         }
     }
 
