@@ -194,6 +194,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	{
 		Logger.LogWarning("Enemy died.", this, $"{name}");
 		room.Unregister(this);
+		
+		snarlSFX.Stop();
 		Destroy(gameObject);
 	}
 

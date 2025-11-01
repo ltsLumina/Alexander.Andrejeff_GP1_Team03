@@ -55,6 +55,7 @@ public class SpikeTrap : MonoBehaviour
 	[SerializeField] float size = 1f;
 	[Range(1, 20)]
 	[SerializeField] float damage = 1;
+	[SerializeField] float enemyDamageMultiplier = 2f;
 	[SerializeField] float knockbackForce = 5f;
 
 	[Tab("Settings")]
@@ -91,6 +92,7 @@ public class SpikeTrap : MonoBehaviour
 		trapSFX.SetVolume(0.4f);
 		trapSFX.SetSpatialSound();
 		trapSFX.SetHearDistance(5f, 20f);
+		trapSFX.SetFollowTarget(transform);
 		#endregion
 
 		if (@static) Static();
@@ -214,6 +216,6 @@ public class SpikeTrap : MonoBehaviour
 		var enemy = target as Enemy;
 		enemy?.Knockback(knockbackForce);
 		
-		target.TakeDamage(damage);
+		target.TakeDamage(damage * (enemy != null ? enemyDamageMultiplier : 1f));
 	}
 }

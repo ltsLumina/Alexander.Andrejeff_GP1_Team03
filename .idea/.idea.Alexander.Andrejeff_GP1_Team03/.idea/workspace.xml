@@ -13,6 +13,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/Debugging/DebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Temp/Compiled-Shader Graphs-RetroCustomEffect.shader" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="PerforceDirect.Settings">
@@ -66,7 +67,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -78,7 +79,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -129,6 +130,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689207572819</updated>
       <workItem from="1761643399105" duration="395000" />
+      <workItem from="1762020820607" duration="1595000" />
     </task>
     <servers />
   </component>

@@ -57,6 +57,7 @@ MonoBehaviour:
   cooldown: 1.5
   size: 1
   damage: 10
+  enemyDamageMultiplier: 2
   knockbackForce: 5
   spikeMesh: {fileID: 7317888395968785344}
 --- !u!65 &5687755596780056479
