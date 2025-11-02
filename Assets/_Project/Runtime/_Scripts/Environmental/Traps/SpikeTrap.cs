@@ -91,7 +91,9 @@ public class SpikeTrap : MonoBehaviour
 		trapSFX = new (SFX.SpikeTrap);
 		trapSFX.SetVolume(0.4f);
 		trapSFX.SetSpatialSound();
+		trapSFX.SetRandomPitch();
 		trapSFX.SetHearDistance(5f, 20f);
+		trapSFX.SetCustomVolumeRolloffCurve(AnimationCurve.Linear(0, 1, 1, 0));
 		trapSFX.SetFollowTarget(transform);
 		#endregion
 

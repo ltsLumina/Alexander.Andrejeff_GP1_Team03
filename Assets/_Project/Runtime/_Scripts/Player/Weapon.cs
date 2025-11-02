@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour
 	[Tab("Kick")]
 	[Header("Kick")]
 	[SerializeField] float kickForce = 100f;
+	[SerializeField] float verticalMultiplier = 0.15f;
 	[SerializeField] Vector2 kickSize = new (0.5f, 0.5f);
 	[Range(1, 5f)]
 	[SerializeField] float kickRange = 2f;
@@ -132,11 +133,11 @@ public class Weapon : MonoBehaviour
 		{
 			if (col.TryGetComponent(out Rigidbody rb))
 			{
-				Vector3 forceDirection = (col.transform.position - fpsCamera.transform.position).normalized + (Vector3.up * 0.2f); // away from player
+				Vector3 forceDirection = (col.transform.position - fpsCamera.transform.position).normalized + (Vector3.up * verticalMultiplier); // away from player
 				rb.isKinematic = false;
 				rb.AddForce(forceDirection * kickForce);
 
-				if (col.TryGetComponent(out Enemy enemy)) enemy.Stagger(1.5f);
+				if (col.TryGetComponent(out Enemy enemy)) enemy.Stagger();
 				
 				if (col.TryGetComponent(out Crate crate)) crate.kickSound.Play(); // ugly but works
 

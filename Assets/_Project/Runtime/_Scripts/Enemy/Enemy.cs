@@ -1,6 +1,7 @@
 #region
 using System;
 using System.Collections;
+using System.Linq;
 using DG.Tweening;
 using Lumina.Essentials.Attributes;
 using MelenitasDev.SoundsGood;
@@ -74,7 +75,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		animator = GetComponentInChildren<Animator>();
 
 		room = room ? room : GetComponentInParent<RoomRegistry>();
-		if (room) { room.Register(this); }
+		if (room) room.Register(this);
 
 		startPos = transform.position;
 		startRot = transform.rotation;
@@ -205,7 +206,11 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	public void TakeDamage(float damage)
 	{
 		health -= damage;
-		transform.DOShakePosition(0.2f, 0.1f).SetLink(gameObject);
+		transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
+		GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() =>
+		{
+			r.material.DOColor(Color.white, "_BaseColor", 0.1f);
+		}).SetLink(gameObject));
 		hurtSFX.Play();
 
 		Logger.Log("Enemy took: " + damage + " damage.", this, $"{name}");
@@ -232,10 +237,12 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		Stagger(staggerDuration);
 	}
 
-	public void Stagger(float duration) => StartCoroutine(PerformStagger(duration));
+	public void Stagger(float duration = -1) => StartCoroutine(PerformStagger(duration));
 
 	IEnumerator PerformStagger(float duration)
 	{
+		if (duration < 0) duration = staggerDuration;
+		
 		agent.isStopped = true;
 		yield return new WaitForSeconds(duration);
 		agent.isStopped = false;

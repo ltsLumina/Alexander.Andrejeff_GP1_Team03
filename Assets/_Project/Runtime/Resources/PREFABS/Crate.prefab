@@ -51,7 +51,7 @@ MonoBehaviour:
   breakable: 1
   health: 1
   kickable: 0
-  breakVelocity: 10
+  breakVelocity: 5
   dustVFX: {fileID: 8852349000386254539, guid: c29b117c09739ec4fa8a64e69068ac36, type: 3}
   breakVFX: {fileID: 8967130829546523871, guid: 4bf01845cb1595049a061b8976d6dd1b, type: 3}
 --- !u!65 &7491469907802550724
@@ -84,7 +84,7 @@ Rigidbody:
   m_GameObject: {fileID: 232577172926530686}
   serializedVersion: 5
   m_Mass: 0.4
-  m_LinearDamping: 0.1
+  m_LinearDamping: 0.2
   m_AngularDamping: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

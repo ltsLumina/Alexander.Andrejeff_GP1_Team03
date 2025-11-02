@@ -9,8 +9,8 @@ public class Crate : MonoBehaviour, IDamageable
 {
 	[Header("Crate"), Tooltip("Can be broken on impact or by attacking it.")]
 	[SerializeField] bool breakable;
-	[ShowIf(nameof(Breakable), true)]
-	[SerializeField] float health = 1f;
+	[ShowIf(nameof(breakable), true)]
+	[SerializeField] int health = 1;
 	[EndIf]
 	
 	[Tooltip("If true, the crate can be broken on impact after kicking it. (Mostly for doors)")]
@@ -81,7 +81,7 @@ public class Crate : MonoBehaviour, IDamageable
 	public void TakeDamage(float damage)
 	{
 		if (!Breakable) return;
-		health -= damage;
+		health -= (int)damage;
 		if (health <= 0f) Break();
 	}
 
@@ -99,6 +99,13 @@ public class Crate : MonoBehaviour, IDamageable
 			hitSound.Play();
 			Vector3 offset = Vector3.up * 0.85f;
 			Instantiate(dustVFX, transform.position - offset, Quaternion.identity);
+
+			if (other.gameObject.TryGetComponent(out Enemy enemy))
+			{
+				enemy.TakeDamage(1);
+				Break();
+				return;
+			}
 		}
 
 		if (rb.linearVelocity.magnitude >= breakVelocity)
