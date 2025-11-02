@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CrosshairTargetDetector : MonoBehaviour
 {
-    public static event Action OnInteractableTargeted;
-    public static event Action OnEnemyTargeted;
-    public static event Action OnNothingTargeted;
+    // public static event Action OnInteractableTargeted;
+    // public static event Action OnEnemyTargeted;
+    // public static event Action OnNothingTargeted;
 
     public static event Action<IInteractableObject> OnTargetChanged;
 

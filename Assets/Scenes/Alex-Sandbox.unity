@@ -7387,11 +7387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080698695702844554, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: lastScreenSize.x
-      value: 661
+      value: 914
       objectReference: {fileID: 0}
     - target: {fileID: 4080698695702844554, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: lastScreenSize.y
-      value: 1301
+      value: 514
       objectReference: {fileID: 0}
     - target: {fileID: 4080698695702844554, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: renderTextureSize.x
@@ -7437,6 +7437,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 495767347}
+    - target: {fileID: 8586058389333025305, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: kickForce
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9430,6 +9434,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5838821062509624491, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
+      propertyPath: m_Mass
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7452776908253746311, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -9443,8 +9451,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897789225}
     - target: {fileID: 8731846643871331596, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
+      propertyPath: attackRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731846643871331596, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
       propertyPath: rotationSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731846643871331596, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
+      propertyPath: staggerDuration
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13053,6 +13069,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5843200971151236104, guid: 0a596b3efe9d1fa4a9e21c2a3e759c34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843200971151236104, guid: 0a596b3efe9d1fa4a9e21c2a3e759c34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843200971151236104, guid: 0a596b3efe9d1fa4a9e21c2a3e759c34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067714533319620253, guid: 0a596b3efe9d1fa4a9e21c2a3e759c34, type: 3}
+      propertyPath: healSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e784db4f416511e4eb38fc95ebcdd963, type: 3}
+    - target: {fileID: 6067714533319620253, guid: 0a596b3efe9d1fa4a9e21c2a3e759c34, type: 3}
+      propertyPath: damageSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 656ca615efe409147bff8d507f3246e9, type: 3}
     - target: {fileID: 6857815101927197538, guid: 0a596b3efe9d1fa4a9e21c2a3e759c34, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0

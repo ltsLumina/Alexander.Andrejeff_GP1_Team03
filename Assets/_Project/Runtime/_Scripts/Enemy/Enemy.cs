@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[SerializeField] public float attackRange = 3.1f;
 	[Tooltip("The range at which the enemy can detect the player.")]
 	[SerializeField] public float detectionRange = 31f;
+	[SerializeField] float staggerDuration = 1.5f;
 	[SerializeField] RoomRegistry room;
 
 	[Tab("NavMesh")]
@@ -227,8 +228,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 		// knock backwards, opposite to where the enemy is moving
 		rb.AddForce(-agent.velocity.normalized * knockbackForce, ForceMode.Impulse);
-
-		Stagger(1.5f);
+		
+		Stagger(staggerDuration);
 	}
 
 	public void Stagger(float duration) => StartCoroutine(PerformStagger(duration));

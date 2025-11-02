@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class DamageLayoverHandler : MonoBehaviour // Mostly vibecoded by vibeGPT
 {
     [SerializeField] private Image targetImage;
+    [SerializeField] Sprite damageSprite;
+    [SerializeField] Sprite healSprite;
     [SerializeField] private float lowHealthThreshold = 5f;
     [Range(0f, 1f)]
     [SerializeField] private float maxAlphaAtZeroHP = 0.6f;
@@ -86,7 +88,17 @@ public class DamageLayoverHandler : MonoBehaviour // Mostly vibecoded by vibeGPT
 
     private void DamageLayoverChange(float currentHealth, float previousHealth)
     {
-        lastCurrentHP = currentHealth;
-        flashElapsed = 0f;
+        if (currentHealth > previousHealth)
+        {
+            targetImage.sprite = healSprite;
+            lastCurrentHP = currentHealth;
+            flashElapsed = 0f;
+        }
+        else
+        {
+            targetImage.sprite = damageSprite;
+            lastCurrentHP = currentHealth;
+            flashElapsed = 0f;
+        }
     }
 }

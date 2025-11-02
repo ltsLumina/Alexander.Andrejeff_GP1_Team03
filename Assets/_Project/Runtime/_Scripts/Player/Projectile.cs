@@ -12,7 +12,8 @@ public class Projectile : MonoBehaviour
     [Header("Magnetization")]
     [Tooltip("Distance at which the projectile starts to home in on enemies")]
     [SerializeField] float magnetizationDistance = 5f;
-    [SerializeField] float magnetizationSpeed = 5f;
+    [Tooltip("How quickly the projectile homes in on enemies")]
+    [SerializeField] float magnetizationStrength = 5f;
 
     void Start()
     {
@@ -23,18 +24,25 @@ public class Projectile : MonoBehaviour
     {
         transform.Translate(Vector3.forward * (speed * Time.deltaTime));
         
-        // look for all nearby enemies and home in on the closest one
-        var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        enemies.ToList().SortBy(e => Vector3.Distance(transform.position, e.transform.position));
-        if (enemies.Length == 0) return;
+        // look for all nearby IDamageable and home in on the closest one
+        var damageables = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+            .OfType<IDamageable>()
+            .ToList();
         
-        var closestEnemy = enemies[0];
-        Vector3 directionToEnemy = (closestEnemy.transform.position - transform.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
-
-        if (Vector3.Distance(transform.position, closestEnemy.transform.position) < magnetizationDistance)
+        damageables.RemoveAll(d => ((Component)d).CompareTag("Player")); // dont home in on player
+        if (damageables.Count == 0) return;
+        
+        // find closest IDamageable by distance to its Component.transform
+        IDamageable closest = damageables
+            .OrderBy(d => Vector3.Distance(transform.position, ((Component)d).transform.position))
+            .First();
+        
+        Vector3 directionToTarget = (((Component)closest).transform.position - transform.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+        
+        if (Vector3.Distance(transform.position, ((Component)closest).transform.position) < magnetizationDistance)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * magnetizationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * magnetizationStrength);
         }
     }
 

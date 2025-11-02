@@ -1,6 +1,7 @@
 #region
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using VHierarchy.Libs;
 #endregion
 
@@ -43,19 +44,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-
         if (currentHealth != 0)
         {
             previousHealth = currentHealth;
             float newHealth = currentHealth - damage;
             currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
-            Logger.Log("Player took: " + damage + ". Current health is: " + currentHealth, this, "Player");
+            Logger.Log($"Player took: {damage} damage. " + "\n" +
+                       $"Current health is: {currentHealth}", this, "Player");
             OnHealthChanged?.Invoke(currentHealth, previousHealth);
         }
 
         if (IsDead)
         {
-            gameObject.Destroy();
+            GetComponent<PlayerInput>().actions.Disable();
             Debug.Log("Player died");
             OnPlayerDied?.Invoke();
 
