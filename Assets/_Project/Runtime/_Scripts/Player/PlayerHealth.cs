@@ -49,14 +49,15 @@ public class PlayerHealth : MonoBehaviour
             previousHealth = currentHealth;
             float newHealth = currentHealth - damage;
             currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
-            Logger.Log($"Player took: {damage} damage. " + "\n" +
+            /*Logger.Log($"Player took: {damage} damage. " + "\n" +
                        $"Current health is: {currentHealth}", this, "Player");
+                       */
             OnHealthChanged?.Invoke(currentHealth, previousHealth);
         }
 
         if (IsDead)
         {
-            GetComponent<PlayerInput>().actions.Disable();
+            GetComponentInChildren<PlayerInput>().actions.Disable();
             Debug.Log("Player died");
             OnPlayerDied?.Invoke();
 

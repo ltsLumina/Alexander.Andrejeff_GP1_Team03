@@ -52,13 +52,13 @@ MonoBehaviour:
   period: 1
   triggerOnce: 0
   hasTriggered: 0
-  playerTriggerDelay: 0.5
+  playerTriggerDelay: 0.2
   enemyTriggerDelay: 0.2
   cooldown: 1.5
   size: 1
-  damage: 10
-  enemyDamageMultiplier: 2
-  knockbackForce: 5
+  damage: 5
+  enemyDamageMultiplier: 20
+  knockbackForce: 10
   spikeMesh: {fileID: 7317888395968785344}
 --- !u!65 &5687755596780056479
 BoxCollider:

@@ -452,6 +452,7 @@ MonoBehaviour:
   baseMoveSpeed: 5
   moveWindingTime: 50
   movementAddmult: -0.5
+  gravityMult: 1
   baseCameraRotateSpeed: 240
   cameraWindingTime: 16
   cameraWindAddMultiplier: -0.8
@@ -506,7 +507,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 60
-  m_StepOffset: 0.2
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -569,7 +570,7 @@ MonoBehaviour:
   graphicsFormat: 8
   pixelMultiplier: 4
   ditherRepeatSize: 8
-  lastScreenSize: {x: 300, y: 381}
+  lastScreenSize: {x: 300, y: 489}
   screenSize: {x: 914, y: 514}
   renderTextureSize: {x: 244, y: 144}
   screenHeight: 1080
@@ -1190,7 +1191,7 @@ PrefabInstance:
     - target: {fileID: 6764151496955809682, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 1998105296686543947, guid: dbf213621aa684e458812b1232360659, type: 3}
     - target: {fileID: 8528547578246903873, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

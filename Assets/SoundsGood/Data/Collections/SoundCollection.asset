@@ -73,3 +73,30 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 75ec0d36c76fd9042a1b315f6031b5b5, type: 3}
     compressionPreset: 1
     forceToMono: 0
+  - tag: Kick
+    clips:
+    - {fileID: 8300000, guid: 97945e451e1a1ce4aa1e03a950696fb0, type: 3}
+    - {fileID: 8300000, guid: f017ec0b2f5312f498f1bec0c93f13b4, type: 3}
+    - {fileID: 8300000, guid: cff754fe05a353642893a8aa72613da1, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: DaggerCut
+    clips:
+    - {fileID: 8300000, guid: b2f33f595c8502c4db8a653d0bef77e1, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: KickAlt
+    clips:
+    - {fileID: 8300000, guid: 0bbeeb547e835994a9e2e72051b203f4, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: OctopusWail
+    clips:
+    - {fileID: 8300000, guid: 3f1e887513eb70646bf3efde2ff5e688, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: Minecraft
+    clips:
+    - {fileID: 8300000, guid: 1c2229125b093974790a7d966cc79eb7, type: 3}
+    compressionPreset: 1
+    forceToMono: 0

@@ -39,15 +39,9 @@ public class CameraScript : MonoBehaviour
     float viewShakeY;
     readonly float baseShake = 0.05f;
 
-    void Start()
-    {
-        PlayerHealth.OnHealthChanged += DoCameraShake;
-    }
+    void OnEnable() => PlayerHealth.OnHealthChanged += DoCameraShake;
+    void OnDisable() => PlayerHealth.OnHealthChanged -= DoCameraShake;
 
-    void OnDestroy()
-    {
-        PlayerHealth.OnHealthChanged -= DoCameraShake;
-    }
     void FixedUpdate()
     {
         if (bobbingEnabled)
@@ -131,10 +125,19 @@ public class CameraScript : MonoBehaviour
 
     private void DoCameraShake(float currentHealth, float previousHealth)
     {
-        if (currentHealth - previousHealth < 0 && viewShakeEnabled == true)
+        if (currentHealth - previousHealth < 0 && viewShakeEnabled)
         {
             viewShakeX = (Random.value - 0.5f) * shakeIntensity * baseShake;
             viewShakeY = (Random.value - 0.5f) * shakeIntensity * baseShake;
+        }
+    }
+    
+    public void TriggerCameraShake(float intensity)
+    {
+        if (viewShakeEnabled)
+        {
+            viewShakeX = (Random.value - 0.5f) * intensity * baseShake;
+            viewShakeY = (Random.value - 0.5f) * intensity * baseShake;
         }
     }
 }

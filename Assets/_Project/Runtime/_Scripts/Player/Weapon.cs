@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using JetBrains.Annotations;
 using Lumina.Essentials.Attributes;
+using MelenitasDev.SoundsGood;
 using UnityEngine;
 using VInspector;
 
@@ -42,6 +43,9 @@ public class Weapon : MonoBehaviour
 	[SerializeField] bool debugDrawRay;
 	[SerializeField, ReadOnly] Collider[] hits = new Collider[10];
 
+	Sound kickSFX;
+	Sound kickAltSFX;
+	
 	public Weapons EquippedWeapon
 	{
 		get => equippedWeapon;
@@ -66,6 +70,20 @@ public class Weapon : MonoBehaviour
 	void Start()
 	{
 		Equip(weaponData);
+		
+		#region Sound
+		kickSFX = new Sound(SFX.Kick);
+		kickSFX.SetVolume(0.3f);
+		kickSFX.SetRandomPitch();
+		kickSFX.SetSpatialSound();
+		kickSFX.SetFollowTarget(transform);	
+		
+		kickAltSFX = new Sound(SFX.KickAlt);
+		kickAltSFX.SetVolume(0.3f);
+		kickAltSFX.SetRandomPitch();
+		kickAltSFX.SetSpatialSound();
+		kickAltSFX.SetFollowTarget(transform);
+		#endregion
 	}
 
 	void Update()
@@ -129,6 +147,9 @@ public class Weapon : MonoBehaviour
 
 		if (!GetKickColliders(out Collider[] kickColliders)) return; // no hits
 
+		Enemy enemy = null;
+		Crate crate = null;
+
 		foreach (Collider col in kickColliders)
 		{
 			if (col.TryGetComponent(out Rigidbody rb))
@@ -137,14 +158,17 @@ public class Weapon : MonoBehaviour
 				rb.isKinematic = false;
 				rb.AddForce(forceDirection * kickForce);
 
-				if (col.TryGetComponent(out Enemy enemy)) enemy.Stagger();
+				if (col.TryGetComponent(out enemy)) enemy.Stagger();
 				
-				if (col.TryGetComponent(out Crate crate)) crate.kickSound.Play(); // ugly but works
-
+				if (col.TryGetComponent(out crate)) crate.kickSound.Play(); // ugly but works
+				
 				kickTime = kickCooldown;
-				Logger.Log("Kicking " + col.transform.name, this, "Weapon");
+				//Logger.Log("Kicking " + col.transform.name, this, "Weapon");
 			}
 		}
+		
+		if (enemy) kickSFX.Play();
+		if (crate) kickAltSFX.Play();
 	}
 
 	bool GetNearestHitCollider(out Collider[] hitColliders, out Collider nearestHit)

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	[SerializeField] float baseMoveSpeed = 5f;
 	[SerializeField] int moveWindingTime = 50;
 	[SerializeField] float movementAddmult = -0.5f;
+	[SerializeField] float gravityMult = 1.5f;
 
 	[Tab("Camera")]
 	[SerializeField] float baseCameraRotateSpeed = 240f;
@@ -54,6 +55,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 	public Weapon Weapon => weapon;
 
 	Sound footstepsCement;
+	Music fallingSFX;
+	Sound hurtSFX;
 
 #if UNITY_EDITOR
 	void OnDrawGizmos()
@@ -64,6 +67,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 			Handles.Label(transform.position + Vector3.up * 2f, $"Velocity: {controller.velocity.magnitude:F2}");
 			Gizmos.DrawLine(transform.position, transform.position + controller.velocity);
 		}
+	}
+
+	void OnDrawGizmosSelected()
+	{
+		if (!Application.isPlaying) return;
+		Gizmos.color = IsGrounded ? Color.blue : Color.red;
+		Gizmos.DrawWireSphere(transform.position + Vector3.down * (controller.height / 2f + 0.1f), controller.radius);
 	}
 
 	void OnValidate()
@@ -88,6 +98,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 		footstepsCement.SetSpatialSound();
 		footstepsCement.SetFollowTarget(transform);
 		footstepsCement.Play();
+
+		fallingSFX = new Music(Track.FallingSlow);
+		fallingSFX.SetVolume(0.5f);
+		fallingSFX.SetFollowTarget(transform);
+
+		hurtSFX = new Sound(SFX.Minecraft);
+		hurtSFX.SetVolume(0.7f);
+		hurtSFX.SetFollowTarget(transform);
 		
 #if UNITY_EDITOR
 		var gameViewType = Type.GetType("UnityEditor.GameView,UnityEditor");
@@ -136,14 +154,37 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 		Vector3 playerMove = transform.forward * (movePlayer * moveWindingCurrentMult * baseMoveSpeed);
 		Quaternion playerRotation = Quaternion.Euler(Vector3.up * (rotateCamera * baseCameraRotateSpeed * cameraWindingCurrentMult * Time.fixedDeltaTime));
+		
+		if (!IsGrounded)
+		{
+			if (!fallingSFX.Playing && fallingFrameCounter > 30) fallingSFX.Play(0.5f);
+			controller.Move(Vector3.down * (9.81f * gravityMult * Time.fixedDeltaTime));
+		}
+		else
+		{
+			fallingSFX.Stop(1f);
+			controller.SimpleMove(playerMove);
+		}
 
-		controller.SimpleMove(playerMove);
 		transform.Rotate(playerRotation.eulerAngles);
 	}
 
-	public void TakeDamage(float damage) // Helper function to pass damage to PlayerHealth component
+	public bool IsGrounded
+	{
+		get
+		{
+			bool grounded = Physics.SphereCast(transform.position, controller.radius, Vector3.down, out RaycastHit hit, controller.height / 2f + 0.1f, LayerMask.GetMask("Ground"));
+			fallingFrameCounter = grounded ? 0 : fallingFrameCounter + 1;
+			return grounded;
+		}
+	}
+	
+	int fallingFrameCounter;
+
+	public void TakeDamage(float damage, DamageSource source = DamageSource.Player) // Helper function to pass damage to PlayerHealth component
 	{
 		healthComponent.TakeDamage(damage);
+		hurtSFX.Play();
 
 		//Weapon.Attack();
 		//Weapon.Kick();

@@ -93,8 +93,8 @@ public class SpikeTrap : MonoBehaviour
 		trapSFX.SetSpatialSound();
 		trapSFX.SetRandomPitch();
 		trapSFX.SetHearDistance(5f, 20f);
-		trapSFX.SetCustomVolumeRolloffCurve(AnimationCurve.Linear(0, 1, 1, 0));
-		trapSFX.SetFollowTarget(transform);
+		trapSFX.SetCustomVolumeRolloffCurve(AnimationCurve.EaseInOut(0, 1, 1, 0));
+		trapSFX.SetPosition(transform.position);
 		#endregion
 
 		if (@static) Static();
@@ -205,7 +205,7 @@ public class SpikeTrap : MonoBehaviour
 		{
 			TakeDamageAndKnockback();
 			
-			Logger.Log($"Trap triggered! | Hit: {target} | Damage dealt: {damage}", this, "SpikeTrap");
+			//Logger.Log($"Trap triggered! | Hit: {target} | Damage dealt: {damage}", this, "SpikeTrap");
 			target = null;
 		}
 

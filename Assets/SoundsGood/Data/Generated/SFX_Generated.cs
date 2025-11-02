@@ -13,5 +13,10 @@ namespace MelenitasDev.SoundsGood
 		public static readonly SFX CrateKick = new SFX("CrateKick");
 		public static readonly SFX CreatureBanshee = new SFX("CreatureBanshee");
 		public static readonly SFX SpikeTrap = new SFX("SpikeTrap");
+		public static readonly SFX Kick = new SFX("Kick");
+		public static readonly SFX DaggerCut = new SFX("DaggerCut");
+		public static readonly SFX KickAlt = new SFX("KickAlt");
+		public static readonly SFX OctopusWail = new SFX("OctopusWail");
+		public static readonly SFX Minecraft = new SFX("Minecraft");
 	}
 }

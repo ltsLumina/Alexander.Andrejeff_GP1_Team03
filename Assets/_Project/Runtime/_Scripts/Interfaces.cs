@@ -1,6 +1,14 @@
-﻿interface IDamageable
+﻿public enum DamageSource
 {
-	void TakeDamage(float damage);
+	Player,
+	Enemy,
+	Crate,
+	Trap,
+}
+
+interface IDamageable
+{
+	void TakeDamage(float damage, DamageSource source = DamageSource.Player);
 }
 
 interface IInteractable

@@ -78,7 +78,7 @@ public class Crate : MonoBehaviour, IDamageable
 		#endregion
 	}
 
-	public void TakeDamage(float damage)
+	public void TakeDamage(float damage, DamageSource source = DamageSource.Crate)
 	{
 		if (!Breakable) return;
 		health -= (int)damage;
@@ -102,7 +102,7 @@ public class Crate : MonoBehaviour, IDamageable
 
 			if (other.gameObject.TryGetComponent(out Enemy enemy))
 			{
-				enemy.TakeDamage(1);
+				enemy.TakeDamage(1, DamageSource.Crate);
 				Break();
 				return;
 			}

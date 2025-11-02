@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[Tooltip("The range at which the enemy can detect the player.")]
 	[SerializeField] public float detectionRange = 31f;
 	[SerializeField] float staggerDuration = 1.5f;
+	[SerializeField] ParticleSystem hurtVFX;
 	[SerializeField] RoomRegistry room;
 
 	[Tab("NavMesh")]
@@ -55,8 +56,10 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	Animator animator;
 
 	Sound snarlSFX; // generic creature sound that loops quietly
+	Sound octopusSFX; // octopus wail
 	Sound bansheeSFX; // watcher wail
-	Sound hurtSFX;
+	Sound hurtSFX; // generic hurt sound
+	Sound daggerHurtSFX; // from dagger exclusively
 
 	void OnDrawGizmosSelected()
 	{
@@ -95,13 +98,20 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		switch (type)
 		{
 			case EnemyType.Octopus:
-				// TODO
+				octopusSFX = new Sound(SFX.OctopusWail);
+				octopusSFX.SetSpatialSound();
+				octopusSFX.SetFollowTarget(transform);
+				octopusSFX.SetHearDistance(10, 35);
+				octopusSFX.SetCustomVolumeRolloffCurve(AnimationCurve.EaseInOut(0, 1, 1, 0));
+				octopusSFX.SetVolume(0.5f);
+				octopusSFX.Play();
 				break;
 
 			case EnemyType.Banshee:
 				bansheeSFX = new Sound(SFX.CreatureBanshee);
 				bansheeSFX.SetSpatialSound();
-				bansheeSFX.SetHearDistance(attackRange, detectionRange);
+				bansheeSFX.SetHearDistance(10, 50);
+				bansheeSFX.SetCustomVolumeRolloffCurve(AnimationCurve.EaseInOut(0, 1, 1, 0));
 				bansheeSFX.SetFollowTarget(transform);
 				bansheeSFX.SetVolume(0.3f);
 				bansheeSFX.Play();
@@ -118,18 +128,26 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		snarlSFX.SetSpatialSound();
 		snarlSFX.SetHearDistance(attackRange, detectionRange);
 		snarlSFX.SetFollowTarget(transform);
-		snarlSFX.SetVolume(0.035f);
+		snarlSFX.SetVolume(0.01f);
 		snarlSFX.SetLoop(true);
 		snarlSFX.Play();
 
 		hurtSFX = new Sound(SFX.SliceGush);
 		hurtSFX.SetSpatialSound();
-		hurtSFX.SetVolume(0.4f);
+		hurtSFX.SetVolume(0.35f);
 		hurtSFX.SetFollowTarget(transform);
+		
+		daggerHurtSFX = new Sound(SFX.DaggerCut);
+		daggerHurtSFX.SetSpatialSound();
+		daggerHurtSFX.SetRandomPitch();
+		daggerHurtSFX.SetVolume(0.35f);
+		daggerHurtSFX.SetFollowTarget(transform);
 
-		StartCoroutine(Shriek());
+		shriekCoroutine = StartCoroutine(Shriek());
 		#endregion
 	}
+
+	Coroutine shriekCoroutine;
 
 	bool shriekOnCooldown;
 
@@ -143,7 +161,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 			switch (type)
 			{
 				case EnemyType.Octopus:
-					//TODO: tbd
+					octopusSFX.SetRandomPitch();
+					octopusSFX.Play();
 					break;
 
 				case EnemyType.Banshee:
@@ -192,28 +211,54 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 	IEnumerator Attack()
 	{ 
+		// pause shriek coroutine during attack
+		if (shriekCoroutine != null)
+		{
+			StopCoroutine(shriekCoroutine);
+			shriekCoroutine = StartCoroutine(Shriek());
+		}
+		
 		float animDuration = animator.GetCurrentAnimatorStateInfo(0).length;
 		
 		animator.SetTrigger("attack");
+		switch (type)
+		{
+			case EnemyType.Octopus:
+				octopusSFX.Play();
+				break;
 
-		yield return new WaitForSeconds(animDuration / 2f);
+			case EnemyType.Banshee:
+				bansheeSFX.Play();
+				break;
+		}
 
+		yield return new WaitForSeconds(animDuration / 3f);
 		
 		target.TryGetComponent(out IDamageable damageable);
 		damageable.TakeDamage(damage);
 	}
 
-	public void TakeDamage(float damage)
+	public void TakeDamage(float damage, DamageSource source)
 	{
 		health -= damage;
+		
+		var instance = Instantiate(hurtVFX, transform.position, Quaternion.Inverse(transform.rotation));
 		transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
+		
+		// ignore this mess - it flashes the enemy red when hurt
 		GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() =>
 		{
 			r.material.DOColor(Color.white, "_BaseColor", 0.1f);
 		}).SetLink(gameObject));
+		
 		hurtSFX.Play();
+		
+		if (target.TryGetComponent(out PlayerController player) && player?.Weapon.EquippedWeapon == Weapon.Weapons.Dagger && source == DamageSource.Player)
+		{
+			daggerHurtSFX.Play();
+		}
 
-		Logger.Log("Enemy took: " + damage + " damage.", this, $"{name}");
+		//Logger.Log("Enemy took: " + damage + " damage.", this, $"{name}");
 
 		if (health <= 0) Death();
 	}
@@ -255,7 +300,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		if (other.gameObject.TryGetComponent(out Crate crate))
 		{
 			if (crate.Breakable)
-				crate.TakeDamage(1);
+				crate.TakeDamage(1, DamageSource.Enemy);
+			
+			TakeDamage(1, DamageSource.Crate);
 		}
 	}
 

@@ -49,13 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   type: 0
-  health: 2
-  maxHealth: 2
+  health: 20
+  maxHealth: 20
   hearts: 0
   damage: 1
   attackCooldown: 1.5
-  attackRange: 3
+  attackRange: 4
   detectionRange: 8.47
+  staggerDuration: 0.75
+  hurtVFX: {fileID: 8967130829546523871, guid: 93a5ae56187a7504db158a6e5746b983, type: 3}
   room: {fileID: 0}
   target: {fileID: 0}
 --- !u!195 &3406565054441545607
@@ -67,7 +69,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7452776908253746311}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 1.5
   m_Speed: 2
   m_Acceleration: 2
   avoidancePriority: 50
@@ -88,7 +90,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7452776908253746311}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 0.3
   m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -126,7 +128,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
