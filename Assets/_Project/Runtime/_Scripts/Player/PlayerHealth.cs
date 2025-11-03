@@ -13,23 +13,12 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] float maxHealth = 100;
     [SerializeField] float currentHealth = 100;
-    [SerializeField] bool refreshCurrentHealth = false;
     public float MaxHealth => maxHealth;
     public float CurrentHealth => currentHealth;
 
     public bool IsDead => currentHealth <= 0;
 
     float previousHealth;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) TakeDamage(3);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) TakeDamage(4);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) IncreaseHealth(3);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) IncreaseHealth(4);
-        if (Input.GetKeyDown(KeyCode.Space)) IncreaseMaxHealth(2, refreshCurrentHealth);
-
-    }
 
     public void IncreaseMaxHealth(float amount, bool refreshCurrentHealth)
     {

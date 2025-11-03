@@ -53,6 +53,17 @@ public class PlayerController : MonoBehaviour, IDamageable
 	PlayerHealth healthComponent;
 
 	public Weapon Weapon => weapon;
+	public float BaseMoveSpeed
+	{
+		get
+		{
+			return baseMoveSpeed;
+		}
+		set
+		{
+			baseMoveSpeed = value;
+		}
+	}
 
 	Sound footstepsCement;
 	Music fallingSFX;
@@ -117,6 +128,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			controller.enabled = false;
+			transform.position = new Vector3(-25, 1, 0.5f);
+			controller.enabled = true;
+		}
+		
 		rotateCamera = Mathf.RoundToInt(inputs.MoveInput.x);
 		movePlayer = Mathf.RoundToInt(inputs.MoveInput.y);
 		

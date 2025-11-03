@@ -11,13 +11,9 @@ interface IDamageable
 	void TakeDamage(float damage, DamageSource source = DamageSource.Player);
 }
 
-interface IInteractable
+public interface IInteractable
 {
 	void Interact();
-}
-
-public interface IInteractableObject
-{
-	InteractableType Type { get; }
+	InteractableType InteractableType => InteractableType.Default;
 }
 

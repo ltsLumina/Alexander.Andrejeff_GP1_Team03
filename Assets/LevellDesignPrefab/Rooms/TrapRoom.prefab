@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 1146354526159660513}
   - component: {fileID: 4082309640578598333}
   - component: {fileID: 9164801061335453547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2526,7 +2526,7 @@ GameObject:
   - component: {fileID: 4196547128674200347}
   - component: {fileID: 4410195388242518699}
   - component: {fileID: 3542047760194343911}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2881,7 +2881,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 285766545722671494, guid: 6f2a01d3bd1e9e145a277b292c696a6e, type: 3}
       propertyPath: m_Name
-      value: 'Spike Trap (Triggered - Cooldown: 1.5 seconds.)'
+      value: 'Spike Trap (Triggered - Cooldown: 1,5 seconds.)'
       objectReference: {fileID: 0}
     - target: {fileID: 437391908016324408, guid: 6f2a01d3bd1e9e145a277b292c696a6e, type: 3}
       propertyPath: m_LocalScale.z
@@ -2947,7 +2947,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 285766545722671494, guid: 6f2a01d3bd1e9e145a277b292c696a6e, type: 3}
       propertyPath: m_Name
-      value: 'Spike Trap (Triggered - Cooldown: 1.5 seconds.)'
+      value: 'Spike Trap (Triggered - Cooldown: 1,5 seconds.)'
       objectReference: {fileID: 0}
     - target: {fileID: 437391908016324408, guid: 6f2a01d3bd1e9e145a277b292c696a6e, type: 3}
       propertyPath: m_LocalScale.z

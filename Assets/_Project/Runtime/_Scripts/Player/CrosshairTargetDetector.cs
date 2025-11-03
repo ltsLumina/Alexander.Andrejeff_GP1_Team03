@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 public class CrosshairTargetDetector : MonoBehaviour
 {
-    // public static event Action OnInteractableTargeted;
-    // public static event Action OnEnemyTargeted;
-    // public static event Action OnNothingTargeted;
-
-    public static event Action<IInteractableObject> OnTargetChanged;
+    public static event Action<IInteractable> OnTargetChanged;
 
     [SerializeField] float rayDistance = 10f;
 
@@ -25,7 +21,7 @@ public class CrosshairTargetDetector : MonoBehaviour
         Ray ray = Helpers.CameraMain.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
-        IInteractableObject interactable = default;
+        IInteractable interactable = default;
 
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
@@ -36,7 +32,7 @@ public class CrosshairTargetDetector : MonoBehaviour
 
                 lastHitObject = hit.collider.gameObject;
 
-                if (interactable.Type == InteractableType.Enemy)
+                if (interactable.InteractableType == InteractableType.Enemy)
                 {
                     Debug.Log(InteractableType.Enemy + " hit");
                     OnTargetChanged?.Invoke(interactable);

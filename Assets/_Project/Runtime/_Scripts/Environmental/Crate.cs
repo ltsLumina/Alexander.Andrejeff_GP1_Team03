@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using VInspector;
 
+[SelectionBase, DisallowMultipleComponent]
 public class Crate : MonoBehaviour, IDamageable
 {
 	[Header("Crate"), Tooltip("Can be broken on impact or by attacking it.")]

@@ -5,23 +5,15 @@ using System.Linq;
 using DG.Tweening;
 using Lumina.Essentials.Attributes;
 using MelenitasDev.SoundsGood;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using VInspector;
 using Random = UnityEngine.Random;
 #endregion
 
-[SelectionBase, DisallowMultipleComponent, RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(CapsuleCollider))]
+[SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 {
-	enum EnemyType
-	{
-		Octopus,
-		Banshee,
-		Debug,
-	}
-
 	[Tab("Enemy")]
 	[SerializeField] EnemyType type;
 	[Range(0, 20)]
@@ -38,44 +30,49 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[SerializeField] ParticleSystem hurtVFX;
 	[SerializeField] RoomRegistry room;
 
+	[Tab("Patrol")]
+	[SerializeField] bool randomPatrol = true;
+	[HideIf(nameof(randomPatrol), true)]
+	[SerializeField] GameObject patrolStart;
+	[SerializeField] GameObject patrolEnd;
+	[SerializeField] float patrolSpeed;
+	[SerializeField] float patrolYieldTime;
+	[EndIf]
 	[Tab("NavMesh")]
 	[SerializeField] Transform target;
 
-	public float Health => health;
-	public float MaxHealth => maxHealth;
+	NavMeshAgent agent;
+	Animator animator;
+	float attackTimer = 5f;
+	Sound bansheeSFX; // watcher wail
+	Collider col;
+	Sound daggerHurtSFX; // from dagger exclusively
 
 	float distanceToPlayer;
-	float attackTimer = 5f;
+	Sound hurtSFX;    // generic hurt sound
+	Sound octopusSFX; // octopus wail
+	Rigidbody rb;
+
+	Coroutine shriekCoroutine;
+
+	bool shriekOnCooldown;
+
+	Sound snarlSFX; // generic creature sound that loops quietly
 
 	Vector3 startPos;
 	Quaternion startRot;
 
-	NavMeshAgent agent;
-	Rigidbody rb;
-	Collider col;
-	Animator animator;
+	public GameObject Mesh { get; set; }
 
-	Sound snarlSFX; // generic creature sound that loops quietly
-	Sound octopusSFX; // octopus wail
-	Sound bansheeSFX; // watcher wail
-	Sound hurtSFX; // generic hurt sound
-	Sound daggerHurtSFX; // from dagger exclusively
+	public float Health => health;
+	public float MaxHealth => maxHealth;
+	public EnemyType Type => type;
 
-	void OnDrawGizmosSelected()
-	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position, attackRange);
-
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, detectionRange);
-	}
-	
 	void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
 		rb = GetComponent<Rigidbody>();
 		col = GetComponent<Collider>();
-		animator = GetComponentInChildren<Animator>();
 
 		room = room ? room : GetComponentInParent<RoomRegistry>();
 		if (room) room.Register(this);
@@ -89,6 +86,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 	void Start()
 	{
+		animator = Mesh.GetComponent<Animator>();
+
 		health = maxHealth;
 		hearts = health / 2f;
 
@@ -98,7 +97,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		switch (type)
 		{
 			case EnemyType.Octopus:
-				octopusSFX = new Sound(SFX.OctopusWail);
+				octopusSFX = new (SFX.OctopusWail);
 				octopusSFX.SetSpatialSound();
 				octopusSFX.SetFollowTarget(transform);
 				octopusSFX.SetHearDistance(10, 35);
@@ -108,7 +107,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 				break;
 
 			case EnemyType.Banshee:
-				bansheeSFX = new Sound(SFX.CreatureBanshee);
+				bansheeSFX = new (SFX.CreatureBanshee);
 				bansheeSFX.SetSpatialSound();
 				bansheeSFX.SetHearDistance(10, 50);
 				bansheeSFX.SetCustomVolumeRolloffCurve(AnimationCurve.EaseInOut(0, 1, 1, 0));
@@ -124,7 +123,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 				throw new ArgumentOutOfRangeException();
 		}
 
-		snarlSFX = new Sound(SFX.CreatureSnarl);
+		snarlSFX = new (SFX.CreatureSnarl);
 		snarlSFX.SetSpatialSound();
 		snarlSFX.SetHearDistance(attackRange, detectionRange);
 		snarlSFX.SetFollowTarget(transform);
@@ -132,12 +131,12 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		snarlSFX.SetLoop(true);
 		snarlSFX.Play();
 
-		hurtSFX = new Sound(SFX.SliceGush);
+		hurtSFX = new (SFX.SliceGush);
 		hurtSFX.SetSpatialSound();
 		hurtSFX.SetVolume(0.35f);
 		hurtSFX.SetFollowTarget(transform);
-		
-		daggerHurtSFX = new Sound(SFX.DaggerCut);
+
+		daggerHurtSFX = new (SFX.DaggerCut);
 		daggerHurtSFX.SetSpatialSound();
 		daggerHurtSFX.SetRandomPitch();
 		daggerHurtSFX.SetVolume(0.35f);
@@ -147,9 +146,157 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		#endregion
 	}
 
-	Coroutine shriekCoroutine;
+	void OnDestroy() => name = $"Enemy | {type.ToString()}";
 
-	bool shriekOnCooldown;
+	void Update()
+	{
+		if (!Application.isPlaying) return;
+
+		if (attackTimer >= 0) attackTimer -= Time.deltaTime;
+		if (!target) return;
+		if (agent.isStopped) return;
+
+		distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+		hearts = health / 2f;
+
+		// Patrol when player is out of detection range
+		if (distanceToPlayer > detectionRange)
+		{
+			bool reachedDestination = !agent.hasPath || agent.remainingDistance <= agent.stoppingDistance + 0.5f;
+
+			if (randomPatrol)
+			{
+				float patrolRadius = 8f; // adjust as needed
+
+				// pick a new random patrol point when we don't have a path or we've reached the current one
+				if (reachedDestination)
+				{
+					// pick a random point on the XZ plane around the startPos
+					Vector2 randomCircle = Random.insideUnitCircle * patrolRadius;
+					var randomPoint = new Vector3(startPos.x + randomCircle.x, startPos.y, startPos.z + randomCircle.y);
+
+					if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, patrolRadius, NavMesh.AllAreas))
+					{
+						agent.speed = patrolSpeed;
+						agent.isStopped = false;
+						agent.SetDestination(hit.position);
+					}
+				}
+			}
+			else
+			{
+				agent.speed = patrolSpeed;
+
+				// patrol between two set points
+				if (patrolStart != null && patrolEnd != null && reachedDestination)
+				{
+					// only start the wait+move coroutine if we're not already stopped/waiting
+					if (!agent.isStopped)
+					{
+						Vector3 startPoint = patrolStart.transform.position;
+						Vector3 endPoint = patrolEnd.transform.position;
+
+						// determine which point we should go to next by comparing distance to current destination
+						Vector3 currentDest = agent.hasPath ? agent.destination : transform.position;
+						float distToStart = Vector3.SqrMagnitude(currentDest - startPoint);
+						float distToEnd = Vector3.SqrMagnitude(currentDest - endPoint);
+
+						Vector3 nextPoint = distToStart < distToEnd ? endPoint : startPoint;
+
+						StartCoroutine(YieldThenGo(nextPoint));
+					}
+				}
+			}
+
+			animator.SetBool("isMoving", agent.hasPath && agent.velocity.magnitude >= 1f);
+			return;
+		}
+
+		float offsetDistance = 3f;
+		Vector3 desired = target.position + target.forward * offsetDistance;
+
+		// stops the enemy from moving if within attack range
+		if (distanceToPlayer > attackRange)
+		{
+			// returns the nearest point on the navmesh to the desired position
+			Vector3 nearestPoint = NavMesh.SamplePosition(desired, out NavMeshHit hit, 1.0f, NavMesh.AllAreas) ? hit.position : desired;
+			agent.isStopped = false;
+			agent.SetDestination(nearestPoint);
+		}
+
+		animator.SetBool("isMoving", agent.hasPath && agent.velocity.magnitude > 0.1f);
+
+		if (distanceToPlayer <= attackRange && attackTimer <= 0 && (agent.remainingDistance <= agent.stoppingDistance + 0.5f || !agent.hasPath))
+		{
+			attackTimer = attackCooldown;
+
+			StartCoroutine(Attack());
+		}
+	}
+
+	IEnumerator YieldThenGo(Vector3 nextPoint)
+	{
+		agent.isStopped = true;
+		yield return new WaitForSeconds(patrolYieldTime);
+		agent.isStopped = false;
+		agent.speed = patrolSpeed;
+		agent.SetDestination(nextPoint);
+	}
+
+	//--------------------------------- respawn mechanics n stuff----------------------------------------
+
+	void OnEnable() => room.Register(this);
+
+	void OnDisable() => room.Unregister(this);
+
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.gameObject.TryGetComponent(out Crate crate)) // crate has to be still
+		{
+			if (crate.Breakable) crate.TakeDamage(1, DamageSource.Enemy);
+		}
+	}
+
+	void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, attackRange);
+
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, detectionRange);
+	}
+
+	public void TakeDamage(float damage, DamageSource source)
+	{
+		health -= damage;
+
+		if (source == DamageSource.Player) detectionRange = distanceToPlayer + 5; // TODO: reset detection range if you run away
+
+		ParticleSystem instance = Instantiate(hurtVFX, transform.position, Quaternion.Inverse(transform.rotation));
+		transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
+
+		// ignore this mess - it flashes the enemy red when hurt
+		GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() => { r.material.DOColor(Color.white, "_BaseColor", 0.1f); }).SetLink(gameObject));
+
+		hurtSFX.Play();
+
+		if (target.TryGetComponent(out PlayerController player) && player?.Weapon.EquippedWeapon == Weapon.Weapons.Dagger && source == DamageSource.Player) daggerHurtSFX.Play();
+
+		//Logger.Log("Enemy took: " + damage + " damage.", this, $"{name}");
+
+		if (health <= 0) Death();
+	}
+
+	public void ResetToStart()
+	{
+		if (agent)
+		{
+			agent.Warp(startPos);
+			transform.rotation = startRot;
+			agent.ResetPath();
+		}
+	}
 
 	IEnumerator Shriek()
 	{
@@ -178,49 +325,26 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		}
 	}
 
-	void Update()
+	IEnumerator YieldPatrol()
 	{
-		if (attackTimer >= 0) attackTimer -= Time.deltaTime;
-		if (!target) return;
-		if (agent.isStopped) return;
-
-		distanceToPlayer = Vector3.Distance(transform.position, target.position);
-
-		hearts = health / 2f;
-
-		if (distanceToPlayer > detectionRange) return;
-
-		float offsetDistance = 3f;
-		Vector3 desired = target.position + target.forward * offsetDistance;
-
-		// returns the nearest point on the navmesh to the desired position
-		Vector3 nearestPoint = NavMesh.SamplePosition(desired, out NavMeshHit hit, 1.0f, NavMesh.AllAreas) ? hit.position : desired;
-
-		// stops the enemy from moving if within attack range
-		if (distanceToPlayer > attackRange) agent.SetDestination(nearestPoint);
-
-		animator.SetBool("isMoving", agent.velocity.magnitude > 0.1f);
-
-		if (distanceToPlayer <= attackRange && attackTimer <= 0 && agent.remainingDistance <= agent.stoppingDistance + 0.5f)
-		{
-			attackTimer = attackCooldown;
-			
-			StartCoroutine(Attack());
-		}
+		agent.isStopped = true;
+		yield return new WaitForSeconds(patrolYieldTime);
+		agent.isStopped = false;
 	}
 
 	IEnumerator Attack()
-	{ 
+	{
 		// pause shriek coroutine during attack
 		if (shriekCoroutine != null)
 		{
 			StopCoroutine(shriekCoroutine);
 			shriekCoroutine = StartCoroutine(Shriek());
 		}
-		
+
 		float animDuration = animator.GetCurrentAnimatorStateInfo(0).length;
-		
+
 		animator.SetTrigger("attack");
+
 		switch (type)
 		{
 			case EnemyType.Octopus:
@@ -228,46 +352,27 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 				break;
 
 			case EnemyType.Banshee:
+				bansheeSFX.SetRandomPitch(new (0.95f, 1.05f));
 				bansheeSFX.Play();
 				break;
 		}
 
 		yield return new WaitForSeconds(animDuration / 3f);
-		
+
 		target.TryGetComponent(out IDamageable damageable);
-		damageable.TakeDamage(damage);
-	}
 
-	public void TakeDamage(float damage, DamageSource source)
-	{
-		health -= damage;
-		
-		var instance = Instantiate(hurtVFX, transform.position, Quaternion.Inverse(transform.rotation));
-		transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
-		
-		// ignore this mess - it flashes the enemy red when hurt
-		GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() =>
-		{
-			r.material.DOColor(Color.white, "_BaseColor", 0.1f);
-		}).SetLink(gameObject));
-		
-		hurtSFX.Play();
-		
-		if (target.TryGetComponent(out PlayerController player) && player?.Weapon.EquippedWeapon == Weapon.Weapons.Dagger && source == DamageSource.Player)
-		{
-			daggerHurtSFX.Play();
-		}
-
-		//Logger.Log("Enemy took: " + damage + " damage.", this, $"{name}");
-
-		if (health <= 0) Death();
+        float newDistanceToPlayer= Vector3.Distance(transform.position, target.position);
+        if (newDistanceToPlayer <= distanceToPlayer)
+        {
+            damageable.TakeDamage(damage);
+        }
 	}
 
 	void Death()
 	{
 		Logger.LogWarning("Enemy died.", this, $"{name}");
 		room.Unregister(this);
-		
+
 		snarlSFX.Stop();
 		Destroy(gameObject);
 	}
@@ -278,7 +383,17 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 		// knock backwards, opposite to where the enemy is moving
 		rb.AddForce(-agent.velocity.normalized * knockbackForce, ForceMode.Impulse);
-		
+
+		Stagger(staggerDuration);
+	}
+
+	public void Knockback(Vector3 direction, float knockbackForce)
+	{
+		rb.isKinematic = false;
+
+		// knock in specified direction
+		rb.AddForce(direction.normalized * knockbackForce, ForceMode.Impulse);
+
 		Stagger(staggerDuration);
 	}
 
@@ -287,38 +402,27 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	IEnumerator PerformStagger(float duration)
 	{
 		if (duration < 0) duration = staggerDuration;
-		
+
 		agent.isStopped = true;
-		yield return new WaitForSeconds(duration);
+		CancelAttackAnimation();
+        yield return new WaitForSeconds(duration);
 		agent.isStopped = false;
 
 		rb.isKinematic = true;
 	}
 
-	void OnCollisionEnter(Collision other)
+	void CancelAttackAnimation()
 	{
-		if (other.gameObject.TryGetComponent(out Crate crate))
-		{
-			if (crate.Breakable)
-				crate.TakeDamage(1, DamageSource.Enemy);
-			
-			TakeDamage(1, DamageSource.Crate);
-		}
-	}
+        StopCoroutine("Attack");
+        animator.ResetTrigger("attack");
+        animator.SetBool("isMoving", false);
+        animator.CrossFade("Idle", 0.1f, 0, 0f);
+    }
 
-	//--------------------------------- respawn mechanics n stuff----------------------------------------
-
-	void OnEnable() => room.Register(this);
-
-	void OnDisable() => room.Unregister(this);
-
-	public void ResetToStart()
+	public enum EnemyType
 	{
-		if (agent)
-		{
-			agent.Warp(startPos);
-			transform.rotation = startRot;
-			agent.ResetPath();
-		}
+		Octopus,
+		Banshee,
+		Debug,
 	}
 }

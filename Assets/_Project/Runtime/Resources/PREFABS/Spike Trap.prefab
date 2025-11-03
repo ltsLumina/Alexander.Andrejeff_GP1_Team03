@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8553583659049554523}
   - component: {fileID: 5687755596780056479}
   m_Layer: 0
-  m_Name: 'Spike Trap (Triggered - Cooldown: 1.5 seconds.)'
+  m_Name: 'Spike Trap (Triggered - Cooldown: 1,5 seconds.)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -154,8 +154,9 @@ public class Weapon : MonoBehaviour
 		{
 			if (col.TryGetComponent(out Rigidbody rb))
 			{
-				Vector3 forceDirection = (col.transform.position - fpsCamera.transform.position).normalized + (Vector3.up * verticalMultiplier); // away from player
 				rb.isKinematic = false;
+				var ray = fpsCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+				Vector3 forceDirection = ray.direction.normalized + Vector3.up * verticalMultiplier;
 				rb.AddForce(forceDirection * kickForce);
 
 				if (col.TryGetComponent(out enemy)) enemy.Stagger();
@@ -204,13 +205,7 @@ public class Weapon : MonoBehaviour
 
 	bool GetKickColliders(out Collider[] kickColliders)
 	{
-		Vector3 halfExtents = new Vector3(kickSize.x / 2f, kickSize.y / 2f, kickRange / 2f);
-
-		// horizontal center in front of the camera
-		Vector3 flatCenter = fpsCamera.transform.position + fpsCamera.transform.forward * (kickRange / 2f);
-
-		// place box so its bottom rests on the ground (y = 0)
-		Vector3 center = new Vector3(flatCenter.x, halfExtents.y, flatCenter.z);
+		(Vector3 halfExtents, Vector3 center) = GetOverlapBox(true);
 
 		hits = new Collider[10];
 		int length = Physics.OverlapBoxNonAlloc(center, halfExtents, hits, fpsCamera.transform.rotation, LayerMask.GetMask("Hit"));
@@ -228,15 +223,15 @@ public class Weapon : MonoBehaviour
 
 	(Vector3 halfExtents, Vector3 center) GetOverlapBox(bool kick)
 	{
+		if (fpsCamera == null) return (Vector3.zero, Vector3.zero);
+
 		if (kick)
 		{
 			Vector3 kickHalfExtents = new Vector3(kickSize.x / 2f, kickSize.y / 2f, kickRange / 2f);
-
-			// horizontal center in front of the camera
 			Vector3 kickFlatCenter = fpsCamera.transform.position + fpsCamera.transform.forward * (kickRange / 2f);
 
-			// place box so its bottom rests on the ground (y = 0)
-			Vector3 kickCenter = new Vector3(kickFlatCenter.x, kickHalfExtents.y, kickFlatCenter.z);
+			// Use the camera's Y so the box is centered at the camera height instead of on the ground
+			Vector3 kickCenter = new Vector3(kickFlatCenter.x, kickFlatCenter.y, kickFlatCenter.z);
 			return (kickHalfExtents, kickCenter);
 		}
 		else
@@ -244,13 +239,12 @@ public class Weapon : MonoBehaviour
 			Vector2 attackSize = weaponData.AttackSize;
 			float attackRange = weaponData.AttackRange;
 			Vector3 halfExtents = new Vector3(attackSize.x / 2f, attackSize.y / 2f, attackRange / 2f);
-
-			// horizontal center in front of the camera
 			Vector3 flatCenter = fpsCamera.transform.position + fpsCamera.transform.forward * (attackRange / 2f);
 
-			// place box so its bottom rests on the ground (y = 0)
-			Vector3 center = new Vector3(flatCenter.x, halfExtents.y, flatCenter.z);
+			// Center at camera height
+			Vector3 center = new Vector3(flatCenter.x, flatCenter.y, flatCenter.z);
 			return (halfExtents, center);
 		}
 	}
+
 }

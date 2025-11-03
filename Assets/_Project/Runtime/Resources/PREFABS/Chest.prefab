@@ -49,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chest
   reward: 1
   rewardPrefab: {fileID: 1489625116793763650, guid: 60cf978853510ba4085dfa86bfe1d31d, type: 3}
+  isRelicChest: 0
+  playerController: {fileID: 0}
+  speedMultiplier: 0
 --- !u!65 &1444518792438575914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,8 +126,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.912798, y: 1.0590276, z: 4.0370483}
-  m_Center: {x: 0.7345619, y: 0.029513776, z: -0.76624393}
+  m_Size: {x: 5.580861, y: 1.0590276, z: 5.0276256}
+  m_Center: {x: -0.09946978, y: 0.029513776, z: -0.27095532}
 --- !u!114 &937356025126024147
 MonoBehaviour:
   m_ObjectHideFlags: 0

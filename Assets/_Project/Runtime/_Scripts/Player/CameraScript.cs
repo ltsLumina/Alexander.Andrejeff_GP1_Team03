@@ -11,7 +11,7 @@ public class CameraScript : MonoBehaviour
     
     [Tab("Camera Bobbing")]
     [SerializeField] bool bobbingEnabled = true;
-    [ShowIf(nameof(bobbingEnabled), true)]
+    [ShowIf(nameof(BobbingEnabled), true)]
     [SerializeField] float cameraBobIntensity = 0.05f;
     [SerializeField] float cameraBobSpeed = 1000f;
     [SerializeField] float cameraIdleBob = 0.2f;
@@ -19,7 +19,7 @@ public class CameraScript : MonoBehaviour
     
     [Tab("Camera Shake")]
     [SerializeField] bool viewShakeEnabled = true;
-    [ShowIf(nameof(viewShakeEnabled), true)]
+    [ShowIf(nameof(ViewShakeEnabled), true)]
     [SerializeField] float shakeIntensity = 1f;
     [EndIf]
     
@@ -38,13 +38,23 @@ public class CameraScript : MonoBehaviour
     float viewShakeX;
     float viewShakeY;
     readonly float baseShake = 0.05f;
+    public bool BobbingEnabled
+    {
+        get => bobbingEnabled;
+        set => bobbingEnabled = value;
+    }
+    public bool ViewShakeEnabled
+    {
+        get => viewShakeEnabled;
+        set => viewShakeEnabled = value;
+    }
 
     void OnEnable() => PlayerHealth.OnHealthChanged += DoCameraShake;
     void OnDisable() => PlayerHealth.OnHealthChanged -= DoCameraShake;
 
     void FixedUpdate()
     {
-        if (bobbingEnabled)
+        if (BobbingEnabled)
         {
             if (viewBobbingMult == 0f)
             {
@@ -125,7 +135,7 @@ public class CameraScript : MonoBehaviour
 
     private void DoCameraShake(float currentHealth, float previousHealth)
     {
-        if (currentHealth - previousHealth < 0 && viewShakeEnabled)
+        if (currentHealth - previousHealth < 0 && ViewShakeEnabled)
         {
             viewShakeX = (Random.value - 0.5f) * shakeIntensity * baseShake;
             viewShakeY = (Random.value - 0.5f) * shakeIntensity * baseShake;
@@ -134,7 +144,7 @@ public class CameraScript : MonoBehaviour
     
     public void TriggerCameraShake(float intensity)
     {
-        if (viewShakeEnabled)
+        if (ViewShakeEnabled)
         {
             viewShakeX = (Random.value - 0.5f) * intensity * baseShake;
             viewShakeY = (Random.value - 0.5f) * intensity * baseShake;

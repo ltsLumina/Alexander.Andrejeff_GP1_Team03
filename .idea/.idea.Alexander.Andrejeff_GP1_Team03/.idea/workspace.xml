@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="" />
+    <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/UserChoices.choices.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/BotLid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/BotLid.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/TopLid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/TopLid.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" afterDir="false" />
+    </list>
     <list id="be5799d1-633d-452d-a052-5c203e46193d" name="NEVER SUBMIT" comment="NEVER SUBMIT" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,8 +23,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/477334fdedd74969b6db722207e9367b36200/9e/6d3073c9/Animator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/30/737fa6d0/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/Debugging/DebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Temp/Compiled-Shader Graphs-RetroCustomEffect.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHereConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHereWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Checkpoint/RoomRegistry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/ModelSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps 1.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CrosshairTargetDetector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/ReticleUIHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="PerforceDirect.Settings">
@@ -21,7 +51,6 @@
     <option name="port" value="fgsrv:1666" />
     <option name="client" value="Alexander.Andrejeff_GP1_Team03" />
     <option name="user" value="alexander.andrejeff" />
-    <option name="ENABLED" value="false" />
   </component>
   <component name="PerforceNumberNameSynchronizer">
     <option name="listMappings">
@@ -54,21 +83,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   },
-  "keyToStringList": {
-    "stardust.markdown.MarkdownSplitEditorSuppressor:keyList": []
+  &quot;keyToStringList&quot;: {
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -80,7 +109,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -134,7 +163,20 @@
       <workItem from="1762020820607" duration="5815000" />
       <workItem from="1762043964274" duration="7818000" />
       <workItem from="1762095394817" duration="12931000" />
+      <workItem from="1762161246714" duration="21773000" />
+      <workItem from="1762187903982" duration="358000" />
+      <workItem from="1762188645225" duration="2066000" />
+      <workItem from="1762192917615" duration="6965000" />
     </task>
+    <task id="LOCAL-00001" summary="idk">
+      <option name="closed" value="true" />
+      <created>1762178042691</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762178042691</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
@@ -148,6 +190,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="idk" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   moveInput: {x: 0, y: 0}
+  inputMode: 0
 --- !u!114 &1106607629511772460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 999}
-  m_LocalScale: {x: 2.3796296, y: 2.3796296, z: 2.3796296}
+  m_LocalScale: {x: 1.7314814, y: 1.7314814, z: 1.7314814}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1409102801732858777}
@@ -396,7 +397,7 @@ MonoBehaviour:
   - {fileID: 1081977743635050643}
   storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
   storedPixelMultiplier: 0
-  origOrthoSize: 2.3796296
+  origOrthoSize: 1.7314814
 --- !u!1 &3030077900347595490
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +411,7 @@ GameObject:
   - component: {fileID: 1911436132087194893}
   - component: {fileID: 5706703023768594842}
   - component: {fileID: 7844080999818584227}
+  - component: {fileID: 2138107005890515142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -473,7 +475,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 20
   currentHealth: 20
-  refreshCurrentHealth: 0
 --- !u!114 &5706703023768594842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +512,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2138107005890515142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030077900347595490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94bd6a471ebb9ea49be3af5511a4914b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightShaft.PFH.PFHPlayer
 --- !u!1 &4618205107948024810
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 4618205107948024810}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.58500004, z: -0.125}
+  m_LocalPosition: {x: -0.0000000018626451, y: 0.585, z: -0.124999836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -569,10 +582,10 @@ MonoBehaviour:
     m_Bits: 32
   graphicsFormat: 8
   pixelMultiplier: 4
-  ditherRepeatSize: 8
-  lastScreenSize: {x: 300, y: 489}
-  screenSize: {x: 914, y: 514}
-  renderTextureSize: {x: 244, y: 144}
+  ditherRepeatSize: 2
+  lastScreenSize: {x: 300, y: 417}
+  screenSize: {x: 665, y: 374}
+  renderTextureSize: {x: 170, y: 97}
   screenHeight: 1080
   uPixelatorCam: {fileID: 3935721338633357206}
   autoDetectCameras: 0
@@ -681,7 +694,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.3796296
+  orthographic size: 1.7314814
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -720,7 +733,7 @@ MonoBehaviour:
   camRotationOffset: {x: 0, y: 0, z: 0}
   snapLocalScale: 0
   snapScaleValue: 0.05
-  lastSnappedPosition: {x: 0, y: 1.824074, z: -2.467}
+  lastSnappedPosition: {x: -0.002378818, y: 1.6623362, z: -5.116026}
   skippedSnappedPosition: {x: 0, y: 0, z: 0}
   initialPosition: {x: 0, y: 0, z: 0}
   smoothSnapUI: 1
@@ -832,7 +845,7 @@ MonoBehaviour:
     orthographicSizeCorrection: {fileID: 0}
   snappables:
   - {fileID: 3189920940263394969}
-  storedCamRotation: {x: -0, y: -0, z: -0, w: 1}
+  storedCamRotation: {x: 0.007702296, y: 0.0047570947, z: -0.000036865997, w: 0.99995905}
   storedPixelMultiplier: 4
   origOrthoSize: 0
 --- !u!1 &6450673224727206370
@@ -863,7 +876,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7976654, y: 2.241245, z: 0}
+  m_LocalScale: {x: 3.6363637, y: 2.0748663, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6325474503920134003}
@@ -1013,14 +1026,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: -0.010309278
     width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 65
   orthographic: 0
-  orthographic size: 2.3796296
+  orthographic size: 1.7314814
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

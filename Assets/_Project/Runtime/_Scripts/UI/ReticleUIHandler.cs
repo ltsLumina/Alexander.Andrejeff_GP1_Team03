@@ -34,7 +34,7 @@ public class ReticleUIHandler : MonoBehaviour
     }
 
 
-    void UpdateCrosshair(IInteractableObject interactable)
+    void UpdateCrosshair(IInteractable interactable)
     {
         if (interactable == null)
         {
@@ -42,15 +42,11 @@ public class ReticleUIHandler : MonoBehaviour
             return;
         }
 
-        switch (interactable.Type)
+        switch (interactable.InteractableType)
         {
             case InteractableType.Enemy:
                 crossHair.style.backgroundImage = new StyleBackground(enemyTargetedReticle);
                 break;
-            case InteractableType.Chest:
-                crossHair.style.backgroundImage = new StyleBackground(lootableReticle);
-                break;
-
         }
     }
 

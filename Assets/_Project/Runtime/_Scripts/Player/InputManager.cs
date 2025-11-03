@@ -4,11 +4,19 @@ using Lumina.Essentials.Attributes;
 using Lumina.Essentials.Modules;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VInspector.Libs;
 #endregion
 
 public class InputManager : MonoBehaviour
 {
+    enum InputMode
+    {
+        Standard,
+        OneHanded
+    }
+    
     [SerializeField, ReadOnly] Vector2 moveInput;
+    [SerializeField] InputMode inputMode;
 
     public Vector2 MoveInput => moveInput;
 
@@ -19,6 +27,7 @@ public class InputManager : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        if (inputMode == InputMode.OneHanded) moveInput = new (-moveInput.y, moveInput.x);
     }
 
     public void OnAttack(InputAction.CallbackContext context)

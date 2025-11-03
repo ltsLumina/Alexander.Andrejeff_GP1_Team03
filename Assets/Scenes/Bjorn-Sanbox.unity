@@ -24,9 +24,9 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3dda39bd5e5f75241b4a21a3fd2f8802, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d21556d1dc6f54eb79e95e7711df1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerCoins: 0
 --- !u!4 &381505807
 Transform:
   m_ObjectHideFlags: 0
@@ -1829,6 +1830,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 73bf7cb083066b14893c6ae507694d14, type: 3}
   m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
+--- !u!84 &1753249985
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RenderTexture - Main Camera
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 402
+  m_Height: 142
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 90
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1769663916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,6 +2441,14 @@ PrefabInstance:
       propertyPath: m_TrackedDeviceOrientationAction
       value: 
       objectReference: {fileID: 190510225}
+    - target: {fileID: 1409102801732858777, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.3683167
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409102801732858777, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.249505
+      objectReference: {fileID: 0}
     - target: {fileID: 2109559917281060449, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2419,6 +2465,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3295217086767468857, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295217086767468857, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: origOrthoSize
+      value: 2.3379629
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935721338633357206, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: orthographic size
+      value: 2.3379629
+      objectReference: {fileID: 0}
     - target: {fileID: 4622230876510356405, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.x
       value: 5.308219
@@ -2431,6 +2489,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 2.7037036
       objectReference: {fileID: 0}
+    - target: {fileID: 5754518502910637077, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5882188990381701522, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2438,10 +2500,10 @@ PrefabInstance:
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1420738404}
+      objectReference: {fileID: 0}
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: orthographic size
-      value: 2.7037036
+      value: 2.3379629
       objectReference: {fileID: 0}
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -2450,6 +2512,18 @@ PrefabInstance:
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325474503920134003, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3379629
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325474503920134003, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.3379629
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325474503920134003, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.3379629
       objectReference: {fileID: 0}
     - target: {fileID: 6855568506632733545, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_Enabled
@@ -2466,6 +2540,10 @@ PrefabInstance:
     - target: {fileID: 8108405295205718891, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.z
       value: 2.7037036
+      objectReference: {fileID: 0}
+    - target: {fileID: 8356361539103980373, guid: 73406536307eb4745b88829d286e649a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.58500004
       objectReference: {fileID: 0}
     - target: {fileID: 8699794743265201602, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: lastScreenSize.x
@@ -2889,7 +2967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7884557809139146007, guid: 82a1d15d974689c44a23b944340e6ffb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 7884557809139146007, guid: 82a1d15d974689c44a23b944340e6ffb, type: 3}
       propertyPath: m_LocalPosition.y

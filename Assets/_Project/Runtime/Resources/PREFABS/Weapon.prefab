@@ -45,19 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bd3fd5ee7a92c48b507427f1689409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  fpsCamera: {fileID: 0}
-  damage: 2
-  attackSize: {x: 0.5, y: 0.5}
-  attackRange: 2
-  attackCooldown: 0.5
+  equippedWeapon: 0
+  weaponData: {fileID: 0}
   attackTime: 0
-  kickForce: 300
+  kickForce: 600
+  verticalMultiplier: 0.1
   kickSize: {x: 0.5, y: 0.5}
   kickRange: 2
   kickCooldown: 0.5
   kickTime: 0
+  meshFilter: {fileID: 0}
+  fpsCamera: {fileID: 0}
   debugDrawRay: 1
-  blockingHit: 0
   hits:
   - {fileID: 0}
   - {fileID: 0}

@@ -49,3 +49,7 @@ vHierarchy Data.asset
 # DOTween
 Assets/_Project/External/DOTween/Resources/DOTweenSettings.asset
 DOTweenSettings.asset
+
+# PFG Config
+Assets/_Project/External/PlayFromHere/Resources/Config/PFH_Config.asset
+PFH_Config.asset
