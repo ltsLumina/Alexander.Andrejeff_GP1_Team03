@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using VInspector;
 
-[SelectionBase, DisallowMultipleComponent]
 public class Crate : MonoBehaviour, IDamageable
 {
 	[Header("Crate"), Tooltip("Can be broken on impact or by attacking it.")]
@@ -34,15 +33,16 @@ public class Crate : MonoBehaviour, IDamageable
 	public bool Breakable => breakable;
 
 #if UNITY_EDITOR
-	void OnDrawGizmos()
-	{
-		if (!Application.isPlaying) return;
-
-		string healthInfo = Breakable ? $"Health: {health}" : "Unbreakable";
-		string velocityInfo = $"Velocity: {rb.linearVelocity.magnitude:F2}";
-
-		Handles.Label(transform.position + Vector3.up, $"[{name}]\n{healthInfo}\n{velocityInfo}");
-	}
+	// void OnDrawGizmos()
+	// {
+	// 	if (!Application.isPlaying) return;
+	// 	if (Vector3.Distance(transform.position, SceneView.lastActiveSceneView.camera.transform.position) > 20f) return;
+	//
+	// 	// string healthInfo = Breakable ? $"Health: {health}" : "Unbreakable";
+	// 	//string velocityInfo = $"Velocity: {rb.linearVelocity.magnitude:F2}";
+	//
+	// 	//Handles.Label(transform.position + Vector3.up, $"[{name}]\n{velocityInfo}");
+	// }
 #endif
 	
 	void Start()

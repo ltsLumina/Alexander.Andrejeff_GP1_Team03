@@ -82,7 +82,7 @@ namespace LightShaft.PFH
         {
             var menu = new GenericMenu();
             menu.AddItem(new GUIContent("Play From Here"), false, () => PlayFrom(go, ray));
-            menu.AddItem(new GUIContent("UNREAL SUPERIOR, UNITY INFERIOR"), true, () => Debug.Log("Unreal is cooler than Unity"));
+            menu.AddItem(new GUIContent("UNREAL SUPERIOR, UNITY INFERIOR"), true, () => Application.OpenURL("C:/Program Files/Epic Games/UE_5.6/Engine/Binaries/Win64/UnrealEditor.exe"));
             // open url
             menu.AddItem
             (new GUIContent("Trausti leg day skips: 3"), false,

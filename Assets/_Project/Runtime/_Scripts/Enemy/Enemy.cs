@@ -11,7 +11,7 @@ using VInspector;
 using Random = UnityEngine.Random;
 #endregion
 
-[SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(CapsuleCollider))]
+[SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(SphereCollider))]
 public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 {
 	public enum EnemyType
@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[HideIf(nameof(randomPatrol), true)]
 	[SerializeField] GameObject patrolStart;
 	[SerializeField] GameObject patrolEnd;
+	[Tooltip("The radius around the starting position in which the enemy will patrol randomly.")]
+	[SerializeField] float patrolRadius = 4f;
 	[SerializeField] float patrolSpeed;
 	[SerializeField] float patrolYieldTime;
 	[EndIf]
@@ -73,9 +75,11 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 	public float Health => health;
 	public float MaxHealth => maxHealth;
-	public EnemyType Type => type;
 
-	void Awake()
+	public EnemyType Type => type;
+	public InteractableType InteractableType => InteractableType.Enemy; // For enemy reticle
+
+    void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
 		rb = GetComponent<Rigidbody>();
@@ -177,8 +181,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 			if (randomPatrol)
 			{
-				float patrolRadius = 8f; // adjust as needed
-
 				// pick a new random patrol point when we don't have a path or we've reached the current one
 				if (reachedDestination)
 				{
@@ -410,15 +412,15 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 	void CancelAttackAnimation()
 	{
-        StopCoroutine("Attack");
+        StopCoroutine(nameof(Attack));
         animator.ResetTrigger("attack");
         animator.SetBool("isMoving", false);
         animator.CrossFade("Idle", 0.1f, 0, 0f);
     }
 
-	//--------------------------------- respawn mechanics n stuff----------------------------------------
+    //--------------------------------- respawn mechanics n stuff----------------------------------------
 
-	void OnEnable() => room?.Register(this);
+    void OnEnable() => room?.Register(this);
 
 	void OnDisable() => room?.Unregister(this);
 }

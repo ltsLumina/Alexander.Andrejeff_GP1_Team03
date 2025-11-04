@@ -53,3 +53,7 @@ DOTweenSettings.asset
 # PFG Config
 Assets/_Project/External/PlayFromHere/Resources/Config/PFH_Config.asset
 PFH_Config.asset
+
+# .idea Workspace
+.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml
+workspace.xml

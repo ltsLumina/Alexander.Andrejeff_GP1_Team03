@@ -80,7 +80,7 @@ public class SawbladeController : MonoBehaviour
                 if (col.TryGetComponent(out IDamageable dmg))
                 {
                     dmg.TakeDamage(damage);
-                    Logger.Log($"Sawblade collided! | Tick-Hit: {col.name} | Damage dealt: {damage}");
+                    //Logger.Log($"Sawblade collided! | Tick-Hit: {col.name} | Damage dealt: {damage}", this);
                 }
             }
 

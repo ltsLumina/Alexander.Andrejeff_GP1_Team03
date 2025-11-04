@@ -1,7 +1,8 @@
 #region
-using System;
 using Lumina.Essentials.Attributes;
 using Lumina.Essentials.Modules;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VInspector.Libs;
@@ -9,12 +10,19 @@ using VInspector.Libs;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] List<DirectionalCheckpoint> checkpointList;
+    Queue<DirectionalCheckpoint> checkpoints;
+
+    [SerializeField] BreadcrumbTrail breadcrumbPrefab;
+    [SerializeField] Transform breadcrumbStartPoint;
+    [SerializeField] Transform breadcrumbTarget;    
+
     enum InputMode
     {
         Standard,
         OneHanded
     }
-    
+
     [SerializeField, ReadOnly] Vector2 moveInput;
     [SerializeField] InputMode inputMode;
 
@@ -22,13 +30,32 @@ public class InputManager : MonoBehaviour
 
     PlayerController player;
 
-    void Awake() => player = GetComponentInParent<PlayerController>();
-
+    void Awake()
+    {
+        checkpoints = new Queue<DirectionalCheckpoint>(checkpointList);
+        player = GetComponentInParent<PlayerController>();
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        if (inputMode == InputMode.OneHanded) moveInput = new (-moveInput.y, moveInput.x);
+        if (inputMode == InputMode.OneHanded) moveInput = new(-moveInput.y, moveInput.x);
     }
+
+    private void OnEnable()
+    {
+        DirectionalCheckpointsReigstry.OnNewCheckpointTarget += HandleDirectionalCheckpointReached;
+    }
+
+    private void OnDisable()
+    {
+        DirectionalCheckpointsReigstry.OnNewCheckpointTarget -= HandleDirectionalCheckpointReached;
+    }
+
+    public void HandleDirectionalCheckpointReached(Transform target)
+    {
+        breadcrumbTarget = target;
+    }
+
 
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -75,6 +102,17 @@ public class InputManager : MonoBehaviour
 
             Debug.DrawRay(ray.origin, ray.direction * 3f, Color.green, 1f);
         }
+    }
+
+    public void DirectionalHint(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return; Camera cam = Camera.main;
+        Vector3 spawnPos = cam.transform.position + cam.transform.forward * 2f; 
+        spawnPos.y = player.transform.position.y; 
+        
+        var trail = Instantiate(breadcrumbPrefab, spawnPos, Quaternion.identity); 
+        
+        trail.Init(breadcrumbTarget, player.transform);
     }
 
     public void OnSprint(InputAction.CallbackContext context)

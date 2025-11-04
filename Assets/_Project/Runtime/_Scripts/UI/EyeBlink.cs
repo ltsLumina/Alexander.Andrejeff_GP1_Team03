@@ -22,6 +22,12 @@ public class EyeBlink : MonoBehaviour
 	    Start();
     }
 
+    void Awake()
+    {
+	    topLid.gameObject.SetActive(true);
+	    botLid.gameObject.SetActive(true);
+    }
+
     void Start()
     {
 	    Debug.Assert(topLid != null, "Top lid reference is missing");

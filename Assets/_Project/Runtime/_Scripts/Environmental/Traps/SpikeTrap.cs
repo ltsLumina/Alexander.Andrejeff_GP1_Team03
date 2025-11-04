@@ -85,7 +85,7 @@ public class SpikeTrap : MonoBehaviour
 		timer = 0;
 		canActivate = true;
 
-		name = $"Spike Trap ({type} - {additionalInfo})";
+		//name = $"Spike Trap ({type} - {additionalInfo})";
 
 		#region Sound
 		trapSFX = new (SFX.SpikeTrap);
@@ -139,7 +139,7 @@ public class SpikeTrap : MonoBehaviour
 	void OnValidate()
 	{
 		transform.localScale = new (size, 1, size);
-		name = $"Spike Trap ({type} - {additionalInfo})";
+		//name = $"Spike Trap ({type} - {additionalInfo})";
 	}
 
 	void Static()

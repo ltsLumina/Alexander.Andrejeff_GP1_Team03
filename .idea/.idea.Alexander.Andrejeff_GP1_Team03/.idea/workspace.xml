@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/UserChoices.choices.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/BotLid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/BotLid.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/TopLid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Sprites/TopLid.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild/NavMesh-NavMesh Surface (Main) 3.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild/NavMesh-NavMesh Surface (Main) 3.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/LongHallway.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/LongHallway.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/StartAndEndRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/StartAndEndRoom.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SawbladeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SawbladeController.cs" afterDir="false" />
     </list>
-    <list id="be5799d1-633d-452d-a052-5c203e46193d" name="NEVER SUBMIT" comment="NEVER SUBMIT" />
+    <list id="6c5c97ed-7577-47a0-a545-2708ad067dd3" name="Undo //FG25_STO_GP1_Team03/Assets/... changelist 162357" comment="Undo //FG25_STO_GP1_Team03/Assets/... changelist 162357" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,24 +25,49 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/477334fdedd74969b6db722207e9367b36200/9e/6d3073c9/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/30/737fa6d0/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/Debugging/DebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/UnrealSuperior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Editor/_Scripts/LevelSelector.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/_Scripts/LevelSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Editor/_Scripts/LevelSelector.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHere.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHereConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHereWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Checkpoint/RoomRegistry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Ege-Prototyping/RotatingBridge.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/ModelSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps 1.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SawbladeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SpikeTrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CrosshairTargetDetector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/ReticleUIHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/Killplane.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="PerforceDirect.Settings">
@@ -66,7 +90,7 @@
           <value>
             <PerforceNumberNameMap>
               <option name="mapping">
-                <entry key="158112" value="NEVER SUBMIT" />
+                <entry key="162359" value="Undo //FG25_STO_GP1_Team03/Assets/... changelist 162357" />
               </option>
             </PerforceNumberNameMap>
           </value>
@@ -167,6 +191,7 @@
       <workItem from="1762187903982" duration="358000" />
       <workItem from="1762188645225" duration="2066000" />
       <workItem from="1762192917615" duration="6965000" />
+      <workItem from="1762256751272" duration="2064000" />
     </task>
     <task id="LOCAL-00001" summary="idk">
       <option name="closed" value="true" />
@@ -176,7 +201,31 @@
       <option name="project" value="LOCAL" />
       <updated>1762178042691</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix">
+      <option name="closed" value="true" />
+      <created>1762264971466</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762264971466</updated>
+    </task>
+    <task id="LOCAL-00003" summary="torque">
+      <option name="closed" value="true" />
+      <created>1762273683316</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762273683316</updated>
+    </task>
+    <task id="LOCAL-00004" summary="asd">
+      <option name="closed" value="true" />
+      <created>1762281441735</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762281441735</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
@@ -188,10 +237,12 @@
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="idk" />
-    <option name="LAST_COMMIT_MESSAGE" value="idk" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="torque" />
+    <MESSAGE value="asd" />
+    <option name="LAST_COMMIT_MESSAGE" value="asd" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

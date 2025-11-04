@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3331682726693845743}
   - component: {fileID: 3406565054441545607}
   - component: {fileID: 5838821062509624491}
-  - component: {fileID: 3661185942622865294}
+  - component: {fileID: 1279174309468800479}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -61,9 +61,10 @@ MonoBehaviour:
   staggerDuration: 0.75
   hurtVFX: {fileID: 8967130829546523871, guid: 93a5ae56187a7504db158a6e5746b983, type: 3}
   room: {fileID: 0}
-  randomPatrol: 1
+  randomPatrol: 0
   patrolStart: {fileID: 0}
   patrolEnd: {fileID: 0}
+  patrolRadius: 4
   patrolSpeed: 3
   patrolYieldTime: 2
   target: {fileID: 0}
@@ -110,7 +111,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7452776908253746311}
   serializedVersion: 5
-  m_Mass: 0.5
+  m_Mass: 0.3
   m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -129,8 +130,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &3661185942622865294
-CapsuleCollider:
+--- !u!135 &1279174309468800479
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,11 +148,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1001 &299933098596739405
 PrefabInstance:
   m_ObjectHideFlags: 0

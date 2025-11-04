@@ -3,11 +3,16 @@ guid: 21e5ec05aa5a18d4aa72e53ed7ca9379
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pilars_stone
+    second: {fileID: 2100000, guid: 170ee239b4f45024789b82042f0a50e6, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4

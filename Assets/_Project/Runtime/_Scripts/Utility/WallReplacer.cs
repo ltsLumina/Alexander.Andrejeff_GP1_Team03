@@ -44,7 +44,7 @@ public class WallReplacer : MonoBehaviour
         {
             // replace wall with prefabWall
             var newWall = Instantiate(prefabWall, wall.transform.position, wall.transform.rotation, wall.transform.parent);
-            newWall.transform.localScale = wall.transform.localScale;
+            newWall.transform.localScale = prefabWall.transform.localScale;
             newWall.name = wall.name;
             Undo.RegisterCreatedObjectUndo(newWall, "Replace Wall");
             newWalls.Add(newWall);

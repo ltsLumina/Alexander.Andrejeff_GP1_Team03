@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Bridge
+  - Gap
+  - LongHallway
+  - LShaped
+  - Saw
+  - Staff
+  - Staircase
+  - StartEnd
+  - StraightCorridor
+  - Trap
+  - TShaped
   layers:
   - Default
   - TransparentFX

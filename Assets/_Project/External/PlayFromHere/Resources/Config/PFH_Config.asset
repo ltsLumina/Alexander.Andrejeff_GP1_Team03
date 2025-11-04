@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfa8c83912176e4a8d2b0351a247a85, type: 3}
   m_Name: PFH_Config
   m_EditorClassIdentifier: 
-  tempPlayerPosition: {x: 121.03, y: 29.366634, z: -179.29}
+  tempPlayerPosition: {x: 81, y: 1.65, z: -131.13}
   tempPlayerRotation: {x: 0, y: 0, z: 0, w: 1}
   playedFromPos: 0
   offset: {x: 0, y: 1, z: 0}

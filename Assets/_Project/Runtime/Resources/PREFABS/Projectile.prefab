@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   weaponData: {fileID: 11400000, guid: 7c033b0b0fb37e148917bb436ca70ae4, type: 2}
-  speed: 10
-  lifetime: 3
-  magnetizationDistance: 2
-  magnetizationStrength: 1
+  speed: 20
+  lifetime: 1
+  magnetizationDistance: 30
+  magnetizationStrength: 2
 --- !u!65 &2132366114181846438
 BoxCollider:
   m_ObjectHideFlags: 0
