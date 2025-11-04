@@ -14,13 +14,20 @@ using Random = UnityEngine.Random;
 [SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 {
+	public enum EnemyType
+	{
+		Octopus,
+		Banshee,
+		Debug,
+	}
+	
 	[Tab("Enemy")]
 	[SerializeField] EnemyType type;
 	[Range(0, 20)]
 	[SerializeField] float health = 20f;
 	[Range(1, 20)]
 	[SerializeField] float maxHealth = 20f;
-	[SerializeField] [ReadOnly] float hearts = 10f;
+	[SerializeField, ReadOnly] float hearts = 10f;
 	[SerializeField] public float damage = 1f;
 	[SerializeField] public float attackCooldown = 2f;
 	[SerializeField] public float attackRange = 3.1f;
@@ -74,7 +81,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		rb = GetComponent<Rigidbody>();
 		col = GetComponent<Collider>();
 
-		room = room ? room : GetComponentInParent<RoomRegistry>();
+		room ??= GetComponentInParent<RoomRegistry>();
 		if (room) room.Register(this);
 
 		startPos = transform.position;
@@ -82,10 +89,13 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 		Debug.Assert(agent, "NavMeshAgent component is missing!", this);
 		Debug.Assert(target, "Target field is not assigned! \nThis should almost always be the player.", this);
+		Debug.Assert(room, "RoomRegistry component is missing! \nThis is required for enemy respawn mechanics.", this);
 	}
 
 	void Start()
 	{
+		if (!target) target = FindFirstObjectByType<PlayerController>()?.transform;
+		
 		animator = Mesh.GetComponent<Animator>();
 
 		health = maxHealth;
@@ -244,12 +254,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		agent.SetDestination(nextPoint);
 	}
 
-	//--------------------------------- respawn mechanics n stuff----------------------------------------
-
-	void OnEnable() => room.Register(this);
-
-	void OnDisable() => room.Unregister(this);
-
 	void OnCollisionEnter(Collision other)
 	{
 		if (other.gameObject.TryGetComponent(out Crate crate)) // crate has to be still
@@ -323,13 +327,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 					throw new ArgumentOutOfRangeException();
 			}
 		}
-	}
-
-	IEnumerator YieldPatrol()
-	{
-		agent.isStopped = true;
-		yield return new WaitForSeconds(patrolYieldTime);
-		agent.isStopped = false;
 	}
 
 	IEnumerator Attack()
@@ -419,10 +416,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
         animator.CrossFade("Idle", 0.1f, 0, 0f);
     }
 
-	public enum EnemyType
-	{
-		Octopus,
-		Banshee,
-		Debug,
-	}
+	//--------------------------------- respawn mechanics n stuff----------------------------------------
+
+	void OnEnable() => room?.Register(this);
+
+	void OnDisable() => room?.Unregister(this);
 }
