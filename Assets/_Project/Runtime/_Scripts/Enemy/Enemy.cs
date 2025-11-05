@@ -114,20 +114,16 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 				octopusSFX = new (SFX.OctopusWail);
 				octopusSFX.SetSpatialSound();
 				octopusSFX.SetFollowTarget(transform);
-				octopusSFX.SetHearDistance(10, 35);
-				octopusSFX.SetCustomVolumeRolloffCurve(AnimationCurve.EaseInOut(0, 1, 1, 0));
-				octopusSFX.SetVolume(0.5f);
-				octopusSFX.Play();
+				octopusSFX.SetHearDistance(5, 10);
+				octopusSFX.SetVolume(0.2f);
 				break;
 
 			case EnemyType.Banshee:
 				bansheeSFX = new (SFX.CreatureBanshee);
 				bansheeSFX.SetSpatialSound();
-				bansheeSFX.SetHearDistance(10, 50);
-				bansheeSFX.SetCustomVolumeRolloffCurve(AnimationCurve.EaseInOut(0, 1, 1, 0));
+				bansheeSFX.SetHearDistance(5, 15);
 				bansheeSFX.SetFollowTarget(transform);
-				bansheeSFX.SetVolume(0.3f);
-				bansheeSFX.Play();
+				bansheeSFX.SetVolume(0.1f);
 				break;
 
 			case EnemyType.Debug:
@@ -139,7 +135,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 		snarlSFX = new (SFX.CreatureSnarl);
 		snarlSFX.SetSpatialSound();
-		snarlSFX.SetHearDistance(attackRange, detectionRange);
+		snarlSFX.SetHearDistance(attackRange, 10);
 		snarlSFX.SetFollowTarget(transform);
 		snarlSFX.SetVolume(0.01f);
 		snarlSFX.SetLoop(true);
@@ -306,7 +302,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 	IEnumerator Shriek()
 	{
-		while (health > 0)
+		while (health > 0 && Vector3.Distance(transform.position, target.position) <= detectionRange)
 		{
 			float waitTime = Random.Range(5f, 15f);
 			yield return new WaitForSeconds(waitTime);
@@ -373,7 +369,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		room.Unregister(this);
 
 		snarlSFX.Stop();
-		Destroy(gameObject);
+		gameObject.SetActive(false);
+		Destroy(gameObject, 0.1f);
 	}
 
 	public void Knockback(float knockbackForce)

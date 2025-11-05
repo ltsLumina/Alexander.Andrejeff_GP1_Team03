@@ -530,6 +530,7 @@ Transform:
   - {fileID: 1292869364578334646}
   - {fileID: 2842892901185206264}
   - {fileID: 5294456590878712653}
+  - {fileID: 6508157419502499462}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5053203977315434675
@@ -1353,6 +1354,108 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7df1deb9f79476d47a7c780181ca4048, type: 3}
   m_PrefabInstance: {fileID: 746757427979136456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &766630202231871139
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4367574078139302842}
+    m_Modifications:
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_Reverb
+      value: -1153
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_RoomHF
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_DecayTime
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_MaxDistance
+      value: 16.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_MinDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_Reflections
+      value: -1363
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_ReverbDelay
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_DecayHFRatio
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_ReverbPreset
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 802693403467162960, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_ReflectionsDelay
+      value: 0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646533668484224842, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+      propertyPath: m_Name
+      value: Audio Reverb Zone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+--- !u!4 &6508157419502499462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5832725204351655973, guid: 12191e72896330a4a8d26cd0e8d330bf, type: 3}
+  m_PrefabInstance: {fileID: 766630202231871139}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &818169481108720880
 PrefabInstance:

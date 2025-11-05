@@ -3665,8 +3665,8 @@ RenderTexture:
     Hash: 00000000000000000000000000000000
   m_IsAlphaChannelOptional: 0
   serializedVersion: 6
-  m_Width: 173
-  m_Height: 99
+  m_Width: 206
+  m_Height: 117
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 90
@@ -11341,11 +11341,11 @@ PrefabInstance:
       objectReference: {fileID: 190510225}
     - target: {fileID: 1409102801732858777, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.6421053
+      value: 3.621978
       objectReference: {fileID: 0}
     - target: {fileID: 1409102801732858777, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.0842106
+      value: 2.057143
       objectReference: {fileID: 0}
     - target: {fileID: 2353966840789962426, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: inputMode
@@ -11369,7 +11369,7 @@ PrefabInstance:
       objectReference: {fileID: 813898679}
     - target: {fileID: 3935721338633357206, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: orthographic size
-      value: 1.7592592
+      value: 2.1064816
       objectReference: {fileID: 0}
     - target: {fileID: 4080698695702844554, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: lastScreenSize.x
@@ -11393,27 +11393,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: orthographic size
-      value: 1.7592592
+      value: 2.1064816
       objectReference: {fileID: 0}
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: -0.0057803467
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6035694056239858390, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: -0.01010101
+      value: -0.008547009
       objectReference: {fileID: 0}
     - target: {fileID: 6325474503920134003, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7592592
+      value: 2.1064816
       objectReference: {fileID: 0}
     - target: {fileID: 6325474503920134003, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7592592
+      value: 2.1064816
       objectReference: {fileID: 0}
     - target: {fileID: 6325474503920134003, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7592592
+      value: 2.1064816
       objectReference: {fileID: 0}
     - target: {fileID: 6689965982763908901, guid: 73406536307eb4745b88829d286e649a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -12381,6 +12381,10 @@ PrefabInstance:
     - target: {fileID: 7452776908253746311, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
       propertyPath: m_Name
       value: Enemy | Octopus | (8879)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452776908253746311, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8731846643871331596, guid: ec065ccc8e29dd14ab49caf965edba28, type: 3}
       propertyPath: room

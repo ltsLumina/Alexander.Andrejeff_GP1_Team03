@@ -55,9 +55,10 @@ public class Crate : MonoBehaviour, IDamageable
 		hitSound = new (SFX.CrateHit);
 
 		#region Break
-		breakSound.SetVolume(0.3f);
+		breakSound.SetVolume(0.15f);
 		breakSound.SetRandomPitch(new (0.85f, 1.05f));
 		breakSound.SetSpatialSound();
+		hitSound.SetHearDistance(3f, 15f);
 		breakSound.SetFollowTarget(transform);
 		#endregion
 
@@ -74,6 +75,7 @@ public class Crate : MonoBehaviour, IDamageable
 		hitSound.SetRandomPitch();
 		hitSound.SetSpatialSound();
 		hitSound.SetDopplerLevel(1);
+		hitSound.SetHearDistance(3f, 15f);
 		hitSound.SetFollowTarget(transform);
 		#endregion
 		#endregion
@@ -90,7 +92,8 @@ public class Crate : MonoBehaviour, IDamageable
 	{
 		breakSound.Play();
 		Instantiate(breakVFX, transform.position, Quaternion.identity);
-		Destroy(gameObject);
+		gameObject.SetActive(false);
+		Destroy(gameObject, 0.1f);
 	}
 	
 	void OnCollisionEnter(Collision other)

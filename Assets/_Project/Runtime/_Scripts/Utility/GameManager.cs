@@ -1,9 +1,10 @@
 using System;
+using MelenitasDev.SoundsGood;
 using UnityEngine;
 
 public class GameManager : SingletonPersistent<GameManager>
 {
-	public int playerCoins = 0;
+	public int playerCoins;
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;

@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild/NavMesh-NavMesh Surface (Main) 3.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild/NavMesh-NavMesh Surface (Main) 3.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Alexander.Andrejeff_GP1_Team03/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/LongHallway.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/LongHallway.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/StartAndEndRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/StartAndEndRoom.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SawbladeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SawbladeController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="" />
     <list id="6c5c97ed-7577-47a0-a545-2708ad067dd3" name="Undo //FG25_STO_GP1_Team03/Assets/... changelist 162357" comment="Undo //FG25_STO_GP1_Team03/Assets/... changelist 162357" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +65,7 @@
     <option name="port" value="fgsrv:1666" />
     <option name="client" value="Alexander.Andrejeff_GP1_Team03" />
     <option name="user" value="alexander.andrejeff" />
+    <option name="ENABLED" value="false" />
   </component>
   <component name="PerforceNumberNameSynchronizer">
     <option name="listMappings">
@@ -121,7 +112,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -133,7 +124,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -192,6 +183,8 @@
       <workItem from="1762188645225" duration="2066000" />
       <workItem from="1762192917615" duration="6965000" />
       <workItem from="1762256751272" duration="2064000" />
+      <workItem from="1762296804990" duration="2970000" />
+      <workItem from="1762300623648" duration="521000" />
     </task>
     <task id="LOCAL-00001" summary="idk">
       <option name="closed" value="true" />
