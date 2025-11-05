@@ -56,7 +56,7 @@ MonoBehaviour:
   enemyTriggerDelay: 0.2
   cooldown: 1.5
   size: 1
-  damage: 5
+  damage: 3
   enemyDamageMultiplier: 20
   knockbackForce: 10
   spikeMesh: {fileID: 7317888395968785344}

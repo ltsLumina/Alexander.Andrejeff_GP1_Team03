@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfa8c83912176e4a8d2b0351a247a85, type: 3}
   m_Name: PFH_Config
   m_EditorClassIdentifier: 
-  tempPlayerPosition: {x: 81, y: 1.65, z: -131.13}
-  tempPlayerRotation: {x: 0, y: 0, z: 0, w: 1}
+  tempPlayerPosition: {x: 79.6226, y: 1.321, z: -130.92047}
+  tempPlayerRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   playedFromPos: 0
   offset: {x: 0, y: 1, z: 0}
   rotatePlayerWithView: 0

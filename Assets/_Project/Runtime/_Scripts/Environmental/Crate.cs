@@ -55,6 +55,7 @@ public class Crate : MonoBehaviour, IDamageable
 		hitSound = new (SFX.CrateHit);
 
 		#region Break
+		breakSound.SetOutput(Output.SFX);
 		breakSound.SetVolume(0.15f);
 		breakSound.SetRandomPitch(new (0.85f, 1.05f));
 		breakSound.SetSpatialSound();
@@ -63,6 +64,7 @@ public class Crate : MonoBehaviour, IDamageable
 		#endregion
 
 		#region Kick
+		kickSound.SetOutput(Output.SFX);
 		kickSound.SetVolume(0.9f);
 		kickSound.SetRandomPitch(new (0.95f, 1.05f));
 		kickSound.SetSpatialSound();
@@ -71,6 +73,7 @@ public class Crate : MonoBehaviour, IDamageable
 		#endregion
 
 		#region Hit
+		hitSound.SetOutput(Output.SFX);
 		hitSound.SetVolume(0.75f);
 		hitSound.SetRandomPitch();
 		hitSound.SetSpatialSound();

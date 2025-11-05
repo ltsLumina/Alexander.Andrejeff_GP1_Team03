@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Staff
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weapon: 1
-  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  mesh: {fileID: 4300000, guid: b48536fc1325a344da6c3909b6742bf7, type: 2}
+  material: {fileID: 2100000, guid: fd78b12adc81ac24f96826bfb80d2bc0, type: 2}
   damage: 2
   projectilePrefab: {fileID: 2658371209314796436, guid: 099d45a5ef2641f438720f6ee8ff6c07, type: 3}
   attackRange: 2
   attackSize: {x: 0.5, y: 0.5}
-  attackCooldown: 1
+  attackCooldown: 0.5

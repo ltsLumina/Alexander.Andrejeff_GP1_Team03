@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/yagizScene.unity
+    guid: f2261d16cdad8b44b8ce1962c834288b
+  - enabled: 1
     path: Assets/Scenes/Trausti-LevelBuild.unity
     guid: b7d09d0945fe24d4bb33123ad4bcd9e7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Alex-Sandbox.unity
     guid: a81999c473761404c93b82916b5399ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Bjorn-LevelBuild.unity
     guid: 32903fb4ebbc6cb429bb760ad50b8b49
   m_configObjects:

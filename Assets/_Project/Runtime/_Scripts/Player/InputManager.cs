@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VInspector.Libs;
 #endregion
 
 public class InputManager : MonoBehaviour
@@ -56,7 +55,7 @@ public class InputManager : MonoBehaviour
         breadcrumbTarget = target;
     }
 
-
+    bool attackHeld;
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -64,16 +63,25 @@ public class InputManager : MonoBehaviour
             switch (player.Weapon.EquippedWeapon)
             {
                 case Weapon.Weapons.Staff:
-                    player?.Weapon.RangedAttack();
                     break;
 
                 case Weapon.Weapons.Dagger:
-                    player?.Weapon.Attack();
+                    player.Weapon.StartCoroutine(player.Weapon.Attack());
                     break;
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        if (context.started)
+        {
+            attackHeld = true;
+        }
+
+        if (context.canceled)
+        {
+            attackHeld = false;
         }
     }
 
@@ -115,8 +123,30 @@ public class InputManager : MonoBehaviour
         trail.Init(breadcrumbTarget, player.transform);
     }
 
-    public void OnSprint(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
-        // not currently used, or maybe ever
+        if (context.performed)
+        {
+            
+        }
+    }
+
+    void FixedUpdate() //I'm so sorry for my sins!!!!!  // alex: LOL
+    {
+        if (attackHeld == true)
+        {
+            switch (player.Weapon.EquippedWeapon)
+            {
+                case Weapon.Weapons.Staff:
+                    player?.Weapon.RangedAttack();
+                    break;
+
+                case Weapon.Weapons.Dagger:
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

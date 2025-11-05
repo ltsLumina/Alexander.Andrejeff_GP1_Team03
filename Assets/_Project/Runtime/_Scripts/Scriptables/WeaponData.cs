@@ -10,6 +10,7 @@ public class WeaponData : ScriptableObject
 	
 	[Header("Visuals")]
 	[SerializeField] Mesh mesh;
+	[SerializeField] Material material;
 	
 	[Header("Stats")]
 	[Range(1, 20)]
@@ -30,6 +31,8 @@ public class WeaponData : ScriptableObject
 
 	public float AttackCooldown => attackCooldown;
 	public Mesh Mesh => mesh;
+	public Material Material => material;
+
 	public Weapon.Weapons WeaponType => weapon;
 
 	void OnEnable()

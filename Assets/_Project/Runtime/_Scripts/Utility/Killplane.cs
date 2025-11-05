@@ -6,14 +6,6 @@ public class Killplane : MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageable damageable))
         {
-            if (other.TryGetComponent(out CharacterController controller))
-            {
-                controller.enabled = false;
-                controller.transform.position = new Vector3(0, 30, 0);
-                controller.enabled = true;
-                return;
-            }
-            
             damageable.TakeDamage(float.MaxValue);
             Logger.LogWarning("Killplane activated on: " + other.name, this, "Killplane");
 

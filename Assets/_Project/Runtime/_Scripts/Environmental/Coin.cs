@@ -1,7 +1,4 @@
-using System.Collections.ObjectModel;
-using Unity.VisualScripting;
 using UnityEngine;
-using VHierarchy.Libs;
 
 public class Coin : MonoBehaviour
 {

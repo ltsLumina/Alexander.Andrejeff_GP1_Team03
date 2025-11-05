@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VHierarchy.Libs;
 #endregion
 
 public class PlayerHealth : MonoBehaviour
@@ -13,12 +12,35 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] float maxHealth = 100;
     [SerializeField] float currentHealth = 100;
+    [SerializeField] RoomRespawnController respawner;
+    [SerializeField] PlayerRespawnable player;
     public float MaxHealth => maxHealth;
     public float CurrentHealth => currentHealth;
 
     public bool IsDead => currentHealth <= 0;
+    Transform checkpoint;
 
     float previousHealth;
+
+    private void OnEnable()
+    {
+        RoomRespawnController.OnNewCheckpoint += BackToCheckpoint;
+    }
+
+    private void OnDisable()
+    {
+        RoomRespawnController.OnNewCheckpoint -= BackToCheckpoint;
+    }
+
+    void BackToCheckpoint(Transform backheckpoint)
+    {
+        checkpoint = backheckpoint;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C)) TakeDamage(float.MaxValue);
+    }
 
     public void IncreaseMaxHealth(float amount, bool refreshCurrentHealth)
     {
@@ -46,9 +68,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (IsDead)
         {
-            GetComponentInChildren<PlayerInput>().actions.Disable();
+            respawner.RespawnPlayer(player, checkpoint);
+            currentHealth = maxHealth;
             Debug.Log("Player died");
-            OnPlayerDied?.Invoke();
+            OnMaxHealthIncreased?.Invoke(maxHealth, maxHealth, true);
+            //IncreaseHealth(currentHealth);
 
             // Do game over screen
         }

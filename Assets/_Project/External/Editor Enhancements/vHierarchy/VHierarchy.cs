@@ -472,11 +472,11 @@ public static class VHierarchy
 
             var sv = SceneView.lastActiveSceneView;
 
-            if (!sv || !sv.hasFocus) sv = SceneView.sceneViews.ToArray().FirstOrDefault(r => (r as SceneView).hasFocus) as SceneView;
+            if (!sv || !sv.hasFocus) sv = SceneView.sceneViews.ToArray().FirstOrDefault(r => ((SceneView) r).hasFocus) as SceneView;
 
-            if (!sv) (sv = SceneView.lastActiveSceneView ?? SceneView.sceneViews[0] as SceneView).Focus();
+            if (!sv) (sv = SceneView.lastActiveSceneView ?? SceneView.sceneViews[0] as SceneView)?.Focus();
 
-            sv.Frame(hoveredGo.GetBounds(), false);
+            sv?.Frame(hoveredGo.GetBounds(), false);
         }
 
         toggleExpanded();

@@ -44,7 +44,20 @@ public class LevelSelector : EditorWindow
 
 			using (new EditorGUILayout.HorizontalScope("box"))
 			{
-				using (new EditorGUILayout.VerticalScope()) { playFromHere = EditorGUILayout.ToggleLeft("Set player position to Selected Level root", playFromHere, new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter }, Width(400), Height(20)); }
+				using (new EditorGUILayout.VerticalScope())
+				{
+					playFromHere = EditorGUILayout.ToggleLeft("Set player position to Selected Level root", playFromHere, new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter }, Width(400), Height(20)); 
+					if (Button(("Select Player"), new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter }, Width(100), Height(30)))
+					{
+						var player = FindFirstObjectByType<PlayerController>();
+						if (player != null)
+						{
+							EditorGUIUtility.PingObject(player.gameObject);
+							Selection.activeObject = player.gameObject;
+						}
+					}
+				}
+				
 			}
 
 			foreach (var tag in tags)

@@ -23,5 +23,7 @@ public class WeaponLootable : MonoBehaviour, IInteractable
         var player = FindFirstObjectByType<PlayerController>();
 
         player.Weapon.Equip(data);
+
+        Destroy(gameObject);
     }
 }

@@ -69,6 +69,19 @@ public class PlayerController : MonoBehaviour, IDamageable
 	Music fallingSFX;
 	Sound hurtSFX;
 
+	bool hasRelic = false;
+	public bool HasRelic
+	{
+		get
+		{
+			return hasRelic;
+		}
+		set
+		{
+			hasRelic = value;
+		}
+	}
+
 #if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
@@ -104,6 +117,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 	void Start()
 	{
 		footstepsCement = new Sound(SFX.FootstepsCement);
+		footstepsCement.SetOutput(Output.SFX);
 		footstepsCement.SetLoop(true);
 		footstepsCement.SetVolume(0.25f);
 		footstepsCement.SetSpatialSound();
@@ -111,10 +125,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 		footstepsCement.Play();
 
 		fallingSFX = new Music(Track.FallingSlow);
+		fallingSFX.SetOutput(Output.SFX);
 		fallingSFX.SetVolume(0.5f);
 		fallingSFX.SetFollowTarget(transform);
 
 		hurtSFX = new Sound(SFX.Minecraft);
+		hurtSFX.SetOutput(Output.SFX);
 		hurtSFX.SetVolume(0.7f);
 		hurtSFX.SetFollowTarget(transform);
 		
@@ -128,13 +144,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			controller.enabled = false;
-			transform.position = new Vector3(-25, 1, 0.5f);
-			controller.enabled = true;
-		}
-		
 		rotateCamera = Mathf.RoundToInt(inputs.MoveInput.x);
 		movePlayer = Mathf.RoundToInt(inputs.MoveInput.y);
 		

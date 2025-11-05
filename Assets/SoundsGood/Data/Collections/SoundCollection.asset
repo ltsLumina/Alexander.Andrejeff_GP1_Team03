@@ -100,3 +100,23 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1c2229125b093974790a7d966cc79eb7, type: 3}
     compressionPreset: 1
     forceToMono: 0
+  - tag: AmbientCry
+    clips:
+    - {fileID: 8300000, guid: 0b98f2dde0e537346b5430772c439a2f, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: AmbientShriek
+    clips:
+    - {fileID: 8300000, guid: 69ada0eaa86b8604da989987bcee4b20, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: StaffFire
+    clips:
+    - {fileID: 8300000, guid: 2d5db899746be594e9f6c2e2726d820b, type: 3}
+    compressionPreset: 1
+    forceToMono: 0
+  - tag: DaggerShoot
+    clips:
+    - {fileID: 8300000, guid: 2bd06751a45e4d34e8db90a8cb718557, type: 3}
+    compressionPreset: 1
+    forceToMono: 0

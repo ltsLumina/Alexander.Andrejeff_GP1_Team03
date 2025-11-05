@@ -27,18 +27,8 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] float speedMultiplier;
 
     LootIndicator lootIndicator;
-    bool isOpened = false;
-    public bool IsOpened
-    {
-        get
-        {
-            return isOpened;
-        }
-        set
-        {
-            isOpened = value;
-        }
-    }
+
+    public bool IsOpened { get; private set; }
 
     public InteractableType Type => InteractableType.Chest;
 
@@ -57,7 +47,7 @@ public class Chest : MonoBehaviour, IInteractable
         {
             Instantiate(rewardPrefab, transform.position + Vector3.up, rewardPrefab.transform.rotation);
             gameObject.layer = 0; // non-interactable layer
-            isOpened = true;
+            IsOpened = true;
 
             if (isRelicChest)
             {

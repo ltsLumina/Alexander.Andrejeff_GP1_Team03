@@ -15,7 +15,6 @@ public class ModelSwitcher : MonoBehaviour
 		Transform mesh = type switch
 		{ Enemy.EnemyType.Octopus => transform.GetChild(0),
 		  Enemy.EnemyType.Banshee => transform.GetChild(1),
-		  Enemy.EnemyType.Debug   => transform.GetChild(0),
 		  _                       => throw new ArgumentOutOfRangeException() };
 
 		mesh.gameObject.SetActive(true);
@@ -32,7 +31,6 @@ public class ModelSwitcher : MonoBehaviour
 		Transform mesh = type switch
 		{ Enemy.EnemyType.Octopus => transform.GetChild(0),
 		  Enemy.EnemyType.Banshee => transform.GetChild(1),
-		  Enemy.EnemyType.Debug   => transform.GetChild(0),
 		  _                       => throw new ArgumentOutOfRangeException() };
 
 		mesh.gameObject.SetActive(true);

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 651190181602031367}
   - component: {fileID: 7278185365755491288}
   - component: {fileID: -8947657449691142143}
-  - component: {fileID: 7267114854111416809}
   - component: {fileID: 2900846126272524635}
+  - component: {fileID: 7908863807841846115}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299713407187146450}
-  m_Mesh: {fileID: 3459603051315571903, guid: bfca7f58d277b1344a1ad9a92d41e719, type: 3}
+  m_Mesh: {fileID: 3459603051315571903, guid: 7dd7ee7c87e3bd145abe40871d60cf53, type: 3}
 --- !u!23 &651190181602031367
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: bfca7f58d277b1344a1ad9a92d41e719, type: 3}
+  - {fileID: 2100000, guid: 030399dbd7a6980418e515126fcbcf6e, type: 2}
   - {fileID: 3876542345217667742, guid: bfca7f58d277b1344a1ad9a92d41e719, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -139,28 +139,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &7267114854111416809
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299713407187146450}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3459603051315571903, guid: bfca7f58d277b1344a1ad9a92d41e719, type: 3}
 --- !u!208 &2900846126272524635
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -177,3 +155,24 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0.014}
   m_TimeToStationary: 3
+--- !u!65 &7908863807841846115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299713407187146450}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020343345, y: 0.0023307842, z: 0.028906036}
+  m_Center: {x: 0.00040508667, y: 0.0003188517, z: 0.014330257}

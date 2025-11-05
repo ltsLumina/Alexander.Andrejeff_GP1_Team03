@@ -1,23 +1,26 @@
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class Options_Menu : MonoBehaviour
 {
+    [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionsMenu;
-    [SerializeField] private GameObject firstObject;
+    
+    [Header("Settings")]
     [SerializeField] private Slider mySliderValueSound;
     [SerializeField] private Slider mySliderValueBrightness;
     [SerializeField] private AudioMixer mixer;
+    [SerializeField] private Image brightnessFilter;
     private void OnEnable()
     {
-        EventSystem.current.SetSelectedGameObject(firstObject);
+        EventSystem.current.SetSelectedGameObject(mySliderValueSound.gameObject);
+        mySliderValueSound.value = PlayerPrefs.GetFloat("Volume");
+        mySliderValueBrightness.value = PlayerPrefs.GetFloat("Brightness");
+        onMasterChanged();
+        onBrightnessChanged();
     }
     public void BackButton()
     {
@@ -32,10 +35,10 @@ public class Options_Menu : MonoBehaviour
         PlayerPrefs.SetFloat("Volume", sliderValue);
     }
 
-        public void onBrightnessChanged()
+    public void onBrightnessChanged()
     {
         float sliderValue = mySliderValueBrightness.value;
-       ////////////////////////////////////////////////
+        brightnessFilter.color = new Color(0, 0, 0, 1 - sliderValue / 22);
         PlayerPrefs.SetFloat("Brightness", sliderValue);
     }
 }

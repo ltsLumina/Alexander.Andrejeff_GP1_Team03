@@ -12,13 +12,12 @@ using Random = UnityEngine.Random;
 #endregion
 
 [SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(SphereCollider))]
-public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
+public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 {
 	public enum EnemyType
 	{
 		Octopus,
 		Banshee,
-		Debug,
 	}
 	
 	[Tab("Enemy")]
@@ -34,6 +33,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[Tooltip("The range at which the enemy can detect the player.")]
 	[SerializeField] public float detectionRange = 31f;
 	[SerializeField] float staggerDuration = 1.5f;
+	[SerializeField] Material octopusDeathMaterial;
+	[SerializeField] Material watcherDeathMaterial;
+	[SerializeField] Material watcherTier2Material;
 	[SerializeField] ParticleSystem hurtVFX;
 	[SerializeField] RoomRegistry room;
 
@@ -50,6 +52,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 	[Tab("NavMesh")]
 	[SerializeField] Transform target;
 
+	bool tier2;
+	
 	NavMeshAgent agent;
 	Animator animator;
 	float attackTimer = 5f;
@@ -112,6 +116,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		{
 			case EnemyType.Octopus:
 				octopusSFX = new (SFX.OctopusWail);
+				octopusSFX.SetOutput(Output.SFX);
 				octopusSFX.SetSpatialSound();
 				octopusSFX.SetFollowTarget(transform);
 				octopusSFX.SetHearDistance(5, 10);
@@ -120,13 +125,11 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 			case EnemyType.Banshee:
 				bansheeSFX = new (SFX.CreatureBanshee);
+				bansheeSFX.SetOutput(Output.SFX);
 				bansheeSFX.SetSpatialSound();
 				bansheeSFX.SetHearDistance(5, 15);
 				bansheeSFX.SetFollowTarget(transform);
 				bansheeSFX.SetVolume(0.1f);
-				break;
-
-			case EnemyType.Debug:
 				break;
 
 			default:
@@ -134,6 +137,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		}
 
 		snarlSFX = new (SFX.CreatureSnarl);
+		snarlSFX.SetOutput(Output.SFX);
 		snarlSFX.SetSpatialSound();
 		snarlSFX.SetHearDistance(attackRange, 10);
 		snarlSFX.SetFollowTarget(transform);
@@ -142,11 +146,13 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		snarlSFX.Play();
 
 		hurtSFX = new (SFX.SliceGush);
+		hurtSFX.SetOutput(Output.SFX);
 		hurtSFX.SetSpatialSound();
 		hurtSFX.SetVolume(0.35f);
 		hurtSFX.SetFollowTarget(transform);
 
 		daggerHurtSFX = new (SFX.DaggerCut);
+		daggerHurtSFX.SetOutput(Output.SFX);
 		daggerHurtSFX.SetSpatialSound();
 		daggerHurtSFX.SetRandomPitch();
 		daggerHurtSFX.SetVolume(0.35f);
@@ -158,9 +164,26 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 	void OnDestroy() => name = $"Enemy | {type.ToString()}";
 
+	public void RankUp()
+	{
+		var renderers = transform.GetChild(1).GetComponentsInChildren<Renderer>();
+		foreach (var rend in renderers)
+		{
+			var mats = rend.materials;
+			for (int i = 0; i < mats.Length; i++)
+			{
+				mats[i] = watcherTier2Material;
+			}
+			rend.materials = mats;
+		}
+
+		agent.speed *= 2;
+	}
+	
 	void Update()
 	{
 		if (!Application.isPlaying) return;
+		if (IsDead) return;
 
 		if (attackTimer >= 0) attackTimer -= Time.deltaTime;
 		if (!target) return;
@@ -239,6 +262,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		{
 			attackTimer = attackCooldown;
 
+			if (IsDead) return;
+
 			StartCoroutine(Attack());
 		}
 	}
@@ -276,10 +301,16 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 		if (source == DamageSource.Player) detectionRange = distanceToPlayer + 5; // TODO: reset detection range if you run away
 
 		ParticleSystem instance = Instantiate(hurtVFX, transform.position, Quaternion.Inverse(transform.rotation));
-		transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
 
-		// ignore this mess - it flashes the enemy red when hurt
-		GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() => { r.material.DOColor(Color.white, "_BaseColor", 0.1f); }).SetLink(gameObject));
+		if (!IsDead)
+		{
+			transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
+
+			// ignore this mess - it flashes the enemy red when hurt
+			var hasBaseColor = GetComponentInChildren<Renderer>().material.HasColor("_BaseColor");
+		if (hasBaseColor) 
+			GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() => { r.material.DOColor(Color.white, "_BaseColor", 0.1f); }).SetLink(gameObject));
+		}
 
 		hurtSFX.Play();
 
@@ -316,9 +347,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
 
 				case EnemyType.Banshee:
 					bansheeSFX.Play();
-					break;
-
-				case EnemyType.Debug:
 					break;
 
 				default:
@@ -362,15 +390,35 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
             damageable.TakeDamage(damage);
         }
 	}
-
+	
+	public bool IsDead => health <= 0;
+	
 	void Death()
 	{
 		Logger.LogWarning("Enemy died.", this, $"{name}");
 		room.Unregister(this);
 
 		snarlSFX.Stop();
-		gameObject.SetActive(false);
-		Destroy(gameObject, 0.1f);
+
+		col.enabled = false;
+		
+		transform.DOScaleY(0, 1.5f).SetLink(gameObject);
+		
+		var index = type == EnemyType.Octopus ? 0 : 1;
+		var renderers = transform.GetChild(index).GetComponentsInChildren<Renderer>();
+		var deathMaterial = type == EnemyType.Octopus ? octopusDeathMaterial : watcherDeathMaterial;
+		
+		foreach (var rend in renderers)
+		{
+		    var mats = rend.materials;
+		    for (int i = 0; i < mats.Length; i++)
+		    {
+		        mats[i] = deathMaterial;
+		    }
+		    rend.materials = mats;
+		}
+		
+		Destroy(gameObject, 1.5f);
 	}
 
 	public void Knockback(float knockbackForce)
@@ -420,4 +468,9 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset
     void OnEnable() => room?.Register(this);
 
 	void OnDisable() => room?.Unregister(this);
+
+    public void Interact()
+    {
+		Debug.Log("Default Enemy Interact implementation.");
+    }
 }

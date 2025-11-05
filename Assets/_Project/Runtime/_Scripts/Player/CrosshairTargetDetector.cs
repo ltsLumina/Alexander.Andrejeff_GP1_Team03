@@ -34,7 +34,7 @@ public class CrosshairTargetDetector : MonoBehaviour
 
                 if (interactable.InteractableType == InteractableType.Enemy)
                 {
-                    Debug.Log(InteractableType.Enemy + " hit");
+                    //Debug.Log(InteractableType.Enemy + " hit");
                     OnTargetChanged?.Invoke(interactable);
                 }
             }
@@ -44,7 +44,7 @@ public class CrosshairTargetDetector : MonoBehaviour
                 {
                     lastHitObject = null;
                     OnTargetChanged?.Invoke(interactable);
-                    Debug.Log("No interactable target hit");
+                    //Debug.Log("No interactable target hit");
                 }
             }
         }
@@ -53,8 +53,8 @@ public class CrosshairTargetDetector : MonoBehaviour
             if (lastHitObject != null)
             {
                 lastHitObject = null;
-                OnTargetChanged?.Invoke(interactable);
-                Debug.Log("No interactable target hit");
+                OnTargetChanged?.Invoke(null);
+                //Debug.Log("No interactable target hit");
             }
         }
 

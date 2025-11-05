@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outputs:
   - name: Master
-    output: {fileID: 24300002, guid: dc7a144d3bbefb74d8ec8d86d785dd7a, type: 2}
+    output: {fileID: 24300002, guid: 256c2352e25022345ad1410aa4f20201, type: 2}
   - name: SFX
-    output: {fileID: -7076932017829611585, guid: dc7a144d3bbefb74d8ec8d86d785dd7a, type: 2}
+    output: {fileID: -7076932017829611585, guid: 256c2352e25022345ad1410aa4f20201, type: 2}
   - name: Music
-    output: {fileID: 759368523459424049, guid: dc7a144d3bbefb74d8ec8d86d785dd7a, type: 2}
+    output: {fileID: 759368523459424049, guid: 256c2352e25022345ad1410aa4f20201, type: 2}

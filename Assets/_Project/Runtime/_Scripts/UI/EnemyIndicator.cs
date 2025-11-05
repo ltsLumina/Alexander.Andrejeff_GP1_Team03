@@ -6,7 +6,7 @@ public class EnemyIndicator : MonoBehaviour
 {
     [Header("References")]
     public Image arrow;                   // Disabled template in Canvas
-    public DetectEnemies detectEnemies;   // Drag player’s DetectEnemies here
+    public DetectEnemies detectEnemies;   // Drag playerï¿½s DetectEnemies here
 
     [Header("Padding")]
     [SerializeField] float edgePadding = 24f;
@@ -56,6 +56,12 @@ public class EnemyIndicator : MonoBehaviour
         // Update indicators
         for (int i = 0; i < buffer.Count; i++)
         {
+            if (enemies[i].enemy == null)
+            {
+                enemyIndicators[i].enabled = false;
+                continue;
+            }
+            
             float angle = enemies[i].angle;
             var rect = enemyIndicators[i].rectTransform;
 

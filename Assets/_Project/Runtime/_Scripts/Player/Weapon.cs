@@ -1,5 +1,6 @@
 #region
 using System;
+using System.Collections;
 using JetBrains.Annotations;
 using Lumina.Essentials.Attributes;
 using MelenitasDev.SoundsGood;
@@ -19,6 +20,7 @@ public class Weapon : MonoBehaviour
 	[UsedImplicitly]
 	[SerializeField] Weapons equippedWeapon;
 	[SerializeField] WeaponData weaponData;
+	[SerializeField] Animator animator;
 
 	[Header("Cooldown")]
 	[SerializeField, ReadOnly] float attackTime;
@@ -40,6 +42,9 @@ public class Weapon : MonoBehaviour
 
 	[Tab("Settings")]
 	[SerializeField] MeshFilter meshFilter;
+	[SerializeField] MeshRenderer meshRenderer;
+	[SerializeField] RuntimeAnimatorController daggerAnimatorController;
+	[SerializeField] RuntimeAnimatorController staffAnimatorController;
 	[SerializeField] Camera fpsCamera;
 
 	[Header("Debug")]
@@ -70,22 +75,42 @@ public class Weapon : MonoBehaviour
 		Gizmos.DrawWireCube(Vector3.zero, kickHalfExtents * 2f);
 	}
 
+	Sound daggerShoot;
+	Sound staffFire;
+
 	void Start()
 	{
 		Equip(weaponData);
 
 		#region Sound
 		kickSFX = new Sound(SFX.Kick);
+		kickSFX.SetOutput(Output.SFX);
 		kickSFX.SetVolume(0.3f);
 		kickSFX.SetRandomPitch();
 		kickSFX.SetSpatialSound();
 		kickSFX.SetFollowTarget(transform);
 
 		kickAltSFX = new Sound(SFX.KickAlt);
+		kickAltSFX.SetOutput(Output.SFX);
 		kickAltSFX.SetVolume(0.3f);
 		kickAltSFX.SetRandomPitch();
 		kickAltSFX.SetSpatialSound();
 		kickAltSFX.SetFollowTarget(transform);
+		#endregion
+
+		#region Weapon
+		daggerShoot = new Sound(SFX.DaggerShoot);
+		daggerShoot.SetOutput(Output.SFX);
+		daggerShoot.SetVolume(0.2f);
+		daggerShoot.SetSpatialSound();
+		daggerShoot.SetFollowTarget(transform);
+		daggerShoot.SetPitch(0.5f);
+		
+		staffFire = new Sound(SFX.StaffFire);
+		staffFire.SetOutput(Output.SFX);
+		staffFire.SetVolume(0.15f);
+		staffFire.SetSpatialSound();
+		staffFire.SetFollowTarget(transform);
 		#endregion
 	}
 
@@ -98,13 +123,43 @@ public class Weapon : MonoBehaviour
 	public void Equip(WeaponData data)
 	{
 		equippedWeapon = data.WeaponType;
+
+		var pivot = transform.GetChild(0);
+		var daggerObj = pivot.GetChild(0);
+		var staffObj = pivot.GetChild(1);
+
+		switch (equippedWeapon)
+		{
+			case Weapons.Dagger:
+				daggerObj.gameObject.SetActive(true);
+				staffObj.gameObject.SetActive(false);
+				break;
+
+			case Weapons.Staff:
+				daggerObj.gameObject.SetActive(false);
+				staffObj.gameObject.SetActive(true);
+				break;
+
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+		
 		weaponData = data;
-		meshFilter.mesh = data.Mesh;
 	}
 
 	public void RangedAttack()
 	{
 		if (attackTime > 0f) return;
+
+		var animator = GetComponentInChildren<Animator>();
+
+		animator.runtimeAnimatorController = equippedWeapon switch
+		{ Weapons.Dagger => daggerAnimatorController,
+		  Weapons.Staff  => staffAnimatorController,
+		  _              => throw new ArgumentOutOfRangeException() };
+
+		animator.SetTrigger("attack");
+		staffFire.Play();
 
 		Vector3 spawnPos = transform.position;
 		var projectile = Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation);
@@ -112,11 +167,37 @@ public class Weapon : MonoBehaviour
 		attackTime = weaponData.AttackCooldown;
 	}
 
-	public void Attack()
+	void FixedUpdate()
 	{
-		if (attackTime > 0f) return;
+		if (FindFirstObjectByType<PlayerController>().HasRelic)
+		{
+			attackTime /= 2; // relic effect: halve attack cooldown
+			kickTime /= 2;   // relic effect: halve kick cooldown
+			
+			animator.SetFloat("speedMult", 2f);
+		}
+	}
 
-		if (!GetNearestHitCollider(out Collider[] hitColliders, out Collider nearestHit)) return; // no hits
+	public IEnumerator Attack()
+	{
+		if (attackTime > 0f) yield break;
+
+		var animator = GetComponentInChildren<Animator>();
+		animator.runtimeAnimatorController = equippedWeapon switch
+		{
+			Weapons.Dagger => daggerAnimatorController,
+			Weapons.Staff => staffAnimatorController,
+			_ => throw new ArgumentOutOfRangeException()
+		};
+		
+		animator.SetTrigger("attack");
+		daggerShoot.SetRandomPitch(new (0.45f, 0.55f));
+		daggerShoot.Play();
+		attackTime = weaponData.AttackCooldown;
+
+		yield return new WaitForSeconds(0.2f);
+
+		if (!GetNearestHitCollider(out Collider[] hitColliders, out Collider nearestHit)) yield break; // no hits
 
 		if (hitColliders.Length > 1)
 		{
@@ -134,21 +215,28 @@ public class Weapon : MonoBehaviour
 			if (col.transform.TryGetComponent(out IDamageable damageable))
 			{
 				damageable.TakeDamage(weaponData.Damage);
-
-				attackTime = weaponData.AttackCooldown;
-
 				//Logger.LogWarning("Dealt " + damage + " damage to " + col.transform.name, this, "Weapon");
 			}
 		}
 
-		if (Array.TrueForAll(hitColliders, c => !c.transform.TryGetComponent<IDamageable>(out _))) Logger.LogWarning("No damageable component found on any hit colliders. \nThis likely indicates an issue.", this, "Weapon");
+		if (Array.TrueForAll(hitColliders, c => !c.transform.TryGetComponent<IDamageable>(out _))) 
+			Logger.LogWarning("No damageable component found on any hit colliders. \nThis likely indicates an issue.", this, "Weapon");
 	}
-
+	
 	public void Kick()
 	{
 		if (kickTime > 0f) return;
+		
+		animator.SetTrigger("kick");
+		
+		StartCoroutine(PerformKick());
+	}
 
-		if (!GetKickColliders(out Collider[] kickColliders)) return; // no hits
+	IEnumerator PerformKick()
+	{
+		yield return new WaitForSeconds(0.1f);
+
+		if (!GetKickColliders(out Collider[] kickColliders)) yield break; // no hits
 
 		Enemy enemy = null;
 		Crate crate = null;

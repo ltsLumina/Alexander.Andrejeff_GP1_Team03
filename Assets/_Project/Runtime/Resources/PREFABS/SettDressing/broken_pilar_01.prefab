@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7df1deb9f79476d47a7c780181ca4048, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8f7e6b7bddbee1645ad55a2d5ac7a072, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 7df1deb9f79476d47a7c780181ca4048, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1678737288442443064, guid: 9920a23f3c788c84b92e48674777f54c, type: 3}
     - target: {fileID: 919132149155446097, guid: 7df1deb9f79476d47a7c780181ca4048, type: 3}
       propertyPath: m_Name
       value: broken_pilar_01

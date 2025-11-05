@@ -1,11 +1,10 @@
 using System.Collections;
 using Abiogenesis3d;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Pause_Menu : MonoBehaviour
@@ -14,8 +13,10 @@ public class Pause_Menu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject AccessibilityMenu;
+    [SerializeField] private GameObject victoryMenu;
 
     [Header("PauseMenuComponents")]
+    [SerializeField] private GameObject restartingText;
     [SerializeField] private GameObject continueButton;
 
     [Header("OptionsMenuComponents")]
@@ -33,9 +34,24 @@ public class Pause_Menu : MonoBehaviour
     [SerializeField] private TMP_Text PixelFilterText;
     [SerializeField] private Material ColorBlindMat;
 
+    [Header("VictoryComponents")]
+    [SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TMP_Text coinsText;
+    [SerializeField] private GameObject mainMenuButton;
+
+    [SerializeField] string[] victoryTexts = { "Victory is yours!" };
+
+
+
     [Header("Scripts")]
     [SerializeField] private UPixelator uPixelator;
+    [SerializeField] private GameManager gm;
     [SerializeField] private CameraScript cameraScript;
+
+    private bool restartingProgress = false;
+    private Color colour = new Color(1, 1, 1, 0);
+
+
     void Awake()
     {
         mySliderValueSound.value = PlayerPrefs.GetFloat("Volume");
@@ -60,19 +76,34 @@ public class Pause_Menu : MonoBehaviour
             screenShakeToggle.isOn = false;
 
         onScreenShakeToggleChanged();
+
+        PlayerPrefs.SetString("ApplicationRunned", "first");
     }
 
     void Update()
     {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!FOR EDITOR PURPOSES
-        if (Input.GetKeyDown(KeyCode.R))
+
+    }
+
+    public void VictoryMenuTriggered()
+    {
+        int randomInt = Random.Range(0, victoryTexts.Length);
+        EventSystem.current.SetSelectedGameObject(mainMenuButton);
+        Time.timeScale = 0;
+        victoryMenu.SetActive(true);
+        victoryText.text = victoryTexts[randomInt];
+        coinsText.text = $"Points : {gm.playerCoins}";
+    }
+    public void PauseMenu()
+    {
+        if (Time.timeScale != 0)
         {
             pauseMenu.SetActive(true);
             EventSystem.current.SetSelectedGameObject(continueButton);
             Time.timeScale = 0;
         }
-    }
 
+    }
     public void ContinueButton()
     {
         pauseMenu.SetActive(false);
@@ -93,17 +124,56 @@ public class Pause_Menu : MonoBehaviour
         AccessibilityMenu.SetActive(true);
     }
 
+    public void RestartDeselect()
+    {
+            restartingText.GetComponent<TMP_Text>().color = new Color(1, 1, 1, 0);
+            colour = new Color(1, 1, 1, 0);
+            restartingProgress = false;
+            StopAllCoroutines();
+    }
+    public void RestartButton()
+    {
+        if (Input.anyKey)
+        {
+  
+            if (!restartingProgress)
+                StartCoroutine(Restarting());
+        }
+        else
+        {
+            StopAllCoroutines();
+            restartingText.GetComponent<TMP_Text>().color = new Color(1, 1, 1, 0);
+            colour = new Color(1, 1, 1, 0);
+            restartingProgress = false;
+        }
+    }
+    IEnumerator Restarting()
+    {
+        restartingProgress = true;
+        yield return new WaitForSecondsRealtime(0.2f);
+        for (int i = 0; i < 180; i++)
+        {
+            Debug.Log(colour);
+            colour = new Color(1, 1, 1, colour.a + 1f / 180f);
+            restartingText.GetComponent<TMP_Text>().color = colour;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
+
+
     public void onMasterChanged()
     {
         float sliderValue = mySliderValueSound.value;
-        mixer.SetFloat("masterVolume", (sliderValue - 1) * 80);
+        mixer.SetFloat("Master", (sliderValue - 1) * 20);
         PlayerPrefs.SetFloat("Volume", sliderValue);
     }
 
     public void onBrightnessChanged()
     {
         float sliderValue = mySliderValueBrightness.value;
-        brightnessFilter.color = new Color(0, 0, 0, sliderValue / 25.5f);
+        brightnessFilter.color = new Color(0, 0, 0, 1 - sliderValue / 22);
         PlayerPrefs.SetFloat("Brightness", sliderValue);
     }
 
@@ -168,7 +238,7 @@ public class Pause_Menu : MonoBehaviour
                 PlayerPrefs.SetInt("PixelFilterValue", (int)pixelFilterSlider.value);
                 break;
         }
-        uPixelator.pixelMultiplier = PlayerPrefs.GetInt("PixelFilterValue");
+        uPixelator.pixelMultiplier = PlayerPrefs.GetInt("PixelFilterValue", 2);
     }
     
         public void onBobToggleChanged()
@@ -196,6 +266,18 @@ public class Pause_Menu : MonoBehaviour
         currentmenu.SetActive(false);
         pauseMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(continueButton);
+    }
+
+    public void MainMenuButton()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+
+    public void RestartForVictory()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
     }
 
     private static readonly Color[,] colors = new Color[,]

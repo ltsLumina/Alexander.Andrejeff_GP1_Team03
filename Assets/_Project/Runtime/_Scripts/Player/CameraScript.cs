@@ -1,5 +1,4 @@
 using System.Linq;
-using UnityEditor.Rendering;
 using UnityEngine;
 using VInspector;
 
@@ -31,7 +30,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] float aimAssistMinDistance = 10f;
     // Aim assist camera reset
     [SerializeField] float aimAssistTimer = 1.5f;
-    float aimAssistReset = 1.5f;
+    [SerializeField] float aimAssistReset = 0.5f;
     Quaternion defaultRotation;
     [EndIf]
 
@@ -141,14 +140,18 @@ public class CameraScript : MonoBehaviour
             if (enemies.Length == 0) return;
 
             var closestEnemy = enemies[0];
-            Vector3 directionToEnemy = (closestEnemy.transform.position - parent.position).normalized;
-            float angleToEnemy = Vector3.Angle(parent.forward, directionToEnemy);
-            Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
 
-            if (angleToEnemy < aimAssistAngleThreshold && Vector3.Distance(parent.position, closestEnemy.transform.position) < aimAssistMinDistance)
+            if (!closestEnemy.IsDead)
             {
-                parent.rotation = Quaternion.Slerp(parent.rotation, targetRotation, Time.deltaTime * 2f);
-                aimAssistTimer = aimAssistReset;
+                Vector3 directionToEnemy = (closestEnemy.transform.position - parent.position).normalized;
+                float angleToEnemy = Vector3.Angle(parent.forward, directionToEnemy);
+                Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
+
+                if (angleToEnemy < aimAssistAngleThreshold && Vector3.Distance(parent.position, closestEnemy.transform.position) < aimAssistMinDistance)
+                {
+                    parent.rotation = Quaternion.Slerp(parent.rotation, targetRotation, Time.deltaTime * 2f);
+                    aimAssistTimer = aimAssistReset;
+                }
             }
             
             aimAssistTimer -= Time.deltaTime;

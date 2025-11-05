@@ -1,4 +1,5 @@
 // ---------- Contracts ----------
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,6 @@ public interface IEnemyReset
 
 public class RoomRegistry : MonoBehaviour
 {
-
     public List<IEnemyReset> enemies = new();
     Light clearLight;
 

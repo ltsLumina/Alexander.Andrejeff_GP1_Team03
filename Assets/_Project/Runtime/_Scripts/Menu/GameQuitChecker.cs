@@ -6,7 +6,7 @@ public class GameQuitChecker : MonoBehaviour
     [ContextMenu("Run Prefs Reset")]public void SettingsReset()
     {
         PlayerPrefs.SetFloat("Volume", 1);
-        PlayerPrefs.SetFloat("Brightness", 0);
+        PlayerPrefs.SetFloat("Brightness", 22);
         PlayerPrefs.SetFloat("ColorBlindlessValue", 0);
         PlayerPrefs.SetInt("PixelFilterValue", 5);
         PlayerPrefs.SetInt("BobSetting", 1);

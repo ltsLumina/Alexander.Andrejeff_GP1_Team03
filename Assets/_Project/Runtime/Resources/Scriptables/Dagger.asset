@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weapon: 0
-  mesh: {fileID: 1998105296686543947, guid: dbf213621aa684e458812b1232360659, type: 3}
+  mesh: {fileID: 4300000, guid: 41e96d6e9bfbef344bff89a7b6e32e6f, type: 2}
+  material: {fileID: 2100000, guid: 9139da8848905524c88d4ededece8595, type: 2}
   damage: 1
   projectilePrefab: {fileID: 0}
-  attackRange: 2
+  attackRange: 3
   attackSize: {x: 2, y: 2.5}
-  attackCooldown: 1
+  attackCooldown: 0.5

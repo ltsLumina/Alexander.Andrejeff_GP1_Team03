@@ -5,10 +5,12 @@ using UnityEngine;
 public class SawbladeController : MonoBehaviour
 {
     [SerializeField] GameObject MainSaw;
+    [SerializeField] GameObject mainMesh;
     [SerializeField] Transform PointA;
     [SerializeField] Transform PointB;
-    [SerializeField] float moveTime = 250f;
-    [SerializeField] float stayTime = 100f;
+    [SerializeField] float moveTime = 5f;
+    [SerializeField] float stayTime = 4f;
+    [SerializeField] float turnSpeed = 2f;
     [SerializeField] float damage = 2;
     [Range(0.5f, 3f)]
     [SerializeField] float cooldown = 0.5f;
@@ -18,7 +20,10 @@ public class SawbladeController : MonoBehaviour
     private bool positionFlip = false;
     float timer;
     bool canActivate;
-    private List<Collider> currentTargets = new();
+    private List<GameObject> currentTargets = new();
+    private ChildCollisionReporter ChildCollider;
+    private float convertedStayTime;
+    private float convertedMoveTime;
     Vector3 pointAPos;
     Vector3 pointBPos;
 
@@ -26,15 +31,24 @@ public class SawbladeController : MonoBehaviour
     {
         pointAPos = PointA.position;
         pointBPos = PointB.position;
+
+        ChildCollider = GetComponentInChildren<ChildCollisionReporter>();
+        ChildCollider.onCollisionEvent += HandleChildCollision;
+
+        convertedStayTime = stayTime * 50f;
+        convertedMoveTime = moveTime * 50f;
+
     }
 
     void FixedUpdate()
     {
-        MainSaw.transform.position = pointAPos * positionCounter / moveTime + pointBPos * (moveTime - positionCounter) / moveTime;
+        MainSaw.transform.position = pointAPos * positionCounter / convertedMoveTime + pointBPos * (convertedMoveTime - positionCounter) / convertedMoveTime;
+
+        mainMesh.transform.rotation = mainMesh.transform.rotation * Quaternion.Euler(0f, 0f, turnSpeed);
 
         if (!positionFlip)
         {
-            if (moveTime <= positionCounter)
+            if (convertedMoveTime <= positionCounter)
             {
                 stayCounter -= 1;
                 if (stayCounter <= 0)
@@ -45,7 +59,7 @@ public class SawbladeController : MonoBehaviour
             else
             {
                 positionCounter += 1f;
-                stayCounter = stayTime;
+                stayCounter = convertedStayTime;
             }
         }
         else
@@ -61,7 +75,7 @@ public class SawbladeController : MonoBehaviour
             else
             {
                 positionCounter -= 1f;
-                stayCounter = stayTime;
+                stayCounter = convertedStayTime;
             }
         }
     }
@@ -88,16 +102,18 @@ public class SawbladeController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void HandleChildCollision(Collider collision, bool entered)
     {
-        if (!currentTargets.Contains(other))
-        {
-            currentTargets.Add(other);
-        }
-    }
+        GameObject other = collision.gameObject;
 
-    void OnTriggerExit(Collider other)
-    {
-        currentTargets.Remove(other);
+        if (entered)
+        {
+            if (!currentTargets.Contains(other))
+                currentTargets.Add(other);
+        }
+        else
+        {
+            currentTargets.Remove(other);
+        }
     }
 }

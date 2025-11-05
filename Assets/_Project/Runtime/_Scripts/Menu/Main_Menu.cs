@@ -10,13 +10,21 @@ public class Main_Menu : MonoBehaviour
     [SerializeField] private GameObject firstObject;
     [SerializeField] private GameObject accessibilityMenu;
 
+
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+
+            FindAnyObjectByType<GameQuitChecker>().SettingsReset();
+    }
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(firstObject);
     }
     public void PlayButton()
     {
-
+        SceneManager.LoadScene(1);
     }
 
     public void AccessibilityButton()
@@ -27,7 +35,6 @@ public class Main_Menu : MonoBehaviour
 
     public void OptionsButton()
     {
-        //Get Options
         mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }

@@ -18,5 +18,9 @@ namespace MelenitasDev.SoundsGood
 		public static readonly SFX KickAlt = new SFX("KickAlt");
 		public static readonly SFX OctopusWail = new SFX("OctopusWail");
 		public static readonly SFX Minecraft = new SFX("Minecraft");
+		public static readonly SFX AmbientCry = new SFX("AmbientCry");
+		public static readonly SFX AmbientShriek = new SFX("AmbientShriek");
+		public static readonly SFX StaffFire = new SFX("StaffFire");
+		public static readonly SFX DaggerShoot = new SFX("DaggerShoot");
 	}
 }
