@@ -6516,6 +6516,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2887981295543818495}
   - {fileID: 8303938617669547683}
   - {fileID: 5465910000969373011}
   - {fileID: 1904774335191754263}
@@ -14134,6 +14135,72 @@ Transform:
   - {fileID: 2807694282977261133}
   m_Father: {fileID: 4367574078139302842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &126835699513793741
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4367574078139302842}
+    m_Modifications:
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406469863800457211, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113549292184824919, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+      propertyPath: m_Name
+      value: Atmospheric Dust VFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+--- !u!4 &2887981295543818495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3014799080536081458, guid: 91f9ce749696bb64da5de2d7c146ee70, type: 3}
+  m_PrefabInstance: {fileID: 126835699513793741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &738486558438337201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14357,8 +14424,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6960014035809155969}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+--- !u!1 &4099793753989375460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 1474851883337654897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6960014035809155969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099793753989375460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!4 &8879645693150475181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
@@ -14427,8 +14521,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 8116663339600337185}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+--- !u!1 &3561852133035129082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 2160849239948164975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8116663339600337185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561852133035129082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!4 &8264544708784549555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
@@ -14595,8 +14716,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1214599284154523676}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+--- !u!1 &697731999140770467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 2683031322074264886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1214599284154523676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697731999140770467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!4 &5364180277849236714 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
@@ -14665,8 +14813,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 7367779594097752538}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+--- !u!1 &717733473268215691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 2695188328613013534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7367779594097752538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717733473268215691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!4 &5344177152590248386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
@@ -14883,8 +15058,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6253539973163891627}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+--- !u!1 &563614173680826308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 3116633127180578897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6253539973163891627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563614173680826308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!4 &4903837383603495309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
@@ -15101,13 +15303,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5716313273947069371}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &3421085557972753511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 4627251250894261691}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7828823183070726702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 4627251250894261691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5716313273947069371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828823183070726702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &4644159274954561426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15245,13 +15474,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3047690282074147801}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &3047306823554093697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 4974043434029892445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7608136050199332040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 4974043434029892445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3047690282074147801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7608136050199332040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &4997301155579865478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15417,13 +15673,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3524570008136279538}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &4164714449395902953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 6233376568388515893}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8796580918988160928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 6233376568388515893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3524570008136279538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796580918988160928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &6485876872335638342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15565,13 +15848,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 8451824952652585901}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &3781451739270445195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 6572727803473094999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8621534929158024898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 6572727803473094999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8451824952652585901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621534929158024898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &7005811841843588394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15787,13 +16097,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6260686349297746367}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &756612655190450160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 7335634253802540588}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5287143736195172793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 7335634253802540588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6260686349297746367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287143736195172793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &7467376060527048948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15861,13 +16198,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5923543656105255933}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &642921531489380648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 7467376060527048948}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5418868004277895009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 7467376060527048948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5923543656105255933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418868004277895009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &7478416184029442583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16115,13 +16479,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 4530240454994722543}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &440197242700850712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 7590406230392043460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5027238792753524817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 7590406230392043460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4530240454994722543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5027238792753524817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &7923691038590948796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16189,13 +16580,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 980410215515356607}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &197019615104025696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 7923691038590948796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4711968417356583465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 7923691038590948796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &980410215515356607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711968417356583465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &7951136082187365826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16533,13 +16951,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 2831644798353067015}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &1724697302069090816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 8692567687236193244}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6066604928360401993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 8692567687236193244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2831644798353067015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6066604928360401993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &8954178302790448596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16607,13 +17052,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5529652896251393954}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &1373262495781889032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 8954178302790448596}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5823573174089642561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 8954178302790448596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5529652896251393954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823573174089642561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 1
+  localSpace: 0
 --- !u!1001 &9146740426967371496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16681,10 +17153,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3976790003681492702}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
 --- !u!4 &1270807549121126196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8020188898341130716, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
   m_PrefabInstance: {fileID: 9146740426967371496}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5944015656454621565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3211872802157021077, guid: 5eb6db629ff2fd143b2b958bfc51f08c, type: 3}
+  m_PrefabInstance: {fileID: 9146740426967371496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3976790003681492702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944015656454621565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e7088dd1c8074da5f44ce607dff59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireAnim
+  radius: 1
+  minDuration: 1.5
+  maxDuration: 3
+  ease: 4
+  loop: 1
+  useXZPlane: 0
+  localSpace: 0

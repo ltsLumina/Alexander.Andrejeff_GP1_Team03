@@ -146,7 +146,7 @@ public class SpikeTrap : MonoBehaviour
 	{
 		if (@static)
 		{
-			spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo);
+			spikeMesh.transform.DOLocalMoveY(2, 0.2f).SetEase(Ease.InExpo);
 			trapSFX.Play();
 
 			if (target != null)
@@ -165,10 +165,10 @@ public class SpikeTrap : MonoBehaviour
 			yield return new WaitForSeconds(period);
 
 			Sequence sequence = DOTween.Sequence();
-			sequence.Append(spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo));
+			sequence.Append(spikeMesh.transform.DOLocalMoveY(2, 0.2f).SetEase(Ease.InExpo));
 			sequence.AppendCallback(() => trapSFX.Play());
 			sequence.AppendInterval(0.2f);
-			sequence.Append(spikeMesh.transform.DOMoveY(0, 0.2f).SetEase(Ease.OutExpo));
+			sequence.Append(spikeMesh.transform.DOLocalMoveY(0, 0.2f).SetEase(Ease.OutExpo));
 
 			if (target != null)
 			{
@@ -185,19 +185,20 @@ public class SpikeTrap : MonoBehaviour
 
 		switch (triggerOnce)
 		{
-			case false: {
-				Sequence sequence = DOTween.Sequence();
-				sequence.Append(spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo));
-				sequence.AppendCallback(() => trapSFX.Play());
-				sequence.AppendInterval(0.2f);
-				sequence.Append(spikeMesh.transform.DOMoveY(0, 0.2f).SetEase(Ease.OutExpo));
+            case false:
+                {
+                    Sequence sequence = DOTween.Sequence();
+                    sequence.Append(spikeMesh.transform.DOLocalMoveY(2, 0.2f).SetEase(Ease.InExpo));
+                    sequence.AppendCallback(() => trapSFX.Play());
+                    sequence.AppendInterval(0.2f);
+                    sequence.Append(spikeMesh.transform.DOLocalMoveY(0, 0.2f).SetEase(Ease.OutExpo));
 
-				yield return new WaitForSeconds(isPlayer ? playerTriggerDelay : enemyTriggerDelay);
-				break;
-			}
+                    yield return new WaitForSeconds(isPlayer ? playerTriggerDelay : enemyTriggerDelay);
+                    break;
+                }
 
 			case true when !hasTriggered:
-				spikeMesh.transform.DOMoveY(2, 0.2f).SetEase(Ease.InExpo);
+				spikeMesh.transform.DOLocalMoveY(2, 0.2f).SetEase(Ease.InExpo);
 				break;
 		}
 

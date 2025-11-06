@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour
 	[Tab("Kick")]
 	[Header("Kick")]
 	[SerializeField] float kickForce = 100f;
+	[SerializeField] bool hurtOnWall;
 	[SerializeField] float torque = 10f;
 	[SerializeField] float verticalMultiplier = 0.15f;
 	[SerializeField] Vector2 kickSize = new (0.5f, 0.5f);
@@ -39,7 +40,7 @@ public class Weapon : MonoBehaviour
 
 	[Header("Cooldown"), Range(0.01f, 2f)]
 	[SerializeField] float kickCooldown = 0.5f;
-	[SerializeField, ReadOnly] public float kickTime;
+	[SerializeField, ReadOnly] float kickTime;
 
 	[Tab("Settings")]
 	[SerializeField] MeshFilter meshFilter;
@@ -47,6 +48,7 @@ public class Weapon : MonoBehaviour
 	[SerializeField] RuntimeAnimatorController daggerAnimatorController;
 	[SerializeField] RuntimeAnimatorController staffAnimatorController;
 	[SerializeField] Camera fpsCamera;
+	[SerializeField] public GameObject staffTip;
 
 	[Header("Debug")]
 	[SerializeField] bool debugDrawRay;
@@ -55,11 +57,31 @@ public class Weapon : MonoBehaviour
 	Sound kickSFX;
 	Sound kickAltSFX;
 
+	public float KickForce
+	{
+		get => kickForce;
+		set => kickForce = value;
+	}
+
+	public bool HurtOnWall
+	{
+		get => hurtOnWall;
+		set => hurtOnWall = value;
+	}
+
+	public float KickCooldown
+	{
+		get => kickCooldown;
+		set => kickCooldown = value;
+	}
+
 	public Weapons EquippedWeapon
 	{
 		get => equippedWeapon;
 		private set => equippedWeapon = value;
 	}
+	
+	public WeaponData WeaponData => weaponData;
 
 	void OnDrawGizmosSelected()
 	{
@@ -113,6 +135,8 @@ public class Weapon : MonoBehaviour
 		staffFire.SetSpatialSound();
 		staffFire.SetFollowTarget(transform);
 		#endregion
+
+		AttackCooldown = weaponData.AttackCooldown;
 	}
 
 	void Update()
@@ -161,11 +185,17 @@ public class Weapon : MonoBehaviour
 		animator.SetTrigger("attack");
 		staffFire.Play();
 		
-		Vector3 spawnPos = transform.position;
-		Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation);
+		Vector3 spawnPos = staffTip.transform.position;
+		var proj = Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation).GetComponent<Projectile>();
+		proj.Homing = Homing;
+		proj.Piercing = Piercing;
 
-		attackTime = weaponData.AttackCooldown;
+		attackTime = AttackCooldown;
 	}
+
+	public float AttackCooldown { get; set; }
+	public bool Piercing { get; set; }
+	public bool Homing { get; set; }
 
 	public IEnumerator Attack()
 	{
@@ -239,7 +269,7 @@ public class Weapon : MonoBehaviour
 				Vector3 forceDirection = ray.direction.normalized + Vector3.up * verticalMultiplier;
 
 				if (col.TryGetComponent(out enemy)) enemy.Stagger();
-				rb.AddForce(forceDirection * kickForce);
+				rb.AddForce(forceDirection * KickForce);
 				rb.AddTorque(Random.insideUnitSphere * torque);
 
 				if (col.TryGetComponent(out crate)) crate.kickSound.Play(); // ugly but works

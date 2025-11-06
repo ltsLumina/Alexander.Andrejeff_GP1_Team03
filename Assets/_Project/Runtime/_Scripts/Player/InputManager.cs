@@ -78,6 +78,7 @@ public class InputManager : MonoBehaviour
         if (context.canceled)
         {
             attackHeld = false;
+            player.Weapon.staffTip.transform.parent.GetComponent<Animator>().ResetTrigger("attack");
         }
     }
 
@@ -127,9 +128,28 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    float holdTime;
+
+    void Update()
+    {
+        if (attackHeld)
+        {
+            holdTime += Time.deltaTime;
+        }
+        else
+        {
+            holdTime = 0f;
+        }
+    }
+
     void FixedUpdate() //I'm so sorry for my sins!!!!!  // alex: LOL
     {
-        if (attackHeld == true)
+        if (player.Weapon.AttackCooldown <= 0.2f)
+        {
+            player.Weapon.staffTip.transform.parent.GetComponent<Animator>().SetBool("holding", attackHeld && holdTime > 0.2f);
+        }
+
+        if (attackHeld)
         {
             switch (player.Weapon.EquippedWeapon)
             {

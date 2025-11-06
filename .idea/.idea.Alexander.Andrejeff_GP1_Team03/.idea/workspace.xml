@@ -5,16 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animations/staff_attack_holding.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animations/staff_attack_holding.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Kick Upgrade.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Kick Upgrade.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Stat Upgrade.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Stat Upgrade.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Upgrade.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Upgrade.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Weapon Upgrade.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Weapon Upgrade.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Kick Upgrade.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Kick Upgrade.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Stat Upgrade.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Stat Upgrade.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Weapon Upgrade.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Weapon Upgrade.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/KickUpgrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/KickUpgrade.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/StatUpgrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/StatUpgrade.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/Upgrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/Upgrade.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/UpgradeLootable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/UpgradeLootable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponUpgrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponUpgrade.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/SawRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/SawRoom.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/External/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/External/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Projectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/VFX/Particle_Projectile_V2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/VFX/Particle_Projectile_V2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Dagger.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Dagger.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Staff.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Staff.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/UI/upheavtt SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/UI/upheavtt SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Relic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Relic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
@@ -30,29 +71,26 @@
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/30/737fa6d0/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/Scenes/Trausti-LevelBuild.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/Debugging/DebugWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/UnrealSuperior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Editor/_Scripts/LevelSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/External/Editor Enhancements/vHierarchy/VHierarchy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/External/Editor Enhancements/vHierarchy/VHierarchy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHere.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHereConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/External/PlayFromHere/Scripts/PlayFromHereWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Checkpoint/DirectionalCheckpointsReigstry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Checkpoint/PlayerRespawnable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Checkpoint/RoomRegistry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Ege-Prototyping/RotatingBridge.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Enemy/ModelSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/BoxTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Coin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Crate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/FireAnim.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Relic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/SecretDoor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps 1.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SawbladeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Traps/SpikeTrap.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,15 +102,17 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CrosshairTargetDetector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/Upgrade.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/UpgradeLootable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EnemyIndicator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs" root0="FORCE_HIGHLIGHTING" />
@@ -131,7 +171,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Somnium Build\GP1_Team03.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Somnium Build\Somnium.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Desktop\Somnium Build" />
       <option name="PASS_PARENT_ENVS" value="1" />

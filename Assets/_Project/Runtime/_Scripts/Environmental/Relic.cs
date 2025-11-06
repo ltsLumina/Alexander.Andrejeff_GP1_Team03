@@ -28,8 +28,9 @@ public class Relic : MonoBehaviour, IInteractable
         var playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.IncreaseMaxHealth(10, true);
 
-        player.Weapon.attackTime /= 2; // relic effect: halve attack cooldown
-        player.Weapon.kickTime /= 2;   // relic effect: halve kick cooldown
+        player.BaseMoveSpeed *= 2;
+        player.Weapon.AttackCooldown /= 2;
+        player.Weapon.KickCooldown /= 2;
 
         Volume globalVolume = FindFirstObjectByType<Volume>();
 

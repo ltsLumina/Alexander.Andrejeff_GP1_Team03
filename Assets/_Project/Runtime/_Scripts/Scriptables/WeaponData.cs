@@ -20,6 +20,7 @@ public class WeaponData : ScriptableObject
 	[EndIf]
 	[Range(1, 5f), HideIf(nameof(weapon), Weapon.Weapons.Staff)]
 	[SerializeField] float attackRange = 2f;
+	[EndIf]
 	[SerializeField] Vector2 attackSize = new  (0.5f, 0.5f);
 	[Range(0.01f, 2f)]
 	[SerializeField] float attackCooldown = 0.5f;

@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chest
   reward: 1
   rewardPrefab: {fileID: 1489625116793763650, guid: 60cf978853510ba4085dfa86bfe1d31d, type: 3}
+  offset: 0.75
+  scaleFactor: 1.5
   isRelicChest: 0
   playerController: {fileID: 0}
   speedMultiplier: 0
@@ -73,8 +75,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1156679345414995957
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +424,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1dcfdb88efdc1934aac9b563b38d943a, type: 3}
       propertyPath: m_Name
       value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361104523678711399, guid: 1dcfdb88efdc1934aac9b563b38d943a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790170957752902502, guid: 1dcfdb88efdc1934aac9b563b38d943a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

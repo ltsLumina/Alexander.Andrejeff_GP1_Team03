@@ -386,6 +386,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 
 		yield return new WaitForSeconds(animDuration / 3f);
 
+		if (IsDead) yield break;
+
 		target.TryGetComponent(out IDamageable damageable);
 
         float newDistanceToPlayer= Vector3.Distance(transform.position, target.position);

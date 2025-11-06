@@ -57,7 +57,7 @@ public class LootIndicator : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (mainCamera != null)
+        if (mainCamera != null && chest != null)
             transform.forward = mainCamera.transform.forward;
 
         if (chest != null && chest.IsOpened)

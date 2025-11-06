@@ -3,31 +3,23 @@ using UnityEngine.Rendering;
 
 public class SecretDoor : MonoBehaviour
 {
-    [SerializeField] bool isVisible = false;
+    [SerializeField] bool isVisible;
     [SerializeField] Chest relicChest;
 
     BoxCollider bc;
     MeshRenderer mr;
 
-    private void OnEnable()
-    {
-        relicChest.OnRelicChestOpened += SwitchDoorVisibility;
-    }
-    private void OnDisable()
-    {
-        relicChest.OnRelicChestOpened -= SwitchDoorVisibility;
-    }
+    void OnEnable() => relicChest.OnRelicChestOpened += SwitchDoorVisibility;
+    void OnDisable() => relicChest.OnRelicChestOpened -= SwitchDoorVisibility;
 
-    private void Start()
+    void Start()
     {
-
         //gameObject.SetActive(isVisible);
         bc = GetComponent<BoxCollider>();
         mr = GetComponentInChildren<MeshRenderer>();
 
         bc.enabled = isVisible;
         mr.enabled = isVisible;
-
     }
 
     void SwitchDoorVisibility()

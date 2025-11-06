@@ -187,7 +187,8 @@ Transform:
   m_LocalPosition: {x: -0.16, y: -0.94, z: 0.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1810226357390802329}
   m_Father: {fileID: 1619421016914217143}
   m_LocalEulerAnglesHint: {x: -54.288998, y: -98.925705, z: 0}
 --- !u!33 &4838456990722775268
@@ -577,7 +578,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2865522120763768136}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d7e21107080b3418773fcd58259c95, type: 3}
   m_Name: 
@@ -683,7 +684,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 10
   respawner: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 5706703023768594842}
 --- !u!114 &5706703023768594842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,7 +779,7 @@ Transform:
   m_GameObject: {fileID: 4618205107948024810}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000000018626451, y: 0.585, z: -0.124999836}
+  m_LocalPosition: {x: 0.000000014901161, y: 0.58500004, z: -0.12500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -803,11 +804,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   graphicsFormat: 8
-  pixelMultiplier: 3
+  pixelMultiplier: 5
   ditherRepeatSize: 2
-  lastScreenSize: {x: 398, y: 506}
+  lastScreenSize: {x: 300, y: 507}
   screenSize: {x: 676, y: 380}
-  renderTextureSize: {x: 229, y: 130}
+  renderTextureSize: {x: 139, y: 80}
   screenHeight: 1080
   uPixelatorCam: {fileID: 3935721338633357206}
   autoDetectCameras: 0
@@ -855,9 +856,6 @@ MonoBehaviour:
   autoDetectCameras: 1
   cameraInfos:
   - cam: {fileID: 6035694056239858390}
-    raycastDistance: 0
-    storedEventMask: 0
-  - cam: {fileID: 0}
     raycastDistance: 0
     storedEventMask: 0
 --- !u!114 &7184959545701216923
@@ -958,7 +956,7 @@ MonoBehaviour:
   camRotationOffset: {x: 0, y: 0, z: 0}
   snapLocalScale: 0
   snapScaleValue: 0.05
-  lastSnappedPosition: {x: -0.002887736, y: 1.591281, z: -7.1158834}
+  lastSnappedPosition: {x: 79.79951, y: 2.0833333, z: -130.61115}
   skippedSnappedPosition: {x: 0, y: 0, z: 0}
   initialPosition: {x: 0, y: 0, z: 0}
   smoothSnapUI: 1
@@ -1010,6 +1008,37 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &5190201253810022022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810226357390802329}
+  m_Layer: 0
+  m_Name: Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1810226357390802329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190201253810022022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 1.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2057433920031237865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6272103909538253675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1078,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6272103909538253675}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d7e21107080b3418773fcd58259c95, type: 3}
   m_Name: 
@@ -1070,8 +1099,8 @@ MonoBehaviour:
     orthographicSizeCorrection: {fileID: 0}
   snappables:
   - {fileID: 3189920940263394969}
-  storedCamRotation: {x: 0.007702296, y: 0.0047570947, z: -0.000036865997, w: 0.99995905}
-  storedPixelMultiplier: 3
+  storedCamRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  storedPixelMultiplier: 5
   origOrthoSize: 0
 --- !u!1 &6450673224727206370
 GameObject:
@@ -1101,7 +1130,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6157894, y: 2.0526316, z: 0}
+  m_LocalScale: {x: 3.6578946, y: 2.1052632, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6325474503920134003}
@@ -1252,7 +1281,7 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: -0.007194245
     y: 0
     width: 1
     height: 1
@@ -1508,6 +1537,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1241135167839849557}
+    - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
+      propertyPath: staffTip
+      value: 
+      objectReference: {fileID: 5190201253810022022}
     - target: {fileID: 9159299563411568192, guid: 2743b95a11038cb4387fa4a2d012a4af, type: 3}
       propertyPath: fpsCamera
       value: 

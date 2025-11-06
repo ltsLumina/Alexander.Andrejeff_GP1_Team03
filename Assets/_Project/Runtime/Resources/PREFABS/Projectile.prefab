@@ -52,6 +52,10 @@ MonoBehaviour:
   magnetizationStrength: 3
   vfx: {fileID: 1614465117378085055, guid: 79c45ec549d0d6f4e8f1146fcd2004ae, type: 3}
   impactVFX: {fileID: 1645545483480375923, guid: e835799ab29d7bc4c8f0b0de8df2e6e4, type: 3}
+  onScreenMargin: 0.03
+  losBlockers:
+    serializedVersion: 2
+    m_Bits: 0
   drawMesh: 1
 --- !u!135 &6495600966085910791
 SphereCollider:
@@ -73,4 +77,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -1.6, z: 0}

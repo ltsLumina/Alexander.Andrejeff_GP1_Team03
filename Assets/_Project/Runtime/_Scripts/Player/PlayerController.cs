@@ -198,4 +198,41 @@ public class PlayerController : MonoBehaviour, IDamageable
 		healthComponent.TakeDamage(damage);
 		hurtSFX.Play();
 	}
+
+	public void ApplyUpgrade(Upgrade upgrade)
+	{
+		switch (upgrade)
+		{
+			case StatUpgrade s:
+				ApplyStatUpgrade(s);
+				break;
+
+			case KickUpgrade k:
+				ApplyKickUpgrade(k);
+				break;
+			
+			case WeaponUpgrade w:
+				ApplyWeaponUpgrade(w);
+				break;
+		}
+	}
+
+	void ApplyStatUpgrade(StatUpgrade s)
+	{
+		baseMoveSpeed += s.MoveSpeed;
+		healthComponent.MaxHealth += s.MaxHealth;
+	}
+
+	void ApplyKickUpgrade(KickUpgrade k)
+	{
+		Weapon.KickForce += k.KickForce;
+		Weapon.HurtOnWall = k.HurtOnWall;
+	}
+
+	void ApplyWeaponUpgrade(WeaponUpgrade w)
+	{
+		Weapon.AttackCooldown *= w.CDR;
+		Weapon.Homing = w.Homing;
+		Weapon.Piercing = w.Piercing;
+	}
 }

@@ -7,25 +7,20 @@ using VInspector;
 
 public class Chest : MonoBehaviour, IInteractable
 {
-
-    public event Action OnRelicChestOpened;
     enum Reward
     {
-        Collectable,
+        Upgrade,
         Weapon,
-        Heal,
-        MaxHealth,
+        Relic,
+        Other,
     }
 
     [Tab("Reward")]
     [SerializeField] Reward reward;
     [SerializeField] GameObject rewardPrefab;
+    [SerializeField] float offset = 0.75f;
+    [SerializeField] float scaleFactor = 1.5f;
     [EndIf]
-
-    [Tab("Relic")]
-    [SerializeField] bool isRelicChest = false;
-    [SerializeField] PlayerController playerController;
-    [SerializeField] float speedMultiplier;
 
     LootIndicator lootIndicator;
     Sound tonalHint;
@@ -33,6 +28,8 @@ public class Chest : MonoBehaviour, IInteractable
     public bool IsOpened { get; private set; }
 
     public InteractableType Type => InteractableType.Chest;
+
+    public event Action OnRelicChestOpened; 
 
     void Start()
     {
@@ -53,18 +50,13 @@ public class Chest : MonoBehaviour, IInteractable
     {
         if (rewardPrefab != null)
         {
-            Instantiate(rewardPrefab, transform.position + Vector3.up, rewardPrefab.transform.rotation);
+            var obj = Instantiate(rewardPrefab, transform.position + Vector3.up * offset, transform.rotation);
+            obj.transform.localScale *= scaleFactor;
             tonalHint.Play();
             gameObject.layer = 0; // non-interactable layer
             IsOpened = true;
-
-            if (isRelicChest)
-            {
-                OnRelicChestOpened?.Invoke();
-
-                if (playerController != null)
-                    playerController.BaseMoveSpeed *= speedMultiplier;
-            }
         }
+
+        if (reward == Reward.Relic) OnRelicChestOpened?.Invoke();
     }
 }

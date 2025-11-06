@@ -31,7 +31,8 @@ public class Options_Menu : MonoBehaviour
     public void onMasterChanged()
     {
         float sliderValue = mySliderValueSound.value;
-        mixer.SetFloat("masterVolume", (sliderValue - 1) * 80);
+        if (sliderValue == 0) mixer.SetFloat("MasterVolume", -80);
+        mixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
         PlayerPrefs.SetFloat("Volume", sliderValue);
     }
 

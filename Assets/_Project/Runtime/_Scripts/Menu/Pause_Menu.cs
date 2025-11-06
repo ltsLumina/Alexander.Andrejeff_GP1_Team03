@@ -162,6 +162,10 @@ public class Pause_Menu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void onMenuButton()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public void onMasterChanged()
     {

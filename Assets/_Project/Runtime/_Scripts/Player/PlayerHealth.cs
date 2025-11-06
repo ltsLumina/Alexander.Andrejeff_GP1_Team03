@@ -14,7 +14,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float currentHealth = 100;
     [SerializeField] RoomRespawnController respawner;
     [SerializeField] PlayerRespawnable player;
-    public float MaxHealth => maxHealth;
+    public float MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth = value;
+    }
     public float CurrentHealth => currentHealth;
 
     public bool IsDead => currentHealth <= 0;
