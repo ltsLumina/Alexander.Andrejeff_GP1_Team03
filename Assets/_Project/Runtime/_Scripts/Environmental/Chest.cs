@@ -1,5 +1,6 @@
 #region
 using System;
+using MelenitasDev.SoundsGood;
 using UnityEngine;
 using VInspector;
 #endregion
@@ -27,6 +28,7 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] float speedMultiplier;
 
     LootIndicator lootIndicator;
+    Sound tonalHint;
 
     public bool IsOpened { get; private set; }
 
@@ -37,6 +39,12 @@ public class Chest : MonoBehaviour, IInteractable
         name = $"Chest ({reward})";
 
         lootIndicator = GetComponentInChildren<LootIndicator>();
+        
+        tonalHint = new Sound(SFX.TonalHint);
+        tonalHint.SetOutput(Output.SFX);
+        tonalHint.SetSpatialSound();
+        tonalHint.SetVolume(0.3f);
+        tonalHint.SetPosition(transform.position);
     }
 
     public void Interact() => Open();
@@ -46,6 +54,7 @@ public class Chest : MonoBehaviour, IInteractable
         if (rewardPrefab != null)
         {
             Instantiate(rewardPrefab, transform.position + Vector3.up, rewardPrefab.transform.rotation);
+            tonalHint.Play();
             gameObject.layer = 0; // non-interactable layer
             IsOpened = true;
 

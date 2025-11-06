@@ -55,32 +55,15 @@ public class PlayerController : MonoBehaviour, IDamageable
 	public Weapon Weapon => weapon;
 	public float BaseMoveSpeed
 	{
-		get
-		{
-			return baseMoveSpeed;
-		}
-		set
-		{
-			baseMoveSpeed = value;
-		}
+		get => baseMoveSpeed;
+		set => baseMoveSpeed = value;
 	}
 
 	Sound footstepsCement;
 	Music fallingSFX;
 	Sound hurtSFX;
 
-	bool hasRelic = false;
-	public bool HasRelic
-	{
-		get
-		{
-			return hasRelic;
-		}
-		set
-		{
-			hasRelic = value;
-		}
-	}
+	public bool HasRelic { get; set; }
 
 #if UNITY_EDITOR
 	void OnDrawGizmos()
@@ -206,14 +189,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 		}
 	}
 	
+	public bool IsFalling => fallingFrameCounter > 30;
+	
 	int fallingFrameCounter;
 
 	public void TakeDamage(float damage, DamageSource source = DamageSource.Player) // Helper function to pass damage to PlayerHealth component
 	{
 		healthComponent.TakeDamage(damage);
 		hurtSFX.Play();
-
-		//Weapon.Attack();
-		//Weapon.Kick();
 	}
 }

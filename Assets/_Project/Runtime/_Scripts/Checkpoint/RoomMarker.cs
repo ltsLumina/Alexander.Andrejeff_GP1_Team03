@@ -3,12 +3,9 @@ using UnityEngine;
 public class RoomMarker : MonoBehaviour
 {
     [SerializeField] RoomRegistry room;
-    [SerializeField] private Transform checkpoint;
+    [SerializeField] Transform checkpoint;
 
-    private void Awake()
-    {
-        checkpoint = transform;
-    }
+    void Awake() => checkpoint = transform;
 
     void OnTriggerEnter(Collider other)
     {

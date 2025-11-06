@@ -6,7 +6,7 @@ public class Killplane : MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(float.MaxValue);
+            damageable.TakeDamage(99);
             Logger.LogWarning("Killplane activated on: " + other.name, this, "Killplane");
 
         }

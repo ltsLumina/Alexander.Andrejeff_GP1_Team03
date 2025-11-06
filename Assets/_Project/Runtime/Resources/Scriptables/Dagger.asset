@@ -19,4 +19,4 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   attackRange: 3
   attackSize: {x: 2, y: 2.5}
-  attackCooldown: 0.5
+  attackCooldown: 0.4

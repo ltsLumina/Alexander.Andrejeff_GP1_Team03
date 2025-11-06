@@ -23,6 +23,7 @@ public class LevelSelector : EditorWindow
 	bool playFromHere;
 	readonly Dictionary<string, int> tagIndices = new ();
 	GameObject levelPrefab;
+	int idx;
 
 	void Awake()
 	{
@@ -30,6 +31,7 @@ public class LevelSelector : EditorWindow
 		tags.Remove("Untagged");
 		tags.RemoveRange(0, 7); // Remove default Unity tags
 	}
+
 
 	void OnGUI()
 	{
@@ -46,7 +48,7 @@ public class LevelSelector : EditorWindow
 			{
 				using (new EditorGUILayout.VerticalScope())
 				{
-					playFromHere = EditorGUILayout.ToggleLeft("Set player position to Selected Level root", playFromHere, new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter }, Width(400), Height(20)); 
+					//playFromHere = EditorGUILayout.ToggleLeft("Set player position to Selected Level root", playFromHere, new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter }, Width(200), Height(20)); 
 					if (Button(("Select Player"), new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter }, Width(100), Height(30)))
 					{
 						var player = FindFirstObjectByType<PlayerController>();
@@ -64,14 +66,15 @@ public class LevelSelector : EditorWindow
 			{
 				using (new EditorGUILayout.HorizontalScope())
 				{
-					if (Button(tag, new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter }, Width(200), Height(50)))
+					var niceName = ObjectNames.NicifyVariableName(tag);
+					if (Button(niceName, new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter }, Width(200), Height(50)))
 					{
 						var objs = GameObject.FindGameObjectsWithTag(tag);
 
 						if (objs == null || objs.Length == 0) { Debug.LogWarning("No objects found for tag: " + tag); }
 						else
 						{
-							tagIndices.TryGetValue(tag, out int idx);
+							tagIndices.TryGetValue(tag, out idx);
 							idx %= objs.Length;
 							levelPrefab = objs[idx];
 
@@ -86,15 +89,6 @@ public class LevelSelector : EditorWindow
 								EditorGUIUtility.PingObject(levelPrefab);
 								Selection.activeObject = levelPrefab;
 								SceneView.lastActiveSceneView.LookAt(levelPrefab.transform.position + new Vector3(5, 5, -5));
-
-								if (playFromHere)
-								{
-									var player = FindFirstObjectByType<PlayerController>();
-									if (!player) return;
-
-									Undo.RecordObject(player.transform, "Move Player");
-									player.transform.position = levelPrefab.transform.position + Vector3.up;
-								}
 							}
 						}
 					}
@@ -116,7 +110,7 @@ public class LevelSelector : EditorWindow
 
 		using (new EditorGUI.DisabledScope(EditorApplication.isPlaying))
 		{
-			using (new EditorGUILayout.VerticalScope("box"))
+			using (new EditorGUILayout.HorizontalScope("box"))
 			{
 				var sceneCount = SceneManager.sceneCountInBuildSettings;
 
@@ -124,7 +118,7 @@ public class LevelSelector : EditorWindow
 				{
 					var niceName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
 
-					if (Button(niceName, new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter }, Width(200), Height(30)))
+					if (Button(niceName, new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter }, Width(150), Height(30)))
 					{
 						bool wantsToSave = EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
 						if (wantsToSave) EditorSceneManager.SaveOpenScenes();

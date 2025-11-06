@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using MelenitasDev.SoundsGood;
-using UnityEditor;
 using UnityEngine;
 using VInspector;
 
+[SelectionBase]
 public class Crate : MonoBehaviour, IDamageable
 {
 	[Header("Crate"), Tooltip("Can be broken on impact or by attacking it.")]
@@ -59,7 +57,7 @@ public class Crate : MonoBehaviour, IDamageable
 		breakSound.SetVolume(0.15f);
 		breakSound.SetRandomPitch(new (0.85f, 1.05f));
 		breakSound.SetSpatialSound();
-		hitSound.SetHearDistance(3f, 15f);
+		breakSound.SetHearDistance(3f, 6f);
 		breakSound.SetFollowTarget(transform);
 		#endregion
 
@@ -94,7 +92,7 @@ public class Crate : MonoBehaviour, IDamageable
 	void Break()
 	{
 		breakSound.Play();
-		Instantiate(breakVFX, transform.position, Quaternion.identity);
+		Instantiate(breakVFX, transform.position, transform.rotation);
 		gameObject.SetActive(false);
 		Destroy(gameObject, 0.1f);
 	}

@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7323134255191641430}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.82
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.01
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -340,7 +340,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -393,7 +393,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3677,19 +3677,19 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
-    multiplyColliderForceByCollisionAngle: 1
+    multiplyColliderForceByCollisionAngle: 0
     m_Planes: []
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.25
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3742,7 +3742,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3795,7 +3795,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.001
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3855,7 +3855,7 @@ ParticleSystem:
     quality: 0
     voxelSize: 0.5
     collisionMessages: 0
-    collidesWithDynamic: 1
+    collidesWithDynamic: 0
     interiorCollisions: 0
   TriggerModule:
     enabled: 0

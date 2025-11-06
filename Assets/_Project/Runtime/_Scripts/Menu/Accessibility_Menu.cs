@@ -14,6 +14,7 @@ public class Accessibility_Menu : MonoBehaviour
     [SerializeField] private Slider pixelFilterSlider;
     [SerializeField] private Toggle bobToggle;
     [SerializeField] private Toggle ScreenShakeToggle;
+    [SerializeField] private Toggle OneHandedToggle;
 
     [Header("Texts")]
     [SerializeField] private TMP_Text ColorBlindlessText;
@@ -30,24 +31,16 @@ public class Accessibility_Menu : MonoBehaviour
         pixelFilterSlider.value = PlayerPrefs.GetInt("PixelFilterValue");
         onPixelFilterChanged();
 
-        if (PlayerPrefs.GetInt("BobSetting") == 1)
-            bobToggle.isOn = true;
-        else
-            bobToggle.isOn = false;
+        bobToggle.isOn = PlayerPrefs.GetInt("BobSetting") == 1;
 
         onBobToggleChanged();
 
-        if (PlayerPrefs.GetInt("ScreenShakeSetting") == 1)
-            ScreenShakeToggle.isOn = true;
-        else
-            ScreenShakeToggle.isOn = false;
+        ScreenShakeToggle.isOn = PlayerPrefs.GetInt("ScreenShakeSetting") == 1;
 
         onScreenShakeToggleChanged();
     }
 
-    private static readonly Color[,] colors = new Color[,]
-
-    {
+    private static readonly Color[,] colors = {
 
         { new Color(1, 0, 0), new Color(0, 1, 0), new Color(0, 0, 1) },
 
@@ -58,6 +51,7 @@ public class Accessibility_Menu : MonoBehaviour
         { new Color(0.950f, 0.050f, 0), new Color(0, 0.433f, 0.567f), new Color(0, 0.475f, 0.525f) }
 
     };
+    
     public void BackButton()
     {
         accessibilityMenu.SetActive(false);
@@ -127,19 +121,9 @@ public class Accessibility_Menu : MonoBehaviour
         }
     }
 
-    public void onBobToggleChanged()
-    {
-        if (bobToggle.isOn)
-            PlayerPrefs.SetInt("BobSetting", 1);
-        else
-            PlayerPrefs.SetInt("BobSetting", 0);
-    }
-    
-    public void onScreenShakeToggleChanged()
-    {
-        if (ScreenShakeToggle.isOn)
-            PlayerPrefs.SetInt("ScreenShakeSetting", 1);
-        else
-            PlayerPrefs.SetInt("ScreenShakeSetting", 0);
-    }
+    public void onBobToggleChanged() => PlayerPrefs.SetInt("BobSetting", bobToggle.isOn ? 1 : 0);
+
+    public void onScreenShakeToggleChanged() => PlayerPrefs.SetInt("ScreenShakeSetting", ScreenShakeToggle.isOn ? 1 : 0);
+
+    public void onOneHandedToggleChanged(bool isOn) => PlayerPrefs.SetInt("OneHandedSetting", isOn ? 1 : 0);
 }

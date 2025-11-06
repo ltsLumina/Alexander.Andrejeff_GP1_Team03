@@ -1,17 +1,23 @@
 using System.Linq;
+using MelenitasDev.SoundsGood;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class Relic : MonoBehaviour, IInteractable
 {
-    [SerializeField] private VolumeProfile afterVolume;
+    [SerializeField] VolumeProfile afterVolume;
 
+    Sound pickupSound;
+    
     public void Start()
     {
-        if(afterVolume == null)
-        {
-            throw new System.Exception("No volume profile found. Please put PP_After Volume Profile directly from objects PreFab");
-        }
+        Debug.Assert(afterVolume, "No volume profile found. Please put PP_After Volume Profile directly from objects Prefab");
+
+        pickupSound = new Sound(SFX.AmbientShriek);
+        pickupSound.SetOutput(Output.SFX);
+        pickupSound.SetSpatialSound();
+        pickupSound.SetVolume(0.5f);
+        pickupSound.SetPosition(transform.position);
     }
     
     public void Interact()
@@ -19,16 +25,19 @@ public class Relic : MonoBehaviour, IInteractable
         Debug.Log($"{name} was picked up!");
 
         var player = FindFirstObjectByType<PlayerController>();
+        var playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth.IncreaseMaxHealth(10, true);
+
+        player.Weapon.attackTime /= 2; // relic effect: halve attack cooldown
+        player.Weapon.kickTime /= 2;   // relic effect: halve kick cooldown
 
         Volume globalVolume = FindFirstObjectByType<Volume>();
 
-        if (player != null)
-        {
-            player.HasRelic = true;
-            Debug.Log("player was found on relic interact");
-        }
+        if (player != null) player.HasRelic = true;
 
         globalVolume.profile = afterVolume;
+        
+        pickupSound.Play();
         
         // find all enemies
         var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();

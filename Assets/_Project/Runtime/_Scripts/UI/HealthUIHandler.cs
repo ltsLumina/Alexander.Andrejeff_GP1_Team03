@@ -28,14 +28,12 @@ public class HealthUIHandler : MonoBehaviour
     {
         PlayerHealth.OnMaxHealthIncreased += MaxHealthIncreased;
         PlayerHealth.OnHealthChanged += HealthChanged;
-        PlayerHealth.OnPlayerDied += PlayerDied;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnMaxHealthIncreased -= MaxHealthIncreased;
         PlayerHealth.OnHealthChanged -= HealthChanged;
-        PlayerHealth.OnPlayerDied -= PlayerDied;
     }
 
     void Start()

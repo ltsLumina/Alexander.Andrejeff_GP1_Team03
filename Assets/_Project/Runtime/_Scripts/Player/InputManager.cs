@@ -34,21 +34,17 @@ public class InputManager : MonoBehaviour
         checkpoints = new Queue<DirectionalCheckpoint>(checkpointList);
         player = GetComponentInParent<PlayerController>();
     }
+
+    void Start() => inputMode = PlayerPrefs.GetInt("OneHandedSetting", 0) == 1 ? InputMode.OneHanded : InputMode.Standard;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
         if (inputMode == InputMode.OneHanded) moveInput = new(-moveInput.y, moveInput.x);
     }
 
-    private void OnEnable()
-    {
-        DirectionalCheckpointsReigstry.OnNewCheckpointTarget += HandleDirectionalCheckpointReached;
-    }
-
-    private void OnDisable()
-    {
-        DirectionalCheckpointsReigstry.OnNewCheckpointTarget -= HandleDirectionalCheckpointReached;
-    }
+    void OnEnable() => DirectionalCheckpointsReigstry.OnNewCheckpointTarget += HandleDirectionalCheckpointReached;
+    void OnDisable() => DirectionalCheckpointsReigstry.OnNewCheckpointTarget -= HandleDirectionalCheckpointReached;
 
     public void HandleDirectionalCheckpointReached(Transform target)
     {

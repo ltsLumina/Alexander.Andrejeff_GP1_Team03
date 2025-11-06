@@ -23,7 +23,8 @@ public class Weapon : MonoBehaviour
 	[SerializeField] Animator animator;
 
 	[Header("Cooldown")]
-	[SerializeField, ReadOnly] float attackTime;
+	[SerializeField, ReadOnly]
+	public float attackTime;
 
 	// -- separator
 
@@ -38,7 +39,7 @@ public class Weapon : MonoBehaviour
 
 	[Header("Cooldown"), Range(0.01f, 2f)]
 	[SerializeField] float kickCooldown = 0.5f;
-	[SerializeField, ReadOnly] float kickTime;
+	[SerializeField, ReadOnly] public float kickTime;
 
 	[Tab("Settings")]
 	[SerializeField] MeshFilter meshFilter;
@@ -150,32 +151,20 @@ public class Weapon : MonoBehaviour
 	public void RangedAttack()
 	{
 		if (attackTime > 0f) return;
-
+	
 		var animator = GetComponentInChildren<Animator>();
-
 		animator.runtimeAnimatorController = equippedWeapon switch
 		{ Weapons.Dagger => daggerAnimatorController,
 		  Weapons.Staff  => staffAnimatorController,
 		  _              => throw new ArgumentOutOfRangeException() };
-
+	
 		animator.SetTrigger("attack");
 		staffFire.Play();
-
+		
 		Vector3 spawnPos = transform.position;
-		var projectile = Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation);
+		Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation);
 
 		attackTime = weaponData.AttackCooldown;
-	}
-
-	void FixedUpdate()
-	{
-		if (FindFirstObjectByType<PlayerController>().HasRelic)
-		{
-			attackTime /= 2; // relic effect: halve attack cooldown
-			kickTime /= 2;   // relic effect: halve kick cooldown
-			
-			animator.SetFloat("speedMult", 2f);
-		}
 	}
 
 	public IEnumerator Attack()

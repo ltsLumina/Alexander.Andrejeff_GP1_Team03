@@ -18,7 +18,7 @@ public class WeaponData : ScriptableObject
 	[ShowIf(nameof(weapon), Weapon.Weapons.Staff)]
 	[SerializeField] GameObject projectilePrefab;
 	[EndIf]
-	[Range(1, 5f)]
+	[Range(1, 5f), HideIf(nameof(weapon), Weapon.Weapons.Staff)]
 	[SerializeField] float attackRange = 2f;
 	[SerializeField] Vector2 attackSize = new  (0.5f, 0.5f);
 	[Range(0.01f, 2f)]

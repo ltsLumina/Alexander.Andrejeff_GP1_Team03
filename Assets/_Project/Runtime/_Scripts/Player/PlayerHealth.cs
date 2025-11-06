@@ -68,9 +68,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (IsDead)
         {
+            OnPlayerDied?.Invoke();
             respawner.RespawnPlayer(player, checkpoint);
             currentHealth = maxHealth;
-            Debug.Log("Player died");
+            Logger.LogWarning("Player died");
             OnMaxHealthIncreased?.Invoke(maxHealth, maxHealth, true);
             //IncreaseHealth(currentHealth);
 

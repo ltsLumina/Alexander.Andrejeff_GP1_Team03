@@ -178,6 +178,10 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 		}
 
 		agent.speed *= 2;
+		attackCooldown /= 2;
+		damage *= 2;
+		maxHealth *= 2;
+		health = maxHealth;
 	}
 	
 	void Update()
@@ -395,7 +399,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 	
 	void Death()
 	{
-		Logger.LogWarning("Enemy died.", this, $"{name}");
+		//Logger.LogWarning("Enemy died.", this, $"{name}");
 		room.Unregister(this);
 
 		snarlSFX.Stop();

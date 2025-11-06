@@ -5310,6 +5310,7 @@ GameObject:
   - component: {fileID: 8457217914796862628}
   - component: {fileID: 279017041790937083}
   - component: {fileID: 7743484207892978778}
+  - component: {fileID: 961085560650531332}
   m_Layer: 6
   m_Name: PyramidEnemy
   m_TagString: Enemy
@@ -5354,8 +5355,17 @@ MonoBehaviour:
   attackRange: 3.5
   detectionRange: 8
   staggerDuration: 1.5
+  octopusDeathMaterial: {fileID: 0}
+  watcherDeathMaterial: {fileID: 0}
+  watcherTier2Material: {fileID: 0}
   hurtVFX: {fileID: 0}
   room: {fileID: 0}
+  randomPatrol: 1
+  patrolStart: {fileID: 0}
+  patrolEnd: {fileID: 0}
+  patrolRadius: 4
+  patrolSpeed: 0
+  patrolYieldTime: 0
   target: {fileID: 0}
 --- !u!195 &8457217914796862628
 NavMeshAgent:
@@ -5428,6 +5438,27 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &961085560650531332
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274930718823222523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5528860797864257434
 GameObject:
