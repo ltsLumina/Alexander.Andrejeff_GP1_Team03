@@ -22,7 +22,7 @@ public class Crate : MonoBehaviour, IDamageable
 	[SerializeField] ParticleSystem dustVFX;
 	[SerializeField] ParticleSystem breakVFX;
 
-	Rigidbody rb;
+	public Rigidbody rb;
 	
 	Sound breakSound;
 	public Sound kickSound;

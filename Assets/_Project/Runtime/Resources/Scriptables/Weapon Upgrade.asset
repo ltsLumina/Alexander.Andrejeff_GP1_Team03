@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29cd1f8ecaa4fd5a7a7d4c6dcdb0917, type: 3}
   m_Name: Weapon Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::WeaponUpgrade
-  cdr: 0.25
+  cdr: 0.75
   homing: 1
   piercing: 1

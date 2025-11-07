@@ -11,7 +11,7 @@ using VInspector;
 using Random = UnityEngine.Random;
 #endregion
 
-[SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody), typeof(SphereCollider))]
+[SelectionBase] [DisallowMultipleComponent] [RequireComponent(typeof(NavMeshAgent), typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 {
 	public enum EnemyType
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 	{
 		agent = GetComponent<NavMeshAgent>();
 		rb = GetComponent<Rigidbody>();
-		col = GetComponent<Collider>();
+		col = GetComponent<BoxCollider>();
 
 		room ??= GetComponentInParent<RoomRegistry>();
 		if (room) room.Register(this);
@@ -283,10 +283,25 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 
 	void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.TryGetComponent(out Crate crate)) // crate has to be still
+		if (other.gameObject.TryGetComponent(out Crate crate) && crate.rb.linearVelocity.magnitude > 1f)
 		{
 			if (crate.Breakable) crate.TakeDamage(1, DamageSource.Enemy);
 		}
+
+		var player = FindAnyObjectByType<PlayerController>();
+
+		if (player.Weapon.HurtOnWall && other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+		{
+			TakeDamage(99, DamageSource.Player);
+			Logger.Log("died from wall collision because player has hurt on wall upgrade", other.gameObject);
+			
+			if (other.gameObject.TryGetComponent(out IDamageable damageable))
+			{
+				damageable.TakeDamage(99, DamageSource.Enemy);
+			}
+		}
+		
+		//Debug.Log($"Enemy collided with {other.gameObject.name}", gameObject);
 	}
 
 	void OnDrawGizmosSelected()
@@ -309,11 +324,21 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 		if (!IsDead)
 		{
 			transform.DOShakePosition(0.2f, 0.5f).SetLink(gameObject);
-
-			// ignore this mess - it flashes the enemy red when hurt
-			var hasBaseColor = GetComponentInChildren<Renderer>().material.HasColor("_BaseColor");
-		if (hasBaseColor) 
-			GetComponentsInChildren<Renderer>().ToList().ForEach(r => r.material.DOColor(Color.red, "_BaseColor", 0.1f).OnComplete(() => { r.material.DOColor(Color.white, "_BaseColor", 0.1f); }).SetLink(gameObject));
+			
+			var renderers = GetComponentsInChildren<Renderer>();
+			if (renderers is { Length: > 0 })
+			{
+			    foreach (var r in renderers)
+			    {
+			        var mat = r.material;
+			        if (mat != null && mat.HasColor("_BaseColor"))
+			        {
+			            mat.DOColor(Color.red, "_BaseColor", 0.1f)
+			               .OnComplete(() => mat.DOColor(Color.white, "_BaseColor", 0.1f))
+			               .SetLink(gameObject);
+			        }
+			    }
+			}
 		}
 
 		hurtSFX.Play();
@@ -405,7 +430,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 		room.Unregister(this);
 
 		snarlSFX.Stop();
-
+		
 		col.enabled = false;
 		
 		transform.DOScaleY(0, 1.5f).SetLink(gameObject);
@@ -477,6 +502,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyReset, IInteractable
 
     public void Interact()
     {
-		Debug.Log("Default Enemy Interact implementation.");
+		
     }
 }

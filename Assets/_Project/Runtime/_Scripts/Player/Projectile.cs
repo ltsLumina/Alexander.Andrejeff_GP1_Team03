@@ -1,4 +1,5 @@
 #region
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,9 +33,11 @@ public class Projectile : MonoBehaviour
 
     void Start()
 	{
-		losBlockers = LayerMask.GetMask("Default", "Ground");
+		losBlockers = LayerMask.GetMask("Default", "Ground", "Wall");
 
-        instance = Instantiate(vfx, transform.position, Quaternion.Euler(0f, -90f, 0f), transform);
+		var player = FindAnyObjectByType<PlayerController>();
+		Vector3 spawnPos = player.Weapon.StaffTip.transform.position + player.transform.forward;
+		instance = Instantiate(vfx, spawnPos, Quaternion.Euler(0f, -90f, 0f), transform);
 		instance.transform.localEulerAngles = new (0f, -90f, 0f);
 
 		Destroy(gameObject, lifetime);
@@ -43,44 +46,23 @@ public class Projectile : MonoBehaviour
 	void Update()
 	{
 		transform.Translate(Vector3.forward * (speed * Time.deltaTime));
-		
+
 		if (!Homing) return;
 
-        // look for all nearby IDamageable and home in on the closest one// look for all nearby Enemy and home in on the closest one
-        List<Enemy> enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
-
-		enemies.RemoveAll(e => e.CompareTag("Player")); // dont home in on player
+		List<Enemy> enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+		enemies.RemoveAll(e => e.CompareTag("Player")); // don't home in on player
 		if (enemies.Count == 0) return;
 
-		// find closest Enemy by distance to its transform
 		Enemy closestEnemy = enemies.OrderBy(e => Vector3.Distance(transform.position, e.transform.position)).First(e => !e.IsDead);
 
-        var tgt = closestEnemy.transform;
-        var col = tgt.GetComponentInChildren<Collider>();
-        Vector3 targetPoint = col ? col.bounds.center : tgt.position;
+		var tgt = closestEnemy.transform;
+		var col = tgt.GetComponentInChildren<Collider>();
+		Vector3 targetPoint = col ? col.bounds.center : tgt.position;
 
-        // on-screen test
-        Vector3 eVP = Camera.main.WorldToViewportPoint(targetPoint);
-        bool enemyOnScreen =
-            eVP.z > 0f &&
-            eVP.x > onScreenMargin && eVP.x < 1f - onScreenMargin &&
-            eVP.y > onScreenMargin && eVP.y < 1f - onScreenMargin;
-        if (!enemyOnScreen) return;
+		// use reusable LoS check
+		if (!LineOfSightUtility.HasLineOfSightToTarget(tgt, targetPoint, losBlockers, onScreenMargin)) return;
 
-        // line-of-sight from camera
-        Vector3 origin = Camera.main.transform.position;
-        Vector3 dir = targetPoint - origin;
-        float dist = dir.magnitude;
-        if (dist <= 0.001f) return; // too close, skip homing this frame
-
-        if (Physics.Raycast(origin, dir / dist, out var hit, dist, losBlockers, QueryTriggerInteraction.Ignore))
-        {
-            // blocked if we hit anything on losBlockers before reaching the enemy root
-            bool hitEnemyRoot = hit.collider.transform.root == tgt.root;
-            if (!hitEnemyRoot) return;
-        }
-
-        Vector3 directionToTarget = (closestEnemy.transform.position - transform.position).normalized;
+		Vector3 directionToTarget = (closestEnemy.transform.position - transform.position).normalized;
 		Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
 		if (Vector3.Distance(transform.position, closestEnemy.transform.position) < magnetizationDistance)
@@ -103,15 +85,24 @@ public class Projectile : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (!other.TryGetComponent(out IDamageable damageable)) return;
 		bool isPlayer = other.CompareTag("Player");
 		if (isPlayer) return; // cant shoot urself dummy
-		damageable.TakeDamage(weaponData.Damage);
+		
+		if (other.TryGetComponent(out IDamageable damageable))
+		{
+			damageable.TakeDamage(weaponData.Damage);
 
-		GameObject impact = Instantiate(impactVFX, transform.position, Quaternion.identity);
+			Instantiate(impactVFX, transform.position, Quaternion.identity);
+			Destroy(instance?.gameObject);
+			Destroy(gameObject);
+			return;
+		}
 
-		if (Piercing) return;
-		Destroy(instance?.gameObject);
-		Destroy(gameObject);
+		if (!Piercing && other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+		{
+			Instantiate(impactVFX, transform.position, Quaternion.identity);
+			Destroy(instance?.gameObject);
+			Destroy(gameObject);
+		}
 	}
 }

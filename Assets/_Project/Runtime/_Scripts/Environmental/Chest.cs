@@ -5,6 +5,7 @@ using UnityEngine;
 using VInspector;
 #endregion
 
+[SelectionBase]
 public class Chest : MonoBehaviour, IInteractable
 {
     enum Reward

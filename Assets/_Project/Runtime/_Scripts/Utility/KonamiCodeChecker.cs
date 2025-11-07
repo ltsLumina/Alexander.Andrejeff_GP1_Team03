@@ -25,7 +25,7 @@ public class KonamiCodeChecker : MonoBehaviour
 
 	bool showGUI;
 
-	void Update() => CheckKonamiCode();
+	void FixedUpdate() => CheckKonamiCode();
 
 	void OnGUI()
 	{
@@ -34,7 +34,7 @@ public class KonamiCodeChecker : MonoBehaviour
 
 	void CheckKonamiCode()
 	{
-		if (Input.anyKeyDown)
+		if (Keyboard.current.anyKey != null)
 		{
 			KeyCode[] possibleKeys = konamiCode.Distinct().ToArray();
 

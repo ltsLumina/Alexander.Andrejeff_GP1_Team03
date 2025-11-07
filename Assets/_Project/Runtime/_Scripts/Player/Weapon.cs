@@ -185,14 +185,14 @@ public class Weapon : MonoBehaviour
 		animator.SetTrigger("attack");
 		staffFire.Play();
 		
-		Vector3 spawnPos = staffTip.transform.position;
-		var proj = Instantiate(weaponData.ProjectilePrefab, spawnPos, transform.rotation).GetComponent<Projectile>();
+		var proj = Instantiate(weaponData.ProjectilePrefab, transform.position, transform.rotation).GetComponent<Projectile>();
 		proj.Homing = Homing;
 		proj.Piercing = Piercing;
 
 		attackTime = AttackCooldown;
 	}
 
+	public GameObject StaffTip => staffTip;
 	public float AttackCooldown { get; set; }
 	public bool Piercing { get; set; }
 	public bool Homing { get; set; }
@@ -237,9 +237,6 @@ public class Weapon : MonoBehaviour
 				//Logger.LogWarning("Dealt " + damage + " damage to " + col.transform.name, this, "Weapon");
 			}
 		}
-
-		if (Array.TrueForAll(hitColliders, c => !c.transform.TryGetComponent<IDamageable>(out _))) 
-			Logger.LogWarning("No damageable component found on any hit colliders. \nThis likely indicates an issue.", this, "Weapon");
 	}
 	
 	public void Kick()

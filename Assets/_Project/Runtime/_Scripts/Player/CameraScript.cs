@@ -133,27 +133,36 @@ public class CameraScript : MonoBehaviour
         // aim assist
         if (aimAssistEnabled)
         {
-            // lol this sucks but whatever - designer code :)
+            // get enemies ordered by distance and not dead
             var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None)
+                .Where(e => !e.IsDead)
                 .OrderBy(e => Vector3.Distance(parent.position, e.transform.position))
                 .ToArray();
             if (enemies.Length == 0) return;
 
-            var closestEnemy = enemies[0];
-
-            if (!closestEnemy.IsDead)
+            // pick the closest enemy that has line of sight to the camera
+            Enemy closestEnemyWithLoS = enemies.FirstOrDefault(e =>
             {
-                Vector3 directionToEnemy = (closestEnemy.transform.position - parent.position).normalized;
+                var col = e.GetComponentInChildren<Collider>();
+                Vector3 targetPoint = col ? col.bounds.center : e.transform.position;
+                return LineOfSightUtility.HasLineOfSightToTarget(e.transform, targetPoint, LayerMask.GetMask("Default", "Ground", "Wall"), 0.03f);
+            });
+
+            if (closestEnemyWithLoS == null) return;
+
+            if (!closestEnemyWithLoS.IsDead)
+            {
+                Vector3 directionToEnemy = (closestEnemyWithLoS.transform.position - parent.position).normalized;
                 float angleToEnemy = Vector3.Angle(parent.forward, directionToEnemy);
                 Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
 
-                if (angleToEnemy < aimAssistAngleThreshold && Vector3.Distance(parent.position, closestEnemy.transform.position) < aimAssistMinDistance)
+                if (angleToEnemy < aimAssistAngleThreshold && Vector3.Distance(parent.position, closestEnemyWithLoS.transform.position) < aimAssistMinDistance)
                 {
                     parent.rotation = Quaternion.Slerp(parent.rotation, targetRotation, Time.deltaTime * 2f);
                     aimAssistTimer = aimAssistReset;
                 }
             }
-            
+
             aimAssistTimer -= Time.deltaTime;
             if (aimAssistTimer <= 0)
             {
@@ -163,7 +172,7 @@ public class CameraScript : MonoBehaviour
                 parent.rotation = Quaternion.Slerp(
                     parent.rotation,
                     targetNeutralRot,
-                    Time.deltaTime * 3f 
+                    Time.deltaTime * 3f
                 );
             }
         }

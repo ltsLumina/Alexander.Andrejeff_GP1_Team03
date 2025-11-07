@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] Animator staffAnimator;
+    
     [SerializeField] List<DirectionalCheckpoint> checkpointList;
     Queue<DirectionalCheckpoint> checkpoints;
 
@@ -31,7 +33,7 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
-        checkpoints = new Queue<DirectionalCheckpoint>(checkpointList);
+        checkpoints = new (checkpointList);
         player = GetComponentInParent<PlayerController>();
     }
 
@@ -78,7 +80,7 @@ public class InputManager : MonoBehaviour
         if (context.canceled)
         {
             attackHeld = false;
-            player.Weapon.staffTip.transform.parent.GetComponent<Animator>().ResetTrigger("attack");
+            staffAnimator.ResetTrigger("attack");
         }
     }
 
@@ -132,21 +134,12 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        if (attackHeld)
-        {
-            holdTime += Time.deltaTime;
-        }
-        else
-        {
-            holdTime = 0f;
-        }
-    }
+        if (attackHeld) holdTime += Time.deltaTime;
+        else holdTime = 0f;
 
-    void FixedUpdate() //I'm so sorry for my sins!!!!!  // alex: LOL
-    {
         if (player.Weapon.AttackCooldown <= 0.2f)
         {
-            player.Weapon.staffTip.transform.parent.GetComponent<Animator>().SetBool("holding", attackHeld && holdTime > 0.2f);
+            staffAnimator.SetBool("holding", attackHeld && holdTime > 0.1f);
         }
 
         if (attackHeld)

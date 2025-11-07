@@ -5,59 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1581c6c7-e1c5-44f4-bb0d-7f79627bb978" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animations/staff_attack_holding.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animations/staff_attack_holding.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Kick Upgrade.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Kick Upgrade.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Stat Upgrade.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Stat Upgrade.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Upgrade.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Upgrade.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Weapon Upgrade.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Upgrades/Weapon Upgrade.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Kick Upgrade.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Kick Upgrade.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Stat Upgrade.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Stat Upgrade.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Weapon Upgrade.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Weapon Upgrade.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/KickUpgrade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/KickUpgrade.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/StatUpgrade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/StatUpgrade.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/Upgrade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/Upgrade.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/UpgradeLootable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/UpgradeLootable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponUpgrade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponUpgrade.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/SawRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevellDesignPrefab/Rooms/SawRoom.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/External/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/External/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Animators/Staff.controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Art/Textures/Dream.renderTexture" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/Staff.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/VFX/Particle_Projectile_V2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/PREFABS/VFX/Particle_Projectile_V2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Dagger.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Dagger.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Staff.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/Scriptables/Staff.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/UI/upheavtt SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/Resources/UI/upheavtt SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Chest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Relic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Environmental/Relic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Scriptables/WeaponData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/LineOfSightUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/LineOfSightUtility.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,9 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/038ae34513ab4db49caf29025be8f0451f7000/61/df6d661b/StringMarshaller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/038ae34513ab4db49caf29025be8f0451f7000/fc/cbaf1c65/PlayerPrefs.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/477334fdedd74969b6db722207e9367b36200/9e/6d3073c9/Animator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/038ae34513ab4db49caf29025be8f0451f7000/e8/7a28e830/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/vAny/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/30/737fa6d0/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Alex-Sandbox.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Trausti-LevelBuild.unity" root0="FORCE_HIGHLIGHTING" />
@@ -101,12 +48,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Menu/Pause_Menu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CameraScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/CrosshairTargetDetector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alexander.Andrejeff/Perforce/Alexander.Andrejeff_GP1_Team03/Assets/_Project/Runtime/_Scripts/Player/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
@@ -118,6 +60,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/EyeBlink.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/LootIndicator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/UI/ReticleUIHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/DisableDebugTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/Killplane.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Utility/KonamiCodeChecker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -129,6 +72,7 @@
     <option name="port" value="fgsrv:1666" />
     <option name="client" value="Alexander.Andrejeff_GP1_Team03" />
     <option name="user" value="alexander.andrejeff" />
+    <option name="ENABLED" value="false" />
   </component>
   <component name="PerforceNumberNameSynchronizer">
     <option name="listMappings">
@@ -171,7 +115,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Somnium Build\Somnium.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Builds\Somnium.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Desktop\Somnium Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -183,7 +127,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -195,7 +139,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Unity\6000.2.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03 -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Alexander.Andrejeff\Perforce\Alexander.Andrejeff_GP1_Team03" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -257,6 +201,9 @@
       <workItem from="1762296804990" duration="2970000" />
       <workItem from="1762300623648" duration="521000" />
       <workItem from="1762335010454" duration="31827000" />
+      <workItem from="1762467183392" duration="6488000" />
+      <workItem from="1762473687390" duration="85000" />
+      <workItem from="1762473790779" duration="1124000" />
     </task>
     <task id="LOCAL-00001" summary="idk">
       <option name="closed" value="true" />
@@ -329,6 +276,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="staff weaker" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="VcsOperationLog">
+    <option name="operations">
+      <list>
+        <P4AddOperation>
+          <option name="changeList" value="Changes" />
+          <option name="path" value="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/LineOfSightUtility.cs.meta" />
+        </P4AddOperation>
+        <P4AddOperation>
+          <option name="changeList" value="Changes" />
+          <option name="path" value="$PROJECT_DIR$/Assets/_Project/Runtime/_Scripts/Player/LineOfSightUtility.cs" />
+        </P4AddOperation>
+      </list>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

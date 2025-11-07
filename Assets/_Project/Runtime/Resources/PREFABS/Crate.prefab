@@ -114,7 +114,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -126,10 +126,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8128562954646977191}
     m_Modifications:
-    - target: {fileID: -7511558181221131132, guid: 399caad99e86eb2438debd5cc176672f, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 6d011c2548bb7c24dafc4f3f9ba36787, type: 2}
     - target: {fileID: -8679921383154817045, guid: 33de31d7bd6b4434cb7c7a09c2369f75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_textured 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 399caad99e86eb2438debd5cc176672f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d011c2548bb7c24dafc4f3f9ba36787, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
